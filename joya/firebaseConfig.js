@@ -15,7 +15,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-const db = getFirestore();
+export const db = getFirestore();
 export const colRef = collection(db, 'tours');
 getDocs(colRef)
     .then((snapshot) => {

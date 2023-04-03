@@ -16,7 +16,7 @@ const exampleTour = {
     price: "30.000.000",
 }
 
-const Grandtours = ({ t }: { t: TFunction }) => {
+const DayTours = ({ t }: { t: TFunction }) => {
     const [tours, setTours] = useState<tour[] | []>([]);
 
     const getTours = async () => {
@@ -56,7 +56,7 @@ const Grandtours = ({ t }: { t: TFunction }) => {
     return (
         <div className="flex gap-10 flex-col">
             <div className="flex justify-between">
-                <h1 className="text-neutral-900 font-semibold text-[1.75rem]">EXPERIENCE THE GRAND TOURS</h1>
+                <h1 className="text-neutral-900 font-semibold text-[1.75rem]">A TOUR IN ONE DAY</h1>
                 <div className="flex gap-2.5">
                     <MoveSliderButton direction="prev" handleClick={prevTour}/>
                     <MoveSliderButton direction="next" handleClick={nextTour}/>
@@ -104,4 +104,4 @@ const Grandtours = ({ t }: { t: TFunction }) => {
     )
 }
 
-export default Grandtours;
+export default DayTours;

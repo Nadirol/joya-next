@@ -66,7 +66,7 @@ const Header = ({ t }: { t: TFunction }) => {
               <Link href="#about" className="text-neutral-800 font-medium text-base leading-5">{t('about')}</Link>
             </li>
             <li className="navlink-underline inline-block relative">
-              <Link href="#tours" className="text-neutral-800 font-medium text-base leading-5">{t('tours')}</Link>
+              <Link href="/tours" className="text-neutral-800 font-medium text-base leading-5">{t('tours')}</Link>
             </li>
             <li className="navlink-underline inline-block relative">
               <Link href="#contact" className="text-neutral-800 font-medium text-base leading-5">{t('contact')}</Link>
@@ -123,7 +123,7 @@ const Header = ({ t }: { t: TFunction }) => {
               <Image src={aboutIcon} alt="about icon" />
               {t('about')}
             </Link>
-            <Link href="#tours" className="text-neutral-800 font-medium text-base leading-5 flex gap-2.5" onClick={() => setSidenavOpened(false)}>
+            <Link href="/tours" className="text-neutral-800 font-medium text-base leading-5 flex gap-2.5" onClick={() => setSidenavOpened(false)}>
               <Image src={planeIcon} alt="airplane icon" />
               {t('tours')}
             </Link>

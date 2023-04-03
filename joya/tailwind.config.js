@@ -42,7 +42,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         'categories': '280px 1fr',
-        'category-row-1': '1fr 204px',
+        'category-row-1': '1fr 224px',
         'category-row-2': '246px 1fr',
         'contact': '408px 1fr',
         'footer': '1fr 2fr'
@@ -60,5 +60,8 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide')
+    // ...
+  ]
 }

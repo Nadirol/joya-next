@@ -3,7 +3,7 @@ import { TFunction } from "i18next";
 import Link from "next/link";
 import Image from "next/image";
 
-const Tours = ({ t }: { t: TFunction }) => {
+const Catalogue = ({ t }: { t: TFunction }) => {
 
     return (
         <div id="tours" className="flex gap-5 flex-col items-center text-center">
@@ -24,4 +24,4 @@ const Tours = ({ t }: { t: TFunction }) => {
     )
 };
 
-export default Tours;
+export default Catalogue;
