@@ -21,7 +21,10 @@ import closeIcon from "./close.svg"
 import homeIcon from "./home.svg"
 import aboutIcon from "./about.svg"
 import planeIcon from "./plane.svg"
+import categoriesImage1 from "./categories-image-1.jpg"
+import clockIcon from "./clock.svg"
+import tourPreview1 from "./tour-preview-1.jpg"
 
 export { holdingHandsIcon, victoryFingersIcon, checkIcon, phoneIcon, mailIcon, locationIcon, facebookIcon, instagramIcon, logoLightLarge,
 banner, galleryImage1, galleryImage2, galleryImage3, galleryImage4, galleryImage5, galleryImage6, logoDark, logoLight, menuIcon,
-closeIcon, homeIcon, aboutIcon, planeIcon}
+closeIcon, homeIcon, aboutIcon, planeIcon, categoriesImage1, clockIcon, tourPreview1 }

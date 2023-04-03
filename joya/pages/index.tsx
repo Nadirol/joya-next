@@ -14,6 +14,8 @@ import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import Categories from '@/components/main/Categories';
+import Grandtours from '@/components/main/Grandtours';
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -22,8 +24,10 @@ export default function Home() {
     <>
     <div className={plusJakartaSans.className}>
       <Header t={t}/>
-      <main className="w-container mx-auto flex gap-8 md:gap-12 xl:gap-16 flex-col mb-8 relative">
+      <main className="w-container mx-auto flex gap-8 md:gap-12 xl:gap-16 flex-col mb-8 relative mt-12">
         <Banner t={t}/>
+        <Categories t={t}/>
+        <Grandtours t={t}/>
         <About t={t}/>
         <Tours t={t}/>
         <Contact t={t}/>

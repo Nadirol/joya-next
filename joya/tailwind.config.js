@@ -36,10 +36,14 @@ module.exports = {
         
       },
       boxShadow: {  
+        'card': '1px 1px 1px rgba(0, 0, 0, 0.25)',
         'card-semibold': '1px 2px 2px rgba(0, 0, 0, 0.25)',
         'card-bold': '0px 1px 6px rgba(0, 0, 0, 0.25)'
       },
       gridTemplateColumns: {
+        'categories': '280px 1fr',
+        'category-row-1': '1fr 204px',
+        'category-row-2': '246px 1fr',
         'contact': '408px 1fr',
         'footer': '1fr 2fr'
       },
