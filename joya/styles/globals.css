@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navlink-underline {
+    @apply after:h-[2px] after:block after:w-0 after:bg-transparent after:m-auto after:transition-[width,background-color] after:ease-in 
+    after:duration-200 hover:after:w-full hover:after:bg-neutral-700
+}
