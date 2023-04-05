@@ -10,10 +10,12 @@ const TourCard = ({ id, image, title, destinations, duration, price }:
 { id: string, image: string, title: string, destinations: string, duration: number, price: number}) => {
 
     return (
-        <Link href={`/tours/${id}`} className="rounded-2xl shadow-card min-w-[282px] snap-start">
-            <Image src={image} alt="tour preview image" width={282} height={300}/>
+        <Link href={`/tours/${id}`} className="rounded-2xl shadow-card hover:shadow-card-semibold min-w-[282px] snap-start overflow-hidden">
+            <div className="w-[282px] h-[192px] overflow-hidden">
+                <Image src={image} alt="tour preview image" width={282} height={300} className="hover:scale-[1.1] transition-all duration-300"/>
+            </div>
             <div className="flex flex-col justify-between h-[11rem] px-2 py-4">
-                <div className="">
+                <div className="flex gap-2.5 flex-col">
                     <h1 className="text-neutral-900 font-medium text-base">{title}</h1>
                     <div className="flex gap-2">
                         <Image src={locationIcon} alt="location icon" className="w-2 aspect-square"/>

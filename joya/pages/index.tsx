@@ -1,7 +1,5 @@
-import About from '@/components/main/About'
 import Banner from '@/components/main/Banner'
-import Contact from '@/components/main/Contact'
-import Catalogue from '@/components/main/Catalogue'
+
 import { Plus_Jakarta_Sans } from 'next/font/google';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -17,6 +15,9 @@ import Footer from '@/components/Footer'
 import Categories from '@/components/main/Categories';
 import Grandtours from '@/components/main/Grandtours';
 import DayTours from '@/components/main/DayTours';
+import CustomTours from '@/components/main/CustomTours';
+import ThemeTour from '@/components/main/ThemeTours';
+import ContactBanner from '@/components/main/ContactBanner';
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -30,17 +31,9 @@ export default function Home() {
         <Categories t={t}/>
         <Grandtours t={t}/>
         <DayTours t={t}/>
-        <About t={t}/>
-        <Catalogue t={t}/>
-        <Contact t={t}/>
-
-        <div>
-        <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7665.577618145061!2d105.90124832248152!3d21.045612072524168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab053095a713%3A0x1a50ffd82de75303!2sVinhomes%20Riverside%20The%20Harmony!5e0!3m2!1sen!2s!4v1678784423787!5m2!1sen!2s" 
-        height="450" allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-        className="mx-auto w-container border border-neutral-500">
-        </iframe>
-        </div>
+        <ThemeTour t={t}/>
+        <CustomTours t={t}/>
+        <ContactBanner t={t}/>
       </main>
       <Footer/>
     </div>

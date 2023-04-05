@@ -1,4 +1,5 @@
-import Contact from '@/components/contact/Contact'
+import About from '@/components/about/About'
+import Catalogue from '@/components/about/Catalogue'
 import { Plus_Jakarta_Sans } from 'next/font/google';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -7,12 +8,12 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 import { useTranslation } from "next-i18next"
+import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import Grandtours from '@/components/main/Grandtours';
 
-export default function Tours() {
+export default function AboutPage() {
   const { t } = useTranslation('common');
 
   return (
@@ -20,9 +21,8 @@ export default function Tours() {
     <div className={plusJakartaSans.className}>
       <Header t={t}/>
       <main className="w-container mx-auto flex gap-8 md:gap-12 xl:gap-16 flex-col mb-8 relative mt-12">
-        <Grandtours t={t}/>
-        <Contact t={t}/>
-
+        <About t={t}/>
+        <Catalogue t={t}/>
       </main>
       <Footer/>
     </div>
