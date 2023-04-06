@@ -1,8 +1,10 @@
 export interface tour {
-    destinations: string,
+    destinations: string | null,
     image: string,
     title: string,
-    duration: number,
-    price: number,
-    id: string
+    duration: number | null,
+    price: number | null,
+    id: string,
+    tourType: string,
+    description: string | null
 }

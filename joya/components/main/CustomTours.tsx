@@ -9,18 +9,18 @@ import Image from "next/image";
 import { useState } from "react";
 
 const CustomTours = ({ t }: { t: TFunction }) => {
-    const [firstNameValue, setFirstNameValue] = useState('');
-    const [lastNameValue, setLastNameValue] = useState('');
+    const [idealTourDurationValue, setIdealTourDurationValue] = useState('');
+    const [yourBudgetValue, setYourBudgetValue] = useState('');
     const [phoneNumberValue, setPhoneNumberValue] = useState('');
     const [emailValue, setEmailValue] = useState('');
     const [messageValue, setMessageValue] = useState('');
   
-    const handleFirstNameChange = (e: any) => {
-      setFirstNameValue(e.target.value)
+    const handleIdealTourDurationChange = (e: any) => {
+        setIdealTourDurationValue(e.target.value)
     };
   
-    const handleLastNameChange = (e: any) => {
-      setLastNameValue(e.target.value)
+    const handleYourBudgetChange = (e: any) => {
+        setYourBudgetValue(e.target.value)
     };
   
     const handlePhoneNumberChange = (e: any) => {
@@ -45,8 +45,8 @@ const CustomTours = ({ t }: { t: TFunction }) => {
         }, 2000)
   
         setTimeout(() => {
-          setFirstNameValue('');
-          setLastNameValue('');
+            setIdealTourDurationValue('');
+            setYourBudgetValue('');
           setPhoneNumberValue('');
           setEmailValue('');
           setMessageValue('');
@@ -64,7 +64,11 @@ const CustomTours = ({ t }: { t: TFunction }) => {
           <form className="mx-auto flex flex-col gap-6 shadow-card-bold rounded-[30px] px-4 md:px-8 xl:px-[3.75rem] py-7" 
             action="https://formsubmit.co/8015104ab30fce20360f57b9f6f6ee16" 
             method="POST" target="frame" onSubmit={e => showPopUp(e)}>
-                <h1 className="text-neutral-900 font-semibold text-2xl md:text-[2rem] md:leading-10 text-center">{t('sendAMessage')}</h1>
+                <div className="flex gap-3 flex-col text-center">
+                    <h1 className="text-neutral-900 font-semibold text-2xl md:text-[2rem] md:leading-10 ">{t('bookCustomTour')}</h1>
+                    <h2 className="text-neutral-700 font-normal text-xs ">{t('customTourFormHeading2')}</h2>
+                </div>
+
                 <div className="flex gap-7 -md:flex-col">
                     <div className="flex gap-2 flex-col">
                         <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('phoneNumber')}</label>
@@ -78,6 +82,7 @@ const CustomTours = ({ t }: { t: TFunction }) => {
                     </div>
                 </div>
                 <div className="flex gap-2 flex-col">
+                    <h1 className="text-neutral-600 font-normal text-xs">{t('customTourFormNote')}</h1>
                     <label htmlFor="message" className="text-neutral-800 font-medium text-base">{t('message')}</label>
                     <textarea id="message" name="Message" placeholder={t('messagePlaceholder')} rows="4" value={messageValue} onChange={(e) => handleMessageChange(e)}
                         className="w-full px-6 py-3 border border-neutral-500 rounded-2xl placeholder:text-xs text-base">
@@ -85,13 +90,13 @@ const CustomTours = ({ t }: { t: TFunction }) => {
                 </div>
                 <div className="flex gap-7 -md:flex-col">
                     <div className="flex gap-2 flex-col">
-                        <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('phoneNumber')}</label>
-                        <input type="text" name="Phone Number" placeholder={t('phoneNumberPlaceholder')} value={phoneNumberValue} onChange={(e) => handlePhoneNumberChange(e)}
+                        <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('idealTourDuration')}</label>
+                        <input type="text" name="Phone Number" placeholder={t('idealTourDurationPlaceholder')} value={idealTourDurationValue} onChange={(e) => handleIdealTourDurationChange(e)}
                         className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
                     </div>
                     <div className="flex gap-2 flex-col">
-                        <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('email')}</label>
-                        <input type="email" name="Email" placeholder={t('emailPlaceholder')} required value={emailValue} onChange={(e) => handleEmailChange(e)}
+                        <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('yourBudget')}</label>
+                        <input type="email" name="Email" placeholder={t('yourBudgetPlaceholder')} required value={yourBudgetValue} onChange={(e) => handleYourBudgetChange(e)}
                         className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
                     </div>
                 </div>

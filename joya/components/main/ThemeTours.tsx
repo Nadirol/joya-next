@@ -1,7 +1,4 @@
 import { TFunction } from "next-i18next"
-import Image from "next/image"
-import MoveSliderButton from "../buttons/MoveSliderButton"
-import TourCard from "../cards/TourCard"
 import { themeImage1 } from "@/public/assets"
 import ThemeCard from "../cards/ThemeCard"
 
@@ -11,7 +8,7 @@ const ThemeTour = ({ t }: { t: TFunction }) => {
 
     return (
         <div className="flex gap-10 flex-col items-center">
-            <h1 className="text-neutral-900 font-semibold text-[2rem]">CHOOSE THE THEME FOR YOUR TOUR</h1>
+            <h1 className="text-neutral-900 font-semibold text-2xl md:text-[2rem] -md:text-center">{t('themeTourHeading')}</h1>
             <div className="flex gap-6 flex-wrap items-center justify-center w-4/5">
                 {themes?.map(theme => 
                     <ThemeCard 

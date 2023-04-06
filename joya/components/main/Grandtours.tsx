@@ -41,7 +41,7 @@ const Grandtours = ({ t }: { t: TFunction }) => {
     const prevTour = () =>
         toursSliderRef.current.scrollBy({
         top: 0,
-        left: -10,
+        left: -1,
         behavior: "smooth",
         });
 
@@ -56,15 +56,15 @@ const Grandtours = ({ t }: { t: TFunction }) => {
     return (
         <div className="flex gap-10 flex-col">
             <div className="flex justify-between">
-                <h1 className="text-neutral-900 font-semibold text-[1.75rem]">EXPERIENCE THE GRAND TOURS</h1>
-                <div className="flex gap-2.5">
+                <h1 className="text-neutral-900 font-semibold text-xl md:text-[1.75rem]">{t('grandTourHeading')}</h1>
+                <div className="flex gap-2.5 items-center -md:hidden">
                     <MoveSliderButton direction="prev" handleClick={prevTour}/>
                     <MoveSliderButton direction="next" handleClick={nextTour}/>
                 </div>
             </div>
-            <div className="flex gap-12 overflow-x-scroll scrollbar-hide snap-x snap-mandatory overscroll-x-contain overflow-y-visible pb-1"
+            <div className="flex gap-8 md:gap-12 overflow-x-scroll scrollbar-hide snap-x snap-mandatory overscroll-x-contain overflow-y-visible pb-1"
                 ref={toursSliderRef}>
-                {tours?.map(tour => 
+                {tours?.filter(tour => tour.tourType === "grand").map(tour => 
                     <TourCard 
                         key={tour.id}
                         id={tour.id}
@@ -73,32 +73,9 @@ const Grandtours = ({ t }: { t: TFunction }) => {
                         destinations={tour.destinations}
                         duration={tour.duration}
                         price={tour.price}
+                        t={t}
                     />
                 )}
-                {/* <TourCard
-                    key={exampleTour.title}
-                    image={exampleTour.image}
-                    title={exampleTour.title}
-                    destinations={exampleTour.destinations}
-                    duration={exampleTour.duration}
-                    price={exampleTour.price}
-                />
-                <TourCard
-                    key={exampleTour.title}
-                    image={exampleTour.image}
-                    title={exampleTour.title}
-                    destinations={exampleTour.destinations}
-                    duration={exampleTour.duration}
-                    price={exampleTour.price}
-                />
-                <TourCard
-                    key={exampleTour.title}
-                    image={exampleTour.image}
-                    title={exampleTour.title}
-                    destinations={exampleTour.destinations}
-                    duration={exampleTour.duration}
-                    price={exampleTour.price}
-                /> */}
             </div>
         </div>
     )

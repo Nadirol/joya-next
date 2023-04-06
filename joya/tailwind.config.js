@@ -30,8 +30,10 @@ module.exports = {
         'primary-dark': 'rgba(60, 96, 105, 1)',
 
         'neutral-100': 'rgba(250, 250, 250, 1)',
+        'neutral-300': 'rgba(240, 241, 242, 1)',
         'neutral-500': 'rgba(186, 194, 198, 1)',
         'neutral-600': 'rgba(154, 158, 166, 1)',
+        'neutral-700': 'rgba(103, 105, 109, 1)',
         'neutral-800': 'rgba(72, 71, 71, 1)',
         
         'filter-dark': 'rgba(0, 0, 0, 0.4)',
@@ -46,10 +48,11 @@ module.exports = {
       },
       gridTemplateColumns: {
         'categories': '280px 1fr',
-        'category-row-1': '1fr 360px',
-        'category-row-2': '480px 1fr',
+        'category-row-1': '1fr 460px',
+        'category-row-2': '1fr 320px',
         'contact': '408px 1fr',
-        'footer': '1fr 2fr'
+        'footer': '1fr 2fr',
+        'details': '7fr 3fr'
       },
       screens: {
         '-xl': { 'max': '1279px' } ,

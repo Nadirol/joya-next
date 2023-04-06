@@ -21,13 +21,18 @@ import closeIcon from "./close.svg"
 import homeIcon from "./home.svg"
 import aboutIcon from "./about.svg"
 import planeIcon from "./plane.svg"
-import categoriesImage1 from "./categories-image-1.jpg"
 import clockIcon from "./clock.svg"
 import tourPreview1 from "./tour-preview-1.jpg"
 import arrowRightIcon from "./arrow-right.svg"
 import heroPrivate from "./hero-private.png"
 import themeImage1 from "./theme-image-1.jpg"
+import categoriesImage1 from "./halongbay-small.jpg"
+import categoriesImage2 from "./trangan-small.jpg"
+import categoriesImage3 from "./themetour-small.jpg"
+import categoriesImage4 from "./bridge-small.jpg"
+
 
 export { holdingHandsIcon, victoryFingersIcon, checkIcon, phoneIcon, mailIcon, locationIcon, facebookIcon, instagramIcon, logoLightLarge,
 banner, galleryImage1, galleryImage2, galleryImage3, galleryImage4, galleryImage5, galleryImage6, logoDark, logoLight, menuIcon,
-closeIcon, homeIcon, aboutIcon, planeIcon, categoriesImage1, clockIcon, tourPreview1, arrowRightIcon, heroPrivate, themeImage1 }
+closeIcon, homeIcon, aboutIcon, planeIcon, categoriesImage1, categoriesImage2, categoriesImage3, categoriesImage4, clockIcon, tourPreview1, 
+arrowRightIcon, heroPrivate, themeImage1 }

@@ -47,15 +47,15 @@ const Header = ({ t }: { t: TFunction }) => {
     const changeLanguage = (lng: string) => {
       i18n.changeLanguage(lng); 
       setLngDropdownOpened(false);
-      router.push(lng)  
+      router.push(`/${lng}`)  
     }
 
     return (
-      <header className="relative -xl:sticky top-0 left-0 z-20">
+      <header className="relative -xl:sticky top-0 left-0 z-30">
         <nav className="bg-white flex justify-between items-center w-header 
           mx-auto py-4 xl:py-6 -xl:px-4 relative">
           <Link href="/">
-            <Image src={logoLight} alt="" className="w-12 md:w-20 aspect-square"/>
+            <Image src={logoLight} alt="" className="w-12 md:w-16 aspect-square"/>
           </Link>
 
           <ul className="hidden xl:flex gap-[5.25rem]">
