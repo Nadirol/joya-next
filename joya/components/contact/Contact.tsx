@@ -101,34 +101,34 @@ const Contact = ({ t }: { t: TFunction }) => {
                 <div className="flex gap-7 -md:flex-col w-full">
                 <div className="flex gap-2 flex-col">
                     <label className="text-neutral-800 font-medium text-base">{t('firstName')}</label>
-                    <input type="text" name="First Name" placeholder={t('firstNamePlaceholder')} required value={firstNameValue} onChange={(e) => handleFirstNameChange(e)}
+                    <input type="text" name="First Name" placeholder={`${t('firstNamePlaceholder')}`} required value={firstNameValue} onChange={(e) => handleFirstNameChange(e)}
                     className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
                 </div>
                 <div className="flex gap-2 flex-col">
                     <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('lastName')}</label>
-                    <input type="text" name="Last Name" placeholder={t('lastNamePlaceholder')} required value={lastNameValue} onChange={(e) => handleLastNameChange(e)}
+                    <input type="text" name="Last Name" placeholder={`${t('lastNamePlaceholder')}`} required value={lastNameValue} onChange={(e) => handleLastNameChange(e)}
                     className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
                 </div>
                 </div>
                 <div className="flex gap-7 -md:flex-col">
                 <div className="flex gap-2 flex-col">
                     <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('phoneNumber')}</label>
-                    <input type="text" name="Phone Number" placeholder={t('phoneNumberPlaceholder')} value={phoneNumberValue} onChange={(e) => handlePhoneNumberChange(e)}
+                    <input type="text" name="Phone Number" placeholder={`${t('phoneNumberPlaceholder')}`} value={phoneNumberValue} onChange={(e) => handlePhoneNumberChange(e)}
                     className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
                 </div>
                 <div className="flex gap-2 flex-col">
                     <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('email')}</label>
-                    <input type="email" name="Email" placeholder={t('emailPlaceholder')} required value={emailValue} onChange={(e) => handleEmailChange(e)}
+                    <input type="email" name="Email" placeholder={`${t('emailPlaceholder')}`} required value={emailValue} onChange={(e) => handleEmailChange(e)}
                     className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
                 </div>
                 </div>
                 <div className="flex gap-2 flex-col">
                 <label htmlFor="message" className="text-neutral-800 font-medium text-base">{t('message')}</label>
-                <textarea id="message" name="Message" placeholder={t('messagePlaceholder')} rows="4" value={messageValue} onChange={(e) => handleMessageChange(e)}
+                <textarea id="message" name="Message" placeholder={`${t('messagePlaceholder')}`} rows={4} value={messageValue} onChange={(e) => handleMessageChange(e)}
                     className="w-full px-6 py-3 border border-neutral-500 rounded-2xl placeholder:text-xs text-base">
                 </textarea>
                 </div>
-                <input type="submit" value={t('send')}
+                <input type="submit" value={`${t('send')}`}
                 className="bg-primary-extra-light hover:bg-primary-light w-fit cursor-pointer text-neutral-900 
                 font-medium text-xl px-12 py-2.5 rounded-[1.125rem] mx-auto"/>
                 {/* prevent capcha */}

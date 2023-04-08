@@ -1,20 +1,13 @@
+// @ts-nocheck
+
 import { TFunction } from "next-i18next"
-import Image from "next/image"
 import MoveSliderButton from "../buttons/MoveSliderButton"
 import TourCard from "../cards/TourCard"
-import { tourPreview1 } from "@/public/assets"
 import { colRef } from "../../firebaseConfig";
 import { getDocs } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react"
 import { tour } from "@/interface/interface"
 
-const exampleTour = {
-    image: tourPreview1,
-    title: "The Real Grand Tour",
-    destinations: "Lào Cai, Hà Nội, Hạ Long, Hội An, Đà Lạt, Hà Nội, Hạ Long, Hội An, Đà Lạt",
-    duration: "21 days",
-    price: "30.000.000",
-}
 
 const DayTours = ({ t }: { t: TFunction }) => {
     const [tours, setTours] = useState<tour[] | []>([]);
