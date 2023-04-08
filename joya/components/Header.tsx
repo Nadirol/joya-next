@@ -93,7 +93,7 @@ const Header = ({ t }: { t: TFunction }) => {
                   <button type="submit" key={lng} onClick={() => changeLanguage(lng)} disabled={i18n?.resolvedLanguage === lng}
                     className={`w-[8rem] font-medium ${i18n?.language === lng ? 'text-neutral-700' : 'text-neutral-600'} hover:text-neutral-700`}>
                     
-                    {lngs.get(lng).nativeLanguage}
+                    {lngs.get(lng)?.nativeLanguage}
     
                   </button>
                 ))}
