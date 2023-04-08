@@ -40,6 +40,8 @@ const useClickDetector = (ref: React.MutableRefObject<HTMLDivElement | null>, fu
 };
 
 export default function Tour() {
+    const { t } = useTranslation('common');
+
     const router =  useRouter();
     const { id } =  router.query;
 
@@ -58,8 +60,6 @@ export default function Tour() {
         }
         getTour()
     },[]);
-
-    const { t } = useTranslation('common');
 
     const [firstNameValue, setFirstNameValue] = useState('');
     const [lastNameValue, setLastNameValue] = useState('');
@@ -247,28 +247,10 @@ export default function Tour() {
     )
 }
 
-export async function getStaticProps({ locale }: { locale: string}) {
-    return {
-      props: {
-        ...(await serverSideTranslations(locale, [
-          'common',
-        ])),
-        // Will be passed to the page component as props
-      },    
-    }
-};
-
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
 
     const querySnapshot = await getDocs(colRef)
-    // .then((snapshot) => {
-    //     const newData = snapshot.docs.reverse()
-    //     .map(doc => ({...doc.data(), id:doc.id }));
-    //     return newData
-    // })
-    // .catch(err => {
-    //     console.log(err.message)
-    // });
+
     const paths = [];
     querySnapshot.forEach(doc => paths.push({
         params: { id: doc.id }
@@ -279,3 +261,14 @@ export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
         fallback: 'blocking' //indicates the type of fallback
     }
 }
+
+export async function getStaticProps({ locale }: { locale: string}) {
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, [
+          'common',
+        ])),
+        // Will be passed to the page component as props
+      },    
+    }
+};
