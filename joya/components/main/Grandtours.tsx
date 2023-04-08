@@ -18,7 +18,6 @@ const Grandtours = ({ t }: { t: TFunction }) => {
             const newData = snapshot.docs.reverse()
             .map(doc => ({...doc.data(), id:doc.id }));
             setTours(newData);                
-            console.log(tours, newData);
         })
         .catch(err => {
             console.log(err.message)
