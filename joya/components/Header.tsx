@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { TFunction, i18n } from "next-i18next";
 
 // run function when clicking outside of ref
@@ -44,10 +44,11 @@ const Header = ({ t }: { t: TFunction }) => {
     const [sidenavOpened, setSidenavOpened] = useState(false);
 
     const router = useRouter();
-
+    console.log(router.pathname)
     const changeLanguage = (lng: string) => {
       i18n?.changeLanguage(lng); 
       setLngDropdownOpened(false);
+      router.push(`${router.pathname === '/' ? `/${lng}` : `/${lng}${router.pathname}`}`,undefined, { locale: lng })
     }
 
     return (

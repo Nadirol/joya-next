@@ -54,7 +54,7 @@ const CustomTours = ({ t }: { t: TFunction }) => {
     }
 
     return (
-        <div id="contact" className="w-container mx-auto grid -xl:gap-16 grid-rows-1 xl:grid-cols-contact">
+        <div id="custom-tours" className="w-container mx-auto grid -xl:gap-16 grid-rows-1 xl:grid-cols-contact">
           <Image src={heroPrivate} alt="hero image" className="m-auto"/>
 
           {/* iframe to prevent reloading */}

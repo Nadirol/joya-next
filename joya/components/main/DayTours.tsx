@@ -46,7 +46,7 @@ const DayTours = ({ t }: { t: TFunction }) => {
     };
 
     return (
-        <div className="flex gap-10 flex-col">
+        <div className="flex gap-10 flex-col" id="day-tours">
             <div className="flex justify-between">
                 <h1 className="text-neutral-900 font-semibold text-xl md:text-[1.75rem]">{t('dayTourHeading')}</h1>
                 <div className="flex gap-2.5 items-center -md:hidden">

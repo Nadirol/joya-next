@@ -7,7 +7,7 @@ import Link from "next/link";
 const ContactBanner = ({ t }: { t: TFunction }) => {
 
     return (
-        <div className="flex -md:flex-col -md:items-center justify-between bg-primary-extra-light rounded-[30px] px-8 md:px-20 py-8">
+        <div id="contact-banner" className="flex -md:flex-col -md:items-center justify-between bg-primary-extra-light rounded-[30px] px-8 md:px-20 py-8">
             <div className="flex justify-center items-center flex-col">
                 <h1 className="text-neutral-900 font-semibold text-4xl mb-3 -md:text-center">CONTACT WITH US</h1>
                 <h2 className="text-neutral-800 font-normal text-xl mb-6 -md:text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
