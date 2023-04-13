@@ -33,7 +33,6 @@ export default function Home() {
     <div className={plusJakartaSans.className}>
       <Header t={t}/>
       <main className="w-container mx-auto flex gap-8 md:gap-12 xl:gap-16 flex-col mb-8 relative mt-12">
-        <Image src={logoLight} width={32} height={32} alt="" />
         <Banner t={t}/>
         <Categories t={t}/>
         <Grandtours t={t}/>
