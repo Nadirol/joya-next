@@ -9,8 +9,8 @@ const ContactBanner = ({ t }: { t: TFunction }) => {
     return (
         <div id="contact-banner" className="flex -md:flex-col -md:items-center justify-between bg-primary-extra-light rounded-[30px] px-8 md:px-20 py-8">
             <div className="flex justify-center items-center flex-col">
-                <h1 className="text-neutral-900 font-semibold text-4xl mb-3 -md:text-center">CONTACT WITH US</h1>
-                <h2 className="text-neutral-800 font-normal text-xl mb-6 -md:text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
+                <h1 className="text-neutral-900 font-semibold text-4xl mb-3 -md:text-center">{t('contactWithUs')}</h1>
+                <h2 className="text-neutral-800 font-normal text-xl mb-6 -md:text-center">{t('contactBannerHeading')}</h2>
                 <div className="flex gap-8 -md:flex-col items-center mb-6">
                     <div className="flex gap-4 items-center">
                         <Image src={phoneIcon} alt="phone icon" />
@@ -21,7 +21,7 @@ const ContactBanner = ({ t }: { t: TFunction }) => {
                     </div>
                     <div className="flex gap-4 items-center">
                         <Image src={mailIcon} alt="phone icon" />
-                        <h1 className="text-neutral-800 font-normal text-base">admin@joya.com.vn</h1>
+                        <h1 className="text-neutral-800 font-normal text-base">sales@joyatravel.vn</h1>
                     </div>
                 </div>
                 <div className="flex gap-6 items-center">

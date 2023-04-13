@@ -12,12 +12,16 @@ import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import Head from 'next/head';
 
 export default function AboutPage() {
   const { t } = useTranslation('common');
 
   return (
     <>
+    <Head>
+      <title>{t('about')}</title>
+    </Head>
     <div className={plusJakartaSans.className}>
       <Header t={t}/>
       <main className="w-container mx-auto flex gap-8 md:gap-12 xl:gap-16 flex-col mb-8 relative mt-12">

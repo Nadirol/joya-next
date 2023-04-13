@@ -19,8 +19,6 @@ import CustomTours from '@/components/main/CustomTours';
 import ThemeTour from '@/components/main/ThemeTours';
 import ContactBanner from '@/components/main/ContactBanner';
 import Head from 'next/head';
-import Image from 'next/image';
-import { logoLight } from '@/public/assets';
 
 export default function Home() {
   const { t } = useTranslation('common');

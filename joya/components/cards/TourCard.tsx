@@ -16,7 +16,7 @@ const TourCard = ({ id, image, title, destinations, duration, price, t }:
             <div className="w-[141px] md:w-[282px] h-[98px] md:h-[192px] overflow-hidden">
                 <Image src={image} alt="tour preview image" width={282} height={192} className="hover:scale-[1.1] transition-all duration-300 min-h-[192px]"/>
             </div>
-            <div className="flex flex-col justify-between h-[13rem] md:h-[11rem] px-2 py-4">
+            <div className="flex flex-col justify-between min-h-[11rem] px-2 py-4">
                 <div className="flex gap-2.5 flex-col">
                     <h1 className="text-neutral-900 font-medium text-sm md:text-base">{title}</h1>
                     {destinations && 

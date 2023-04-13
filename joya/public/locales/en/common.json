@@ -68,5 +68,8 @@
     "public": "Public",
     "bookCustomTour": "Book A Custom Tour",
     "customTourFormHeading2": "Fill in the form and our support will get back to you",
-    "customTourFormNote": "*Fill in at least one of the fields below"
+    "customTourFormNote": "*Fill in at least one of the fields below",
+    "formThanks": "Your message is sent. Thanks for contacting with us!",
+    "contactWithUs": "CONTACT WITH US",
+    "contactBannerHeading": "Our active support team is always here to help you"
 }

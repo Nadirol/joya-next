@@ -17,7 +17,9 @@ module.exports = {
         'header': 'min(1200px, 100%)',
         'paragraph': 'min(50rem, 100% - 4rem)',
         'sidenav': 'min(30rem, 100% - 4rem)',
-        'input-field': 'min(260px, 100%)',
+        'input-field': 'min(320px, 100%)',
+        'input-field-md': 'min(420px, 100%)',
+        'form': 'min(570px, 100% - 4rem)',
       },
       fontFamily: {
         'plus-jakarta': "'Plus Jakarta Sans', sans-serif;"
@@ -52,7 +54,8 @@ module.exports = {
         'category-row-2': '1fr 320px',
         'contact': '408px 1fr',
         'footer': '1fr 2fr',
-        'details': '7fr 3fr'
+        'details': '6fr 4fr',
+        'details-md': '7fr 3fr'
       },
       screens: {
         '-xl': { 'max': '1279px' } ,
