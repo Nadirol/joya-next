@@ -3,7 +3,7 @@
 import { logoDark } from "@/public/assets";
 import Image from "next/image";
 import Link from "next/link";
-import { useTranslation } from 'next-i18next';
+import { i18n, useTranslation } from 'next-i18next';
 
 const Footer = () => {
     const { t } = useTranslation();
@@ -41,7 +41,7 @@ const Footer = () => {
                                 <h3 className="font-normal text-base text-neutral-200">VN: 0985080324</h3>
                             </div>
                         </div>
-                        <h1 className="font-semibold text-base">Email: <span className="font-normal text-neutral-200">admin@joya.com.vn</span></h1>
+                        <h1 className="font-semibold text-base">Email: <span className="font-normal text-neutral-200">sales@joyatravel.vn</span></h1>
                         {/* <h1 className="font-semibold text-base">Website: &nbsp;
                             <Link href="https://www.joya.com.vn" className="font-normal text-neutral-200">www.joya.com.vn</Link>
                         </h1> */}
@@ -50,16 +50,16 @@ const Footer = () => {
                         <h1 className="font-semibold text-lg">{t('links')}</h1>
                         <ul className="flex -xl:gap-3 flex-col xl:justify-between h-full text-neutral-200">
                             <li>
-                                <Link href="/" className="font-medium text-base hover:text-neutral-100">{t('home')}</Link>
+                                <Link href={`/${i18n?.language}`} className="font-medium text-base hover:text-neutral-100">{t('home')}</Link>
                             </li>
                             <li>
-                                <Link href="#about" className="font-medium text-base hover:text-neutral-100">{t('about')}</Link>
+                                <Link href={`/${i18n?.language}/about`} className="font-medium text-base hover:text-neutral-100">{t('about')}</Link>
                             </li>
                             <li>
-                                <Link href="#tours" className="font-medium text-base hover:text-neutral-100">{t('tours')}</Link>
+                                <Link href={`/${i18n?.language}/tours`} className="font-medium text-base hover:text-neutral-100">{t('tours')}</Link>
                             </li>
                             <li>
-                                <Link href="#contact" className="font-medium text-base hover:text-neutral-100">{t('contact')}</Link>
+                                <Link href={`/${i18n?.language}/contact`} className="font-medium text-base hover:text-neutral-100">{t('contact')}</Link>
                             </li>
                             <li>
                                 <Link href="/assets/JOYA_Catalogue_EN.pdf" target="_blank" 

@@ -50,7 +50,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         'categories': '280px 1fr',
-        'category-row-1': '1fr 460px',
+        'category-row-1': '420px 1fr',
         'category-row-2': '1fr 320px',
         'contact': '408px 1fr',
         'footer': '1fr 2fr',

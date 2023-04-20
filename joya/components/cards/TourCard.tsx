@@ -1,5 +1,5 @@
 import { clockIcon, locationIcon } from "@/public/assets"
-import { TFunction } from "next-i18next";
+import { TFunction, i18n } from "next-i18next";
 import Image, { StaticImageData } from "next/image"
 import Link from "next/link";
 
@@ -12,7 +12,8 @@ const TourCard = ({ id, image, title, destinations, duration, price, t }:
     price: number  | null, t: TFunction }) => {
 
     return (
-        <Link href={`/tours/${id}`} className="rounded-2xl shadow-card hover:shadow-card-semibold min-w-[141px] md:min-w-[282px] snap-start overflow-hidden">
+        <Link href={ { pathname:`/tours/[id]`, query: { id: id } } } 
+        className="rounded-2xl shadow-card hover:shadow-card-semibold min-w-[141px] md:min-w-[282px] snap-start overflow-hidden">
             <div className="w-[141px] md:w-[282px] h-[98px] md:h-[192px] overflow-hidden">
                 <Image src={image} alt="tour preview image" width={282} height={192} className="hover:scale-[1.1] transition-all duration-300 min-h-[192px]"/>
             </div>

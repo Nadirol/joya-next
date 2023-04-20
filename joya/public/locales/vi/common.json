@@ -55,11 +55,14 @@
     "themeTourHeading": "CHỌN CHỦ ĐỀ CHO TOUR CỦA BẠN",
     "day": "ngày",
     "days": "ngày",
+    "night": "đêm",
+    "nights": "đêm",
     "fullPackage": "Giá Trọn Gói",
     "destinations": "Điểm Tới",
-    "duration": "Thời Gian",
+    "duration": "Lịch Trình",
     "flexible": "Tuỳ Chọn",
     "book": "Đặt Ngay",
+    "bookNow": "Đặt Ngay",
     "bookTour": "Đặt Tour",
     "yourPreference": "Nhu Cầu Của Bạn",
     "yourPreferencePlaceholder": "Nhập nhu cầu hoặc sở thích",
@@ -71,6 +74,12 @@
     "customTourFormNote": "*Điền vào ít nhất một trong các trường dưới đây",
     "formThanks": "Tin nhắn của bạn được gửi đi. Chúng tôi xin cảm ơn!",
     "contactWithUs": "LIÊN HỆ VỚI CHÚNG TÔI",
-    "contactBannerHeading": "Chúng tôi luôn sẵn lòng hỗ trợ bạn"
-
+    "contactBannerHeading": "Chúng tôi luôn sẵn lòng hỗ trợ bạn",
+    "partnerTourHeading": "Tour mùa hè",
+    "highlights": "Điểm Nhấn",
+    "priceIncludes": "Ưu đãi bao gồm",
+    "priceExcludes": "Không bao gồm",
+    "notes": "Lưu ý",
+    "forChildren": "Trẻ em",
+    "Itinerary": "Lộ trình"
 }

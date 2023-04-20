@@ -7,7 +7,9 @@ import { TFunction } from "i18next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+
+const contactEmails = 'quynhnt88@gmail.com,floris.panico@yahoo.co.uk,Nguyenthuy1095@gmail.com';
 
 const Contact = ({ t }: { t: TFunction }) => {
     const [firstNameValue, setFirstNameValue] = useState('');
@@ -40,6 +42,7 @@ const Contact = ({ t }: { t: TFunction }) => {
     const [popUpVisible, setPopUpVisible] = useState(false);
     const showPopUp = (e: any) => {
   
+      if (emailValid) {
         setPopUpVisible(prevState => !prevState)
         setTimeout(() => {
             setPopUpVisible(prevState => !prevState)
@@ -51,7 +54,38 @@ const Contact = ({ t }: { t: TFunction }) => {
           setPhoneNumberValue('');
           setEmailValue('');
           setMessageValue('');
+
+          setEmailWarning('');
         }, 200)
+      }
+
+      return emailValid;
+    }
+
+    const emailInputRef = useRef<string | any>(null);
+
+    const [emailWarning, setEmailWarning] = useState('');
+    const [emailValid, setEmailValid] = useState(true);
+    const validateEmail = (email: string) => {
+      return String(email)
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    };
+
+    const validate = () => {
+      if (validateEmail(emailInputRef.current?.value)) {
+        setEmailValid(true);
+        setEmailWarning(`${emailInputRef.current?.value} is valid`)
+      } else if (emailInputRef.current?.value) {
+        setEmailValid(false);
+        setEmailWarning(`${emailInputRef.current?.value} is not valid`)
+      } else {
+        setEmailWarning('')
+
+      }
+      return false
     }
 
     return (
@@ -69,7 +103,7 @@ const Contact = ({ t }: { t: TFunction }) => {
               </div>
               <div className="flex gap-4">
                 <Image src={mailIcon} alt="phone icon" />
-                <h1 className="text-neutral-800 font-regular text-base xl:text-lg">admin@joya.com.vn</h1>
+                <h1 className="text-neutral-800 font-regular text-base xl:text-lg">sales@joyatravel.vn</h1>
               </div>
               <div className="flex gap-4">
                 <Image src={locationIcon} alt="phone icon" />
@@ -95,36 +129,44 @@ const Contact = ({ t }: { t: TFunction }) => {
           <iframe name="frame" className="hidden"></iframe>
 
           {/* send message to email using formsubmit.co */}
-          <form className="mx-auto flex flex-col gap-6" action="https://formsubmit.co/8015104ab30fce20360f57b9f6f6ee16" 
+          <form className="mx-auto flex flex-col gap-6" action="https://formsubmit.co/khanhduycb1510@gmail.com" 
             method="POST" target="frame" onSubmit={e => showPopUp(e)}>
                 <h1 className="text-neutral-900 font-semibold text-2xl md:text-[2rem] md:leading-10 text-center">{t('sendAMessage')}</h1>
                 <div className="flex gap-7 -md:flex-col w-full">
                 <div className="flex gap-2 flex-col">
                     <label className="text-neutral-800 font-medium text-base">{t('firstName')}</label>
-                    <input type="text" name="First Name" placeholder={`${t('firstNamePlaceholder')}`} required value={firstNameValue} onChange={(e) => handleFirstNameChange(e)}
+                    <input type="text" name="First Name" placeholder={`${t('firstNamePlaceholder')}`} required 
+                    value={firstNameValue} onChange={(e) => handleFirstNameChange(e)}
                     className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
                 </div>
                 <div className="flex gap-2 flex-col">
                     <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('lastName')}</label>
-                    <input type="text" name="Last Name" placeholder={`${t('lastNamePlaceholder')}`} required value={lastNameValue} onChange={(e) => handleLastNameChange(e)}
+                    <input type="text" name="Last Name" placeholder={`${t('lastNamePlaceholder')}`} 
+                    value={lastNameValue} onChange={(e) => handleLastNameChange(e)}
                     className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
                 </div>
                 </div>
                 <div className="flex gap-7 -md:flex-col">
                 <div className="flex gap-2 flex-col">
                     <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('phoneNumber')}</label>
-                    <input type="text" name="Phone Number" placeholder={`${t('phoneNumberPlaceholder')}`} value={phoneNumberValue} onChange={(e) => handlePhoneNumberChange(e)}
+                    <input type="number" name="Phone Number" placeholder={`${t('phoneNumberPlaceholder')}`} 
+                    value={phoneNumberValue} onChange={(e) => handlePhoneNumberChange(e)}
                     className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
                 </div>
                 <div className="flex gap-2 flex-col">
                     <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('email')}</label>
-                    <input type="email" name="Email" placeholder={`${t('emailPlaceholder')}`} required value={emailValue} onChange={(e) => handleEmailChange(e)}
+                    <input type="email" name="Email" placeholder={`${t('emailPlaceholder')}`} required 
+                    value={emailValue} onChange={(e) => handleEmailChange(e)} ref={emailInputRef} onInput={validate}
                     className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
+                    <p className={`${emailValid ? 'text-green-600' : 'text-red-500'} font-normal text-[8px] md:text-xs`}>
+                      {emailWarning}
+                    </p>
                 </div>
                 </div>
                 <div className="flex gap-2 flex-col">
                 <label htmlFor="message" className="text-neutral-800 font-medium text-base">{t('message')}</label>
-                <textarea id="message" name="Message" placeholder={`${t('messagePlaceholder')}`} rows={4} value={messageValue} onChange={(e) => handleMessageChange(e)}
+                <textarea id="message" name="Message" placeholder={`${t('messagePlaceholder')}`} rows={4} 
+                value={messageValue} onChange={(e) => handleMessageChange(e)}
                     className="w-full px-6 py-3 border border-neutral-500 rounded-2xl placeholder:text-xs text-base">
                 </textarea>
                 </div>
@@ -134,15 +176,15 @@ const Contact = ({ t }: { t: TFunction }) => {
                 {/* prevent capcha */}
                 <input type="hidden" name="_captcha" value="false"/>
                 {/* add multiple email address that the form can send to */}
-                <input type="hidden" name="_cc" value="khanhduycb1510@gmail.com,kristalz248@gmail.com,kristalz931@gmail.com"/>
-            </form>
+                {/* <input type="hidden" name="_cc" value={contactEmails}/> */}
+                </form>
 
             {/* pop up appears when successfully submit form */}
             <div className={`fixed right-1/2 translate-x-1/2 px-8 py-4 rounded-2xl z-30
                 bg-white dark:bg-semi-black transition-all duration-300 pointer-events-none 
                     ${ popUpVisible ? 'bottom-12 opacity-100' : 'opacity-0 bottom-0'} shadow-card-bold`}>
                 <h1 className="text-neutral-800 font-semibold text-base leading-none z-30">
-                Your Message is sent. Thanks For contacting with us! 
+                  {t('formThanks')} 
                 </h1>
             </div>
         </div>

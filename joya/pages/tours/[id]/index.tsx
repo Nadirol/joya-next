@@ -4,7 +4,7 @@ import { getDoc, doc, getDocs } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { colRef, db } from "@/firebaseConfig";
 import { useEffect, useRef, useState } from "react";
-import { tour } from "@/interface/interface";
+import { partnerTour, tour } from "@/interface/interface";
 import Image from "next/image";
 
 import { Plus_Jakarta_Sans } from 'next/font/google';
@@ -14,7 +14,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin","vietnamese"]
 });
 
-import { useTranslation } from "next-i18next"
+import { i18n, useTranslation } from "next-i18next"
 import type { GetStaticProps, InferGetStaticPropsType, GetStaticPaths } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Header from "@/components/Header";
@@ -23,6 +23,9 @@ import Link from "next/link";
 import Grandtours from "@/components/main/Grandtours";
 import DayTours from "@/components/main/DayTours";
 import Head from "next/head";
+import PartnerTourDetails from "@/components/tour/PartnerTourDetails";
+
+const contactEmails = 'quynhnt88@gmail.com,floris.panico@yahoo.co.uk,Nguyenthuy1095@gmail.com';
 
 // run function when clicking outside of ref
 const useClickDetector = (ref: React.MutableRefObject<HTMLDivElement | null>, func: () => void) => {
@@ -46,7 +49,7 @@ export default function Tour() {
     const router =  useRouter();
     const { id } =  router.query;
 
-    const [tour, setTour] = useState<tour | any>({});
+    const [tour, setTour] = useState<tour | partnerTour | any>({});
 
     useEffect(() => {
         const docRef = doc(db, `tours/${id}`);
@@ -60,7 +63,7 @@ export default function Tour() {
             });
         }
         getTour()
-    },[]);
+    },[id]);
 
     const [firstNameValue, setFirstNameValue] = useState('');
     const [lastNameValue, setLastNameValue] = useState('');
@@ -91,37 +94,72 @@ export default function Tour() {
     const hideBookForm = () => {
         setBookFormVisible(false)
     }
+
     const [bookFormVisible, setBookFormVisible] = useState(false);
     const bookFormRef = useRef(null);
 
     useClickDetector(bookFormRef, hideBookForm);
-
-
   
     const [popUpVisible, setPopUpVisible] = useState(false);
     const showPopUp = (e: any) => {
-        setPopUpVisible(true)
-        setTimeout(() => {
-            setPopUpVisible(false)
-        }, 2000)
-
-        setBookFormVisible(false);
+        if (emailValid) {
+            setPopUpVisible(prevState => !prevState)
+            setTimeout(() => {
+                setPopUpVisible(prevState => !prevState)
+            }, 2000)
+      
+            setTimeout(() => {
+              setFirstNameValue('');
+              setLastNameValue('');
+              setPhoneNumberValue('');
+              setEmailValue('');
+              setMessageValue('');
+              setIdealTourDurationValue('');
+              setYourBudgetValue('');
+              setEmailWarning('');
+            }, 200)
+          }
   
-        setTimeout(() => {
-          setFirstNameValue('');
-          setLastNameValue('');
-          setPhoneNumberValue('');
-          setEmailValue('');
-          setMessageValue('');
-        }, 200)
+          return emailValid;
     }
 
-    const durationFormat = (num: number) => {
+    const durationFormatDay = (num: number) => {
         if (num === 1) { return num + " " + t('day')}
         else { return num + " " + t('days')}
     }
 
-    return (
+    const durationFormatNight = (num: number) => {
+        if (num === 1) { return num + " " + t('night')}
+        else { return num + " " + t('nights')}
+    }
+
+    const emailInputRef = useRef<string | any>(null);
+
+    const [emailWarning, setEmailWarning] = useState('');
+    const [emailValid, setEmailValid] = useState(true);
+    const validateEmail = (email: string) => {
+      return String(email)
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    };
+
+    const validate = () => {
+      if (validateEmail(emailInputRef.current?.value)) {
+        setEmailValid(true);
+        setEmailWarning(`${emailInputRef.current?.value} is valid`)
+      } else if (emailInputRef.current?.value) {
+        setEmailValid(false);
+        setEmailWarning(`${emailInputRef.current?.value} is not valid`)
+      } else {
+        setEmailWarning('')
+
+      }
+      return false
+    }
+
+    if (tour.tourType != "partner") return (
         <>
             <Head>
                 <title>{tour.title}</title>
@@ -146,14 +184,16 @@ export default function Tour() {
                                     </li>
                                     <li>
                                         <span className="relative left--6 text-neutral-700 font-semibold text-xs xl:text-base">{t('destinations')}: 
-                                            <span className={`ml-1 text-neutral-900 ${tour.destinations ? "" : "text-sm text-neutral-600"}`}>{tour.destinations ? tour.destinations : t('flexible')}</span>
+                                            <span className={`ml-1 text-neutral-900 ${tour.destinations ? "" : "text-sm text-neutral-600"}`}>
+                                                {tour.destinations ? tour.destinations : t('flexible')}
+                                            </span>
                                         </span>
                                         
                                     </li>
                                     <li>
                                         <span className="relative left--6 text-neutral-700 font-semibold text-xs xl:text-base">{t('duration')}: 
                                             <span className={`ml-1 text-neutral-900 ${tour.duration ? "" : "text-sm text-neutral-600"}`}>
-                                                {tour.duration ? durationFormat(tour.duration) : t('flexible')}
+                                                {tour.duration ? durationFormatDay(tour.duration) : t('flexible')}
                                             </span>
                                         </span>
                                     </li>
@@ -177,36 +217,44 @@ export default function Tour() {
                         <iframe name="frame" className="hidden"></iframe>
 
                         {/* send message to email using formsubmit.co */}
-                        <form className="mx-auto flex flex-col gap-6" action="https://formsubmit.co/8015104ab30fce20360f57b9f6f6ee16" 
+                        <form className="mx-auto flex flex-col gap-6" action="https://formsubmit.co/khanhduycb1510@gmail.com" 
                         method="POST" target="frame" onSubmit={e => showPopUp(e)}>
                             <h1 className="text-neutral-900 font-semibold text-2xl md:text-[2rem] md:leading-10 text-center">{`${t('bookTour')} - ${tour.title}`}</h1>
                             <div className="flex gap-3 md:justify-between">
                                 <div className="flex gap-2 flex-col">
                                     <label className="text-neutral-800 font-medium text-base">{t('firstName')}</label>
-                                    <input type="text" name="First Name" placeholder={`${t('firstNamePlaceholder')}`} required value={firstNameValue} onChange={(e) => handleFirstNameChange(e)}
+                                    <input type="text" name="First Name" placeholder={`${t('firstNamePlaceholder')}`} required 
+                                    value={firstNameValue} onChange={(e) => handleFirstNameChange(e)}
                                     className="-md:w-full px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
                                 </div>
                                 <div className="flex gap-2 flex-col">
                                     <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('lastName')}</label>
-                                    <input type="text" name="Last Name" placeholder={`${t('lastNamePlaceholder')}`} value={lastNameValue} onChange={(e) => handleLastNameChange(e)}
+                                    <input type="text" name="Last Name" placeholder={`${t('lastNamePlaceholder')}`} 
+                                    value={lastNameValue} onChange={(e) => handleLastNameChange(e)}
                                     className="-md:w-full px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
                                 </div>
                             </div>
                             <div className="flex gap-3 md:justify-between -md:flex-col">
                                 <div className="flex gap-2 flex-col">
                                     <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('phoneNumber')}</label>
-                                    <input type="text" name="Phone Number" placeholder={`${t('phoneNumberPlaceholder')}`} value={phoneNumberValue} onChange={(e) => handlePhoneNumberChange(e)}
+                                    <input type="number" name="Phone Number" placeholder={`${t('phoneNumberPlaceholder')}`} 
+                                    value={phoneNumberValue} onChange={(e) => handlePhoneNumberChange(e)}
                                     className="px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
                                 </div>
                                 <div className="flex gap-2 flex-col">
                                     <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('email')}</label>
-                                    <input type="email" name="Email" placeholder={`${t('emailPlaceholder')}`} required value={emailValue} onChange={(e) => handleEmailChange(e)}
+                                    <input type="email" name="Email" placeholder={`${t('emailPlaceholder')}`} 
+                                    required value={emailValue} onChange={(e) => handleEmailChange(e)} onInput={validate} ref={emailInputRef}
                                     className="px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
+                                    <p className={`${emailValid ? 'text-green-600' : 'text-red-500'} font-normal text-[8px] md:text-xs`}>
+                                        {emailWarning}
+                                    </p>
                                 </div>
                             </div>
                             <div className="flex gap-2 flex-col">
                                 <label htmlFor="message" className="text-neutral-800 font-medium text-base">{t('yourPreference')}</label>
-                                <textarea id="message" name="Message" placeholder={`${t('yourPreferencePlaceholder')}`} rows={4} value={messageValue} onChange={(e) => handleMessageChange(e)}
+                                <textarea id="message" name="Message" placeholder={`${t('yourPreferencePlaceholder')}`} 
+                                rows={4} value={messageValue} onChange={(e) => handleMessageChange(e)} required
                                     className="w-full px-6 py-3 border border-neutral-500 rounded-2xl placeholder:text-xs text-base -md:max-h-[70px]">
                                 </textarea>
                             </div>
@@ -230,7 +278,7 @@ export default function Tour() {
                             {/* prevent capcha */}
                             <input type="hidden" name="_captcha" value="false"/>
                             {/* add multiple email address that the form can send to */}
-                            <input type="hidden" name="_cc" value="khanhduycb1510@gmail.com,kristalz248@gmail.com,kristalz931@gmail.com"/>
+                            {/* <input type="hidden" name="_cc" value={contactEmails}/> */}
                         </form>
                     </div>
                 </main>
@@ -244,8 +292,39 @@ export default function Tour() {
                 </div>
                 <Footer/>
             </div>
+        </>
 
+    )
 
+    if (tour.tourType === "partner") return (
+        <>
+            <PartnerTourDetails 
+                key="partnerTourDetails"
+                t={t}
+                tour={tour}
+                plusJakartaSans={plusJakartaSans}
+                popUpVisible={popUpVisible}
+                durationFormatDay={durationFormatDay}
+                durationFormatNight={durationFormatNight}
+                setBookFormVisible={setBookFormVisible}
+                bookFormRef={bookFormRef}
+                showPopUp={showPopUp}
+                bookFormVisible={bookFormVisible}
+                firstNameValue={firstNameValue}
+                handleFirstNameChange={handleFirstNameChange}
+                lastNameValue={lastNameValue}
+                handleLastNameChange={handleLastNameChange}
+                phoneNumberValue={phoneNumberValue}
+                handlePhoneNumberChange={handlePhoneNumberChange}
+                emailValue={emailValue}
+                handleEmailChange={handleEmailChange}
+                messageValue={messageValue}
+                handleMessageChange={handleMessageChange}
+                validate={validate}
+                emailInputRef={emailInputRef}
+                emailValid={emailValid}
+                emailWarning={emailWarning}
+            />
         </>
 
     )

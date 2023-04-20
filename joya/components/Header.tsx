@@ -44,33 +44,33 @@ const Header = ({ t }: { t: TFunction }) => {
     const [sidenavOpened, setSidenavOpened] = useState(false);
 
     const router = useRouter();
-    console.log(router.pathname)
+    console.log(router.asPath)
     const changeLanguage = (lng: string) => {
       i18n?.changeLanguage(lng); 
       setLngDropdownOpened(false);
-      router.push(`${router.pathname === '/' ? `/${lng}` : `/${lng}${router.pathname}`}`,undefined, { locale: lng })
+      router.replace(`${router.pathname === '/' ? `/${lng}` : `/${lng}${router.asPath}`}`,undefined, { locale: lng })
     }
 
     return (
       <header className="relative -xl:sticky top-0 left-0 z-30">
         <nav className="bg-white flex justify-between items-center w-header 
           mx-auto py-4 xl:py-6 -xl:px-4 relative">
-          <Link href="/">
+          <Link href={`/${i18n?.language}`}>
             <Image src={logoLight} alt="" className="w-12 md:w-16 aspect-square"/>
           </Link>
 
           <ul className="hidden xl:flex gap-[5.25rem]">
             <li className="navlink-underline inline-block relative">
-              <Link href="/" className="text-neutral-800 font-medium text-base leading-5 [&:last-child]:mr-0">{t('home')}</Link>
+              <Link href={`/${i18n?.language}`} className="text-neutral-800 font-medium text-base leading-5 [&:last-child]:mr-0">{t('home')}</Link>
             </li>
             <li className="navlink-underline inline-block relative">
-              <Link href="/about" className="text-neutral-800 font-medium text-base leading-5">{t('about')}</Link>
+              <Link href={`/${i18n?.language}/about`} className="text-neutral-800 font-medium text-base leading-5">{t('about')}</Link>
             </li>
             <li className="navlink-underline inline-block relative">
-              <Link href="/tours" className="text-neutral-800 font-medium text-base leading-5">{t('tours')}</Link>
+              <Link href={`/${i18n?.language}/tours`} className="text-neutral-800 font-medium text-base leading-5">{t('tours')}</Link>
             </li>
             <li className="navlink-underline inline-block relative">
-              <Link href="/contact" className="text-neutral-800 font-medium text-base leading-5">{t('contact')}</Link>
+              <Link href={`/${i18n?.language}/contact`} className="text-neutral-800 font-medium text-base leading-5">{t('contact')}</Link>
             </li>
           </ul>
 
@@ -118,19 +118,19 @@ const Header = ({ t }: { t: TFunction }) => {
           </Link>
           
           <nav className="flex gap-6 flex-col">
-            <Link href="/" className="text-neutral-800 font-medium text-base leading-5 flex gap-2.5" onClick={() => setSidenavOpened(false)}>
+            <Link href={`/${i18n?.language}`} className="text-neutral-800 font-medium text-base leading-5 flex gap-2.5" onClick={() => setSidenavOpened(false)}>
               <Image src={homeIcon} alt="home icon" />
               {t('home')}
             </Link>
-            <Link href="/about" className="text-neutral-800 font-medium text-base leading-5 flex gap-2.5" onClick={() => setSidenavOpened(false)}>
+            <Link href={`/${i18n?.language}/about`} className="text-neutral-800 font-medium text-base leading-5 flex gap-2.5" onClick={() => setSidenavOpened(false)}>
               <Image src={aboutIcon} alt="about icon" />
               {t('about')}
             </Link>
-            <Link href="/tours" className="text-neutral-800 font-medium text-base leading-5 flex gap-2.5" onClick={() => setSidenavOpened(false)}>
+            <Link href={`/${i18n?.language}/tours`} className="text-neutral-800 font-medium text-base leading-5 flex gap-2.5" onClick={() => setSidenavOpened(false)}>
               <Image src={planeIcon} alt="airplane icon" />
               {t('tours')}
             </Link>
-            <Link href="/contact" className="text-neutral-800 font-medium text-base leading-5 flex gap-2.5 " onClick={() => setSidenavOpened(false)}>
+            <Link href={`/${i18n?.language}/contact`} className="text-neutral-800 font-medium text-base leading-5 flex gap-2.5 " onClick={() => setSidenavOpened(false)}>
               <Image src={phoneIcon} alt="phone icon" className="w-[1.125rem] aspect-square"/>
               {t('contact')}
             </Link>
