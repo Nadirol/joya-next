@@ -18,7 +18,7 @@ const Categories = ({ t }: { t: TFunction }) => {
                         <div className="mb-3">
                             <Image src={categoriesImage1} alt="preview image" className="mb-2 w-full mx-auto rounded-xl"/>
                             <h1 className="text-neutral-900 font-medium text-base mb-1">{t('grandTour')}</h1>
-                            <p className="text-neutral-800 font-normal text-xs">	
+                            <p className="text-neutral-800 font-normal text-xs -md:line-clamp-3">	
                                 {t('grandTourDescription')}
                             </p>
                         </div>
@@ -28,7 +28,7 @@ const Categories = ({ t }: { t: TFunction }) => {
                         <div className="mb-3">
                             <Image src={categoriesImage2} alt="preview image" className="mb-2 w-full mx-auto rounded-xl"/>
                             <h1 className="text-neutral-900 font-medium text-base mb-1">{t('dayTour')}</h1>
-                            <p className="text-neutral-800 font-normal text-xs">	
+                            <p className="text-neutral-800 font-normal text-xs -md:line-clamp-3">	
                                 {t('dayTourDescription')}
                             </p>
                         </div>
@@ -40,7 +40,7 @@ const Categories = ({ t }: { t: TFunction }) => {
                         <div className="mb-3">
                             <Image src={categoriesImage3} alt="preview image" className="mb-2 w-full mx-auto rounded-xl"/>
                             <h1 className="text-neutral-900 font-medium text-base mb-1">{t('themeTour')}</h1>
-                            <p className="text-neutral-800 font-normal text-xs">	
+                            <p className="text-neutral-800 font-normal text-xs -md:line-clamp-3">	
                                 {t('themeTourDescription')}
                             </p>
                         </div>
@@ -50,7 +50,7 @@ const Categories = ({ t }: { t: TFunction }) => {
                         <div className="mb-3">
                             <Image src={categoriesImage4} alt="preview image" className="mb-2 w-full mx-auto rounded-xl"/>
                             <h1 className="text-neutral-900 font-medium text-base mb-1">{t('privateTour')}</h1>
-                            <p className="text-neutral-800 font-normal text-xs">
+                            <p className="text-neutral-800 font-normal text-xs -md:line-clamp-3">
                                 {t('privateTourDescription')}
                             </p>
                         </div>

@@ -11,6 +11,8 @@ import DayTours from "../main/DayTours"
 import { Dispatch, MutableRefObject, SetStateAction, useState } from "react"
 import { arrowDown, locationIcon } from "@/public/assets"
 
+const contactEmails = 'quynhnt88@gmail.com,floris.panico@yahoo.co.uk,Nguyenthuy1095@gmail.com';
+
 function numberWithCommas(x: number) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
@@ -229,7 +231,7 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                         <button className={`flex gap-3 flex-col items-center justify-center text-center w-1/4 border border-neutral-200
                                         py-3 px-2 ${activeItineraryDay === index ? 'border-t-neutral-800 border-t-2' : ''}`} 
                                         onClick={() => setActiveItineraryDay(index)}>
-                                            <h1 className="text-neutral-900 font-semibold text-base">{`Day ${index + 1}`}</h1>
+                                            <h1 className="text-neutral-900 font-semibold text-base">{`${t('day').toUpperCase()} ${index + 1}`}</h1>
                                             <h2 className="text-neutral-700 font-normal text-[10px]">{day.title}</h2>
                                         </button>
                                     </>
@@ -291,7 +293,7 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                     <iframe name="frame" className="hidden"></iframe>
 
                     {/* send message to email using formsubmit.co */}
-                    <form className="mx-auto flex flex-col gap-6" action="https://formsubmit.co/khanhduycb1510@gmail.com" 
+                    <form className="mx-auto flex flex-col gap-6" action="https://formsubmit.co/f014aa1b902d62b9fceb94b24be012c5" 
                         method="POST" target="frame" onSubmit={e => showPopUp(e)}>
                             <h1 className="text-neutral-900 font-semibold text-2xl md:text-[2rem] md:leading-10 text-center">
                                 {`${t('bookTour')} - ${tour.vi.title}`}
@@ -354,7 +356,7 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                             {/* prevent capcha */}
                             <input type="hidden" name="_captcha" value="false"/>
                             {/* add multiple email address that the form can send to */}
-                            {/* <input type="hidden" name="_cc" value={contactEmails}/> */}
+                            <input type="hidden" name="_cc" value={contactEmails}/>
                 </form>
                 </div>
             </main>

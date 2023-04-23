@@ -1,7 +1,7 @@
 'use client';
 
 // @ts-nocheck
-import { logoLight, menuIcon, closeIcon, homeIcon, aboutIcon, planeIcon, phoneIcon, } from "@/public/assets"
+import { logoLight, menuIcon, closeIcon, homeIcon, aboutIcon, planeIcon, phoneIcon, logoLightLarge, } from "@/public/assets"
 
 import { useEffect, useRef, useState } from "react";
 
@@ -114,7 +114,7 @@ const Header = ({ t }: { t: TFunction }) => {
           ${sidenavOpened ? 'translate-x-0' : 'translate-x-[100%]'} transition-all duration-300
           flex gap-[1.875rem] flex-col items-center py-[3.75rem] mx-auto xl:hidden`}>
           <Link href="/">
-            <Image src={logoLight} alt="" className="w-20 aspect-square"/>
+            <Image src={logoLightLarge} alt="" className="w-20 aspect-square"/>
           </Link>
           
           <nav className="flex gap-6 flex-col">

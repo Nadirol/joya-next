@@ -129,7 +129,7 @@ const Contact = ({ t }: { t: TFunction }) => {
           <iframe name="frame" className="hidden"></iframe>
 
           {/* send message to email using formsubmit.co */}
-          <form className="mx-auto flex flex-col gap-6" action="https://formsubmit.co/khanhduycb1510@gmail.com" 
+          <form className="mx-auto flex flex-col gap-6" action="https://formsubmit.co/f014aa1b902d62b9fceb94b24be012c5" 
             method="POST" target="frame" onSubmit={e => showPopUp(e)}>
                 <h1 className="text-neutral-900 font-semibold text-2xl md:text-[2rem] md:leading-10 text-center">{t('sendAMessage')}</h1>
                 <div className="flex gap-7 -md:flex-col w-full">
@@ -176,7 +176,7 @@ const Contact = ({ t }: { t: TFunction }) => {
                 {/* prevent capcha */}
                 <input type="hidden" name="_captcha" value="false"/>
                 {/* add multiple email address that the form can send to */}
-                {/* <input type="hidden" name="_cc" value={contactEmails}/> */}
+                <input type="hidden" name="_cc" value={contactEmails}/>
                 </form>
 
             {/* pop up appears when successfully submit form */}

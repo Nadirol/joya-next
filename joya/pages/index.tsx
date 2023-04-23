@@ -20,6 +20,7 @@ import ThemeTour from '@/components/main/ThemeTours';
 import ContactBanner from '@/components/main/ContactBanner';
 import Head from 'next/head';
 import PartnerTours from '@/components/main/PartnerTours';
+import Values from '@/components/main/Values';
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -31,11 +32,12 @@ export default function Home() {
     </Head>
     <div className={plusJakartaSans.className}>
       <Header t={t}/>
-      <main className="w-container mx-auto flex gap-8 md:gap-12 xl:gap-16 flex-col mb-8 relative mt-12">
+      <main className="w-container mx-auto flex gap-8 md:gap-12 xl:gap-16 flex-col mb-8 relative md:mt-12">
         <Banner t={t}/>
         <Categories t={t}/>
         <Grandtours t={t}/>
         <DayTours t={t}/>
+        <Values t={t}/>
         <PartnerTours t={t}/>
         <ThemeTour t={t}/>
         <CustomTours t={t}/>

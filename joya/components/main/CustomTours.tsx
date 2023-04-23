@@ -107,7 +107,7 @@ const CustomTours = ({ t }: { t: TFunction }) => {
 
           {/* send message to email using formsubmit.co */}
           <form className="mx-auto flex flex-col gap-4 shadow-card-bold rounded-[30px] px-4 md:px-8 xl:px-[3.75rem] py-7" 
-            action="https://formsubmit.co/khanhduycb1510@gmail.com" 
+            action="https://formsubmit.co/f014aa1b902d62b9fceb94b24be012c5" 
             method="POST" target="frame" onSubmit={e => showPopUp(e)}>
                 <div className="flex gap-3 flex-col text-center">
                     <h1 className="text-neutral-900 font-semibold text-2xl md:text-[2rem] md:leading-10 ">{t('bookCustomTour')}</h1>
@@ -172,7 +172,7 @@ const CustomTours = ({ t }: { t: TFunction }) => {
                 {/* prevent capcha */}
                 <input type="hidden" name="_captcha" value="false"/>
                 {/* add multiple email address that the form can send to */}
-                {/* <input type="hidden" name="_cc" value={contactEmails}/> */}
+                <input type="hidden" name="_cc" value={contactEmails}/>
             </form>
 
             {/* pop up appears when successfully submit form */}

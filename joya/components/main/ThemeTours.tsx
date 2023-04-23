@@ -9,7 +9,7 @@ const ThemeTour = ({ t }: { t: TFunction }) => {
     return (
         <div className="flex gap-10 flex-col items-center" id="theme-tours">
             <h1 className="text-neutral-900 font-semibold text-2xl md:text-[2rem] -md:text-center">{t('themeTourHeading')}</h1>
-            <div className="flex gap-6 flex-wrap items-center justify-center w-4/5">
+            <div className="flex gap-2 md:gap-6 flex-wrap items-center justify-center md:w-4/5">
                 {themes?.map(theme => 
                     <ThemeCard 
                         key={theme}
