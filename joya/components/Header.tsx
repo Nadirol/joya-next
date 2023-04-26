@@ -75,11 +75,11 @@ const Header = ({ t }: { t: TFunction }) => {
           </ul>
 
           <div className="flex gap-8 items-center -xl:ml-auto">
-            <Link href="/assets/JOYA_Catalogue_EN.pdf" target="_blank" 
+            <a href={i18n?.language === 'en' ? "/assets/JOYA_Catalogue_EN.pdf" : "/assets/JOYA_Catalogue_VN.pdf" } target="_blank" 
             className="hidden xl:block bg-primary-regular hover:bg-primary-dark px-6 py-4 rounded-[30px] text-neutral-100 
             font-semibold text-base leading-5">
               {t('downloadCatalogue')}
-            </Link>
+            </a>
             <div className="relative">
               <div className="flex gap-4 items-center cursor-pointer [&:hover>svg>path]:fill-primary-dark" 
               onClick={() => setLngDropdownOpened(prevState => !prevState)} ref={languageButtonRef}>
@@ -136,9 +136,9 @@ const Header = ({ t }: { t: TFunction }) => {
             </Link>
           </nav>
 
-          <Link href="/assets/JOYA_Catalogue_EN.pdf" target="_blank" className="bg-primary-dark px-6 py-4 rounded-[30px] text-neutral-100 font-semibold text-base leading-5">
+          <a href={i18n?.language === 'en' ? "/assets/JOYA_Catalogue_EN.pdf" : "/assets/JOYA_Catalogue_VN.pdf" } target="_blank" className="bg-primary-dark px-6 py-4 rounded-[30px] text-neutral-100 font-semibold text-base leading-5">
               {t('downloadCatalogue')}
-          </Link>
+          </a>
         </div>
 
       </header>
