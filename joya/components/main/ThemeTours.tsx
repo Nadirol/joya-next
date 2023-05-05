@@ -1,9 +1,35 @@
 import { TFunction } from "next-i18next"
-import { themeImage1 } from "@/public/assets"
+import { themeImage1, themeImage2, themeImage3, themeImage4, themeImage5, themeImage6 } from "@/public/assets"
 import ThemeCard from "../cards/ThemeCard"
 
 
-const themes = ['Romantic','Honeymoon','Relax','Relax Luxury','Hiking','Bike Riding',]
+const themes = [
+    { 
+        title: 'Romantic',
+        image: themeImage1 
+    },
+    { 
+        title: 'Honeymoon',
+        image: themeImage2 
+    },
+    { 
+        title: 'Relax',
+        image: themeImage3 
+    },
+    { 
+        title: 'Relax Luxury',
+        image: themeImage4 
+    },
+    { 
+        title: 'Hiking',
+        image: themeImage5 
+    },
+    { 
+        title: 'Bike Riding',
+        image: themeImage6 
+    },
+]
+
 const ThemeTour = ({ t }: { t: TFunction }) => {
 
     return (
@@ -12,9 +38,9 @@ const ThemeTour = ({ t }: { t: TFunction }) => {
             <div className="flex gap-2 md:gap-6 flex-wrap items-center justify-center md:w-4/5">
                 {themes?.map(theme => 
                     <ThemeCard 
-                        key={theme}
-                        image={themeImage1}
-                        title={theme}
+                        key={theme.title}
+                        image={theme.image}
+                        title={theme.title}
                     />
                 )}
             </div>

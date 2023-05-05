@@ -14,7 +14,7 @@ import { TFunction, i18n } from "next-i18next";
 const useClickDetector = (ref: React.MutableRefObject<HTMLDivElement | null>, func: () => void, enabled: boolean) => {
   useEffect(() => {
       const handleClickOutside = (event: any) => {
-          if (ref.current && !ref.current.contains(event.target) && enabled) {
+          if (ref.current && !ref.current.contains(event.target) && !enabled) {
               func()
           }
       }

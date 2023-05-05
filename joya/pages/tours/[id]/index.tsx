@@ -168,7 +168,7 @@ export default function Tour() {
                 <Header t={t}/>
                 <main className="w-container mx-auto mb-8 flex gap-12 flex-col relative">
                     <div className="grid gap-8 xl:gap-[4rem] md:grid-cols-details pt-1 md:min-h-[500px] xl:min-h-[400px]">
-                        <div className="mx-auto my-auto ">
+                        <div className="mx-auto my-auto">
                             <Image src={tour.image} width={600} height={400} alt="tour image" className="shadow-card-bold"/>
                         </div>
                         <div className="shadow-card-bold rounded-[18px] p-6 flex -md:gap-6 flex-col justify-between">

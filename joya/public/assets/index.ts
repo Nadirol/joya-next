@@ -26,6 +26,11 @@ import tourPreview1 from "./tour-preview-1.jpg"
 import arrowRightIcon from "./arrow-right.svg"
 import heroPrivate from "./hero-private.png"
 import themeImage1 from "./theme-image-1.jpg"
+import themeImage2 from "./theme-image-2.jpg"
+import themeImage3 from "./theme-image-3.jpg"
+import themeImage4 from "./theme-image-4.jpg"
+import themeImage5 from "./theme-image-5.jpg"
+import themeImage6 from "./theme-image-6.jpg"
 import categoriesImage1 from "./halongbay-small.jpg"
 import categoriesImage2 from "./trangan-small.jpg"
 import categoriesImage3 from "./themetour-small.jpg"
@@ -37,4 +42,4 @@ import arrowDown from "./arrow-down.svg"
 export { holdingHandsIcon, victoryFingersIcon, checkIcon, phoneIcon, mailIcon, locationIcon, facebookIcon, instagramIcon, logoLightLarge,
 banner, galleryImage1, galleryImage2, galleryImage3, galleryImage4, galleryImage5, galleryImage6, logoDark, logoLight, menuIcon,
 closeIcon, homeIcon, aboutIcon, planeIcon, categoriesImage1, categoriesImage2, categoriesImage3, categoriesImage4, clockIcon, tourPreview1, 
-arrowRightIcon, heroPrivate, themeImage1, arrowDown }
+arrowRightIcon, heroPrivate, themeImage1, themeImage2, themeImage3, themeImage4, themeImage5, themeImage6, arrowDown }

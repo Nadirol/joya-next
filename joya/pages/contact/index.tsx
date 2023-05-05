@@ -27,7 +27,7 @@ export default function ContactPage() {
         <Contact t={t}/>
         <div>
             <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7665.577618145061!2d105.90124832248152!3d21.045612072524168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab053095a713%3A0x1a50ffd82de75303!2sVinhomes%20Riverside%20The%20Harmony!5e0!3m2!1sen!2s!4v1678784423787!5m2!1sen!2s" 
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d36727.0272030705!2d105.89207338246815!3d21.04984060972605!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a99767260733%3A0xae3333b685a10ece!2sJOYA%20TRAVEL!5e0!3m2!1sen!2s!4v1683259347337!5m2!1sen!2s" 
             height="450" allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"
             className="mx-auto w-container border border-neutral-500">
             </iframe>
