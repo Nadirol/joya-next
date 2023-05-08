@@ -80,6 +80,7 @@
     "priceIncludes": "Price Includes",
     "priceExcludes": "Price Excludes",
     "notes": "Notes",
-    "forChildren": "For Children",
+    "forChildren": "Children",
+    "extras": "Extras",
     "itinerary": "Itinerary"
 }

@@ -42,6 +42,7 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
     const [priceExcludesVisible, setPriceExcludesVisible] = useState(false);
     const [notesVisible, setNotesVisible] = useState(false);
     const [forChildrenVisible, setForChildrenVisible] = useState(false);
+    const [extrasVisible, setExtrasVisible] = useState(false);
 
     const [activeItineraryDay, setActiveItineraryDay] = useState(0)
     return (
@@ -101,21 +102,24 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                             <h1 className="text-neutral-900 font-semibold text-xl xl:text-3xl">
                                 {i18n?.language === "vi" ? tour.vi.title : tour.en.title}
                             </h1>
+                            {(tour.vi.description && tour.en.description) &&
                             <div className="flex gap-4 flex-col">
-                                {i18n?.language === "vi" 
-                                    ? tour.vi.description.map(desc => (
-                                        <>
-                                            <p className="text-neutral-800 font-normal text-base">{desc}</p>
-                                        </>
-                                    ))
-                                    : tour.en.description.map(desc => (
-                                        <>
-                                            <p className="text-neutral-800 font-normal text-base">{desc}</p>
-                                        </>
-                                    ))
-                                }
-                            </div>
+                            {i18n?.language === "vi" 
+                                ? tour.vi.description.map(desc => (
+                                    <>
+                                        <p className="text-neutral-800 font-normal text-base">{desc}</p>
+                                    </>
+                                ))
+                                : tour.en.description.map(desc => (
+                                    <>
+                                        <p className="text-neutral-800 font-normal text-base">{desc}</p>
+                                    </>
+                                ))
+                            }
+                        </div>}
+
                         </div>
+                        {(tour.vi.highlights && tour.en.highlights) &&
                         <div className="flex gap-2 flex-col">
                             <h1 className="text-neutral-900 font-semibold text-lg xl:text-2xl">{t('highlights')}</h1>
                             <ul className="flex gap-4 flex-col list-disc list-inside">
@@ -133,15 +137,18 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                 }
                             </ul>
                         </div>
+                        }
+
                     </div>
                     <div className="">
+                        {(tour.vi.priceIncludes && tour.en.priceIncludes) && 
                         <div className="w-full flex gap-2 flex-col">
                             <button className="flex justify-between items-center w-full" onClick={() => setPriceIncludesVisible(prevState => !prevState)}>
                                 <h1 className="text-neutral-900 font-medium text-xl">{t('priceIncludes')}</h1>
                                 <Image src={arrowDown} alt="arrow down" className={`${priceIncludesVisible ? 'rotate-180' : ''} transition-all`}/>
                             </button>
                             <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden transition-all duration-500 mb-2
-                            ${priceIncludesVisible ? 'max-h-[200vw]' : 'max-h-0'}`}>
+                            ${priceIncludesVisible ? 'h-auto' : 'h-0'}`}>
                                 {i18n?.language === "vi"
                                     ? tour.vi.priceIncludes.map(item => (
                                         <>
@@ -156,13 +163,16 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                 }
                             </ul>
                         </div>
+                        }
+                        
+                        {(tour.vi.priceExcludes && tour.en.priceExcludes) &&
                         <div className="w-full flex gap-2 flex-col">
                             <button className="flex justify-between items-center w-full" onClick={() => setPriceExcludesVisible(prevState => !prevState)}>
                                 <h1 className="text-neutral-900 font-medium text-xl">{t('priceExcludes')}</h1>
                                 <Image src={arrowDown} alt="arrow down" className={`${priceExcludesVisible ? 'rotate-180' : ''} transition-all`}/>
                             </button>
                             <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden transition-[max-height] duration-500 mb-2
-                            ${priceExcludesVisible ? 'max-h-[200vw]' : 'max-h-0'}`}>
+                            ${priceExcludesVisible ? 'h-auto' : 'h-0'}`}>
                                 {i18n?.language === "vi"
                                     ? tour.vi.priceExcludes.map(item => (
                                         <>
@@ -176,14 +186,18 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                     ))
                                 }
                             </ul>
-                        </div>
+                        </div> 
+                        }
+
+                        
+                        {(tour.vi.notes && tour.en.notes) && 
                         <div className="w-full flex gap-2 flex-col">
                             <button className="flex justify-between items-center w-full" onClick={() => setNotesVisible(prevState => !prevState)}>
                                 <h1 className="text-neutral-900 font-medium text-xl">{t('notes')}</h1>
                                 <Image src={arrowDown} alt="arrow down" className={`${notesVisible ? 'rotate-180' : ''} transition-all`}/>
                             </button>
                             <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden transition-[max-height] duration-500 mb-2
-                            ${notesVisible ? 'max-h-[200vw]' : 'max-h-0'}`}>
+                            ${notesVisible ? 'h-auto' : 'h-0'}`}>
                                 {i18n?.language === "vi"
                                     ? tour.vi.notes.map(item => (
                                         <>
@@ -198,13 +212,17 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                 }
                             </ul>
                         </div>
+                        }
+
+                        
+                        {(tour.vi.forChildren && tour.en.forChildren) && 
                         <div className="w-full flex gap-2 flex-col">
                             <button className="flex justify-between items-center w-full" onClick={() => setForChildrenVisible(prevState => !prevState)}>
                                 <h1 className="text-neutral-900 font-medium text-xl">{t('forChildren')}</h1>
                                 <Image src={arrowDown} alt="arrow down" className={`${forChildrenVisible ? 'rotate-180' : ''} transition-all`}/>
                             </button>
                             <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden transition-[max-height] duration-500 mb-2
-                            ${forChildrenVisible ? 'max-h-[200vw]' : 'max-h-0'}`}>
+                            ${forChildrenVisible ? 'h-auto' : 'h-0'}`}>
                                 {i18n?.language === "vi"
                                     ? tour.vi.forChildren.map(item => (
                                         <>
@@ -219,6 +237,40 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                 }
                             </ul>
                         </div>
+                        }
+
+                        {(tour.vi.extras && tour.en.extras) && 
+                        <div className="w-full flex gap-2 flex-col">
+                            <button className="flex justify-between items-center w-full" onClick={() => setForChildrenVisible(prevState => !prevState)}>
+                                <h1 className="text-neutral-900 font-medium text-xl">{t('extras')}</h1>
+                                <Image src={arrowDown} alt="arrow down" className={`${forChildrenVisible ? 'rotate-180' : ''} transition-all`}/>
+                            </button>
+                            <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden transition-[max-height] duration-500 mb-2
+                            ${forChildrenVisible ? 'h-auto' : 'h-0'}`}>
+                                {i18n?.language === "vi"
+                                    ? 
+                                    <>
+                                        <h1 className="text-neutral-800 font-normal text-base">{tour.vi.extras.title}</h1>
+                                        {tour.vi.extras.bulletPoints.map(point => (
+                                            <>
+                                                <li className="text-neutral-800 font-normal text-sm">{point}</li>
+                                            </>
+                                        ))}
+                                    </>
+                                    
+                                    : 
+                                    <>
+                                        <h1 className="text-neutral-800 font-normal text-base">{tour.vi.extras.title}</h1>
+                                        {tour.vi.extras.bulletPoints.map(point => (
+                                            <>
+                                                <li className="text-neutral-800 font-normal text-sm">{point}</li>
+                                            </>
+                                        ))}
+                                    </>
+                                }
+                            </ul>
+                        </div>
+                        }
                     </div>
                 </div>
                 <div className="flex gap-8 flex-col">
@@ -260,9 +312,20 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                                 <Image src={locationIcon} alt="" width={20} height={24} />
                                                 <div className="">
                                                     {activity.time && <h1 className="text-neutral-900 font-semibold text-base leading-none mb-1">{activity.time}</h1>}
-                                                    <p className={`text-neutral-700 font-normal ${activity.time ? 'text-base' : 'text-lg font-medium'} `}>
-                                                        {activity.description}
+                                                    {typeof activity.description === 'string' 
+                                                    ? <p className={`text-neutral-700 font-normal ${activity.time ? 'text-base' : 'text-lg font-medium'} `}>
+                                                    {activity.description}
                                                     </p>
+                                                    : <div className="flex gap-2 flex-col">
+                                                        <h1 className="text-neutral-700 font-normal text-base">{activity.description.heading}</h1>
+                                                        <ul className="flex gap-1 flex-col list-inside list-disc">
+                                                            {activity.description.bulletPoints.map((point, index) => 
+                                                                <li className="text-neutral-700 font-normal text-sm" key={index}>{point}</li>
+                                                            )}
+                                                        </ul>
+                                                    </div>
+                                                    }
+                                                    
                                                 </div>
                                             </div>
                                         </>
@@ -273,9 +336,19 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                                 <Image src={locationIcon} alt="" width={20} height={24} />
                                                 <div className="">
                                                     {activity.time && <h1 className="text-neutral-900 font-semibold text-base leading-none mb-1">{activity.time}</h1>}
-                                                    <p className={`text-neutral-700 font-normal ${activity.time ? 'text-base' : 'text-lg font-medium'} `}>
-                                                        {activity.description}
+                                                    {typeof activity.description === 'string' 
+                                                    ? <p className={`text-neutral-700 font-normal ${activity.time ? 'text-base' : 'text-lg font-medium'} `}>
+                                                    {activity.description}
                                                     </p>
+                                                    : <div className="flex gap-2 flex-col">
+                                                        <h1 className="text-neutral-700 font-normal text-base">{activity.description.heading}</h1>
+                                                        <ul className="flex gap-1 flex-col list-inside list-disc">
+                                                            {activity.description.bulletPoints.map((point, index) => 
+                                                                <li className="text-neutral-700 font-normal text-sm" key={index}>{point}</li>
+                                                            )}
+                                                        </ul>
+                                                    </div>
+                                                    }
                                                 </div>
                                             </div>
                                         </>

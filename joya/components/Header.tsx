@@ -11,10 +11,10 @@ import { useRouter } from "next/router";
 import { TFunction, i18n } from "next-i18next";
 
 // run function when clicking outside of ref
-const useClickDetector = (ref: React.MutableRefObject<HTMLDivElement | null>, func: () => void, enabled: boolean) => {
+const useClickDetector = (ref: React.MutableRefObject<HTMLDivElement | null>, func: () => void, secondRef: React.MutableRefObject<HTMLDivElement | null>) => {
   useEffect(() => {
       const handleClickOutside = (event: any) => {
-          if (ref.current && !ref.current.contains(event.target) && !enabled) {
+          if (ref.current && !ref.current.contains(event.target) && !secondRef.current?.contains(event.target)) {
               func()
           }
       }
@@ -39,12 +39,11 @@ const Header = ({ t }: { t: TFunction }) => {
       setLngDropdownOpened(false)
     }
 
-    useClickDetector(languageButtonRef, hideDropdown, lngDropdownOpened);
+    useClickDetector(languageButtonRef, hideDropdown, dropdownRef);
 
     const [sidenavOpened, setSidenavOpened] = useState(false);
 
     const router = useRouter();
-    console.log(router.asPath)
     const changeLanguage = (lng: string) => {
       i18n?.changeLanguage(lng); 
       setLngDropdownOpened(false);

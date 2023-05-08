@@ -26,20 +26,21 @@ export interface partnerTour {
 export interface tourContent {
     title: string
 
-    description: string[]
+    description: string[] | null
     destinations: string[]
-    highlights: string[]
+    highlights: string[] | null
     itinerary: {
         title: string
         activities: activity[]
     }[]
-    priceIncludes: string[]
-    priceExcludes: string[]
-    notes: string[]
-    forChildren: string[]
+    priceIncludes: string[] | null
+    priceExcludes: string[] | null
+    notes: string[] | null
+    forChildren: string[] | null
+    extras: { title: string, bulletPoints: string[] } | null
 }
 
 interface activity {
     time: string | null
-    description: string
+    description: string | { heading: string, bulletPoints: string[] }
 }
