@@ -147,21 +147,41 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                 <h1 className="text-neutral-900 font-medium text-xl">{t('priceIncludes')}</h1>
                                 <Image src={arrowDown} alt="arrow down" className={`${priceIncludesVisible ? 'rotate-180' : ''} transition-all`}/>
                             </button>
-                            <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden transition-all duration-500 mb-2
-                            ${priceIncludesVisible ? 'h-auto' : 'h-0'}`}>
-                                {i18n?.language === "vi"
-                                    ? tour.vi.priceIncludes.map(item => (
-                                        <>
-                                            <li className="text-neutral-800 font-normal text-sm">{item}</li>
-                                        </>
-                                    ))
-                                    : tour.en.priceIncludes.map(item => (
-                                        <>
-                                            <li className="text-neutral-800 font-normal text-sm">{item}</li>
-                                        </>
-                                    ))
-                                }
-                            </ul>
+                            <div className={`grid ${priceIncludesVisible ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} transition-[grid-template-rows] duration-500`}>
+                                <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden mb-2`}>
+                                    {i18n?.language === "vi"
+                                        ? tour.vi.priceIncludes.map((item, index) =>
+                                            typeof item === "string" 
+                                            ? (<li key={index} className="text-neutral-800 font-normal text-sm">{item}</li>)
+                                            : (
+                                                <div key={index} className="flex gap-2 flex-col">
+                                                    <h1 className="text-neutral-800 font-normal text-base">{item.heading}</h1>
+                                                    <ul className="flex gap-1 flex-col list-inside list-disc">
+                                                        {item.bulletPoints.map((point, index) => 
+                                                            <li className="text-neutral-700 font-normal text-sm" key={index}>{point}</li>
+                                                        )}
+                                                    </ul>
+                                                </div>
+                                            )
+                                        )
+                                        : tour.en.priceIncludes.map((item, index) =>
+                                            typeof item === "string" 
+                                            ? (<li key={index} className="text-neutral-800 font-normal text-sm">{item}</li>)
+                                            : (
+                                                <div key={index} className="flex gap-2 flex-col">
+                                                    <h1 className="text-neutral-800 font-normal text-base">{item.heading}</h1>
+                                                    <ul className="flex gap-1 flex-col list-inside list-disc">
+                                                        {item.bulletPoints.map((point, index) => 
+                                                            <li className="text-neutral-700 font-normal text-sm" key={index}>{point}</li>
+                                                        )}
+                                                    </ul>
+                                                </div>
+                                            )
+                                        )
+                                    }
+                                </ul>
+                            </div>
+                            
                         </div>
                         }
                         
@@ -171,21 +191,23 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                 <h1 className="text-neutral-900 font-medium text-xl">{t('priceExcludes')}</h1>
                                 <Image src={arrowDown} alt="arrow down" className={`${priceExcludesVisible ? 'rotate-180' : ''} transition-all`}/>
                             </button>
-                            <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden transition-[max-height] duration-500 mb-2
-                            ${priceExcludesVisible ? 'h-auto' : 'h-0'}`}>
-                                {i18n?.language === "vi"
-                                    ? tour.vi.priceExcludes.map(item => (
-                                        <>
-                                            <li className="text-neutral-800 font-normal text-sm">{item}</li>
-                                        </>
-                                    ))
-                                    : tour.en.priceExcludes.map(item => (
-                                        <>
-                                            <li className="text-neutral-800 font-normal text-sm">{item}</li>
-                                        </>
-                                    ))
-                                }
-                            </ul>
+                            <div className={`grid ${priceExcludesVisible ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} transition-[grid-template-rows] duration-500`}>
+                                <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden mb-2`}>
+                                    {i18n?.language === "vi"
+                                        ? tour.vi.priceExcludes.map(item => (
+                                            <>
+                                                <li className="text-neutral-800 font-normal text-sm">{item}</li>
+                                            </>
+                                        ))
+                                        : tour.en.priceExcludes.map(item => (
+                                            <>
+                                                <li className="text-neutral-800 font-normal text-sm">{item}</li>
+                                            </>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
+                            
                         </div> 
                         }
 
@@ -196,21 +218,22 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                 <h1 className="text-neutral-900 font-medium text-xl">{t('notes')}</h1>
                                 <Image src={arrowDown} alt="arrow down" className={`${notesVisible ? 'rotate-180' : ''} transition-all`}/>
                             </button>
-                            <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden transition-[max-height] duration-500 mb-2
-                            ${notesVisible ? 'h-auto' : 'h-0'}`}>
-                                {i18n?.language === "vi"
-                                    ? tour.vi.notes.map(item => (
-                                        <>
-                                            <li className="text-neutral-800 font-normal text-sm">{item}</li>
-                                        </>
-                                    ))
-                                    : tour.en.notes.map(item => (
-                                        <>
-                                            <li className="text-neutral-800 font-normal text-sm">{item}</li>
-                                        </>
-                                    ))
-                                }
-                            </ul>
+                            <div className={`grid ${notesVisible ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} transition-[grid-template-rows] duration-500`}>
+                                <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden mb-2`}>
+                                    {i18n?.language === "vi"
+                                        ? tour.vi.notes.map(item => (
+                                            <>
+                                                <li className="text-neutral-800 font-normal text-sm">{item}</li>
+                                            </>
+                                        ))
+                                        : tour.en.notes.map(item => (
+                                            <>
+                                                <li className="text-neutral-800 font-normal text-sm">{item}</li>
+                                            </>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
                         </div>
                         }
 
@@ -221,143 +244,149 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                 <h1 className="text-neutral-900 font-medium text-xl">{t('forChildren')}</h1>
                                 <Image src={arrowDown} alt="arrow down" className={`${forChildrenVisible ? 'rotate-180' : ''} transition-all`}/>
                             </button>
-                            <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden transition-[max-height] duration-500 mb-2
-                            ${forChildrenVisible ? 'h-auto' : 'h-0'}`}>
-                                {i18n?.language === "vi"
-                                    ? tour.vi.forChildren.map(item => (
-                                        <>
-                                            <li className="text-neutral-800 font-normal text-sm">{item}</li>
-                                        </>
-                                    ))
-                                    : tour.en.forChildren.map(item => (
-                                        <>
-                                            <li className="text-neutral-800 font-normal text-sm">{item}</li>
-                                        </>
-                                    ))
-                                }
-                            </ul>
+                            <div className={`grid ${forChildrenVisible ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} transition-[grid-template-rows] duration-500`}>
+                                <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden mb-2`}>
+                                    {i18n?.language === "vi"
+                                        ? tour.vi.forChildren.map(item => (
+                                            <>
+                                                <li className="text-neutral-800 font-normal text-sm">{item}</li>
+                                            </>
+                                        ))
+                                        : tour.en.forChildren.map(item => (
+                                            <>
+                                                <li className="text-neutral-800 font-normal text-sm">{item}</li>
+                                            </>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
                         </div>
                         }
 
                         {(tour.vi.extras && tour.en.extras) && 
                         <div className="w-full flex gap-2 flex-col">
-                            <button className="flex justify-between items-center w-full" onClick={() => setForChildrenVisible(prevState => !prevState)}>
+                            <button className="flex justify-between items-center w-full" onClick={() => setExtrasVisible(prevState => !prevState)}>
                                 <h1 className="text-neutral-900 font-medium text-xl">{t('extras')}</h1>
-                                <Image src={arrowDown} alt="arrow down" className={`${forChildrenVisible ? 'rotate-180' : ''} transition-all`}/>
+                                <Image src={arrowDown} alt="arrow down" className={`${extrasVisible ? 'rotate-180' : ''} transition-all`}/>
                             </button>
-                            <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden transition-[max-height] duration-500 mb-2
-                            ${forChildrenVisible ? 'h-auto' : 'h-0'}`}>
-                                {i18n?.language === "vi"
-                                    ? 
-                                    <>
-                                        <h1 className="text-neutral-800 font-normal text-base">{tour.vi.extras.title}</h1>
-                                        {tour.vi.extras.bulletPoints.map(point => (
-                                            <>
-                                                <li className="text-neutral-800 font-normal text-sm">{point}</li>
-                                            </>
-                                        ))}
-                                    </>
-                                    
-                                    : 
-                                    <>
-                                        <h1 className="text-neutral-800 font-normal text-base">{tour.vi.extras.title}</h1>
-                                        {tour.vi.extras.bulletPoints.map(point => (
-                                            <>
-                                                <li className="text-neutral-800 font-normal text-sm">{point}</li>
-                                            </>
-                                        ))}
-                                    </>
-                                }
-                            </ul>
+                            <div className={`grid ${extrasVisible ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} transition-[grid-template-rows] duration-500`}>
+                                <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden duration-500 mb-2`}>
+                                    {i18n?.language === "vi"
+                                        ? 
+                                        <>
+                                            <h1 className="text-neutral-800 font-normal text-base">{tour.vi.extras.title}</h1>
+                                            {tour.vi.extras.bulletPoints.map(point => (
+                                                <>
+                                                    <li className="text-neutral-800 font-normal text-sm">{point}</li>
+                                                </>
+                                            ))}
+                                        </>
+                                        
+                                        : 
+                                        <>
+                                            <h1 className="text-neutral-800 font-normal text-base">{tour.en.extras.title}</h1>
+                                            {tour.en.extras.bulletPoints.map(point => (
+                                                <>
+                                                    <li className="text-neutral-800 font-normal text-sm">{point}</li>
+                                                </>
+                                            ))}
+                                        </>
+                                    }
+                                </ul>
+                            </div>
+                            
                         </div>
                         }
                     </div>
                 </div>
-                <div className="flex gap-8 flex-col">
-                    <h1 className="text-neutral-900 font-semibold text-lg xl:text-2xl">{t('itinerary')}</h1>
-                    <div className="">
-                        <div className="flex overflow-x-scroll scrollbar-hide snap-x snap-mandatory overscroll-x-contain">
-                            {i18n?.language === "vi" 
-                                ? tour.vi.itinerary.map((day, index) => (
-                                    <>
-                                        <button className={`flex gap-3 flex-col items-center justify-center text-center w-1/4 border border-neutral-200
-                                        py-3 px-2 ${activeItineraryDay === index ? 'border-t-neutral-800 border-t-2' : ''}`} 
-                                        onClick={() => setActiveItineraryDay(index)}>
-                                            <h1 className="text-neutral-900 font-semibold text-base">{`${t('day').toUpperCase()} ${index + 1}`}</h1>
-                                            <h2 className="text-neutral-700 font-normal text-[10px]">{day.title}</h2>
-                                        </button>
-                                    </>
-                                ))
-                                : tour.en.itinerary.map((day, index) => (
-                                    <>
-                                        <button className={`flex gap-3 flex-col items-center justify-center text-center w-1/4 border border-neutral-200
-                                        py-3 px-2 ${activeItineraryDay === index ? 'border-t-neutral-800 border-t-2' : ''}`} 
-                                        onClick={() => setActiveItineraryDay(index)}>
-                                            <h1 className="text-neutral-900 font-semibold text-base">{`Day ${index + 1}`}</h1>
-                                            <h2 className="text-neutral-700 font-normal text-[10px]">{day.title}</h2>
-                                        </button>
-                                    </>
-                                ))
-                            }
-                        </div>
-                        <div className="p-6 flex gap-6 flex-col">
-                            <h1 className="text-neutral-900 font-semibold text-xl">
-                                {i18n?.language === "vi" ? tour.vi.itinerary[activeItineraryDay].title : tour.en.itinerary[activeItineraryDay].title}
-                            </h1>
-                            <div className="flex gap-3 flex-col">
+                {(tour.vi.itinerary && tour.en.itinerary) && 
+                    <div className="flex gap-8 flex-col">
+                        <h1 className="text-neutral-900 font-semibold text-lg xl:text-2xl">{t('itinerary')}</h1>
+                        <div className="">
+                            <div className="flex overflow-x-scroll scrollbar-hide snap-x snap-mandatory overscroll-x-contain">
                                 {i18n?.language === "vi" 
-                                    ? tour.vi.itinerary[activeItineraryDay].activities.map(activity => (
+                                    ? tour.vi.itinerary.map((day, index) => (
                                         <>
-                                            <div className="flex gap-2 items-start">
-                                                <Image src={locationIcon} alt="" width={20} height={24} />
-                                                <div className="">
-                                                    {activity.time && <h1 className="text-neutral-900 font-semibold text-base leading-none mb-1">{activity.time}</h1>}
-                                                    {typeof activity.description === 'string' 
-                                                    ? <p className={`text-neutral-700 font-normal ${activity.time ? 'text-base' : 'text-lg font-medium'} `}>
-                                                    {activity.description}
-                                                    </p>
-                                                    : <div className="flex gap-2 flex-col">
-                                                        <h1 className="text-neutral-700 font-normal text-base">{activity.description.heading}</h1>
-                                                        <ul className="flex gap-1 flex-col list-inside list-disc">
-                                                            {activity.description.bulletPoints.map((point, index) => 
-                                                                <li className="text-neutral-700 font-normal text-sm" key={index}>{point}</li>
-                                                            )}
-                                                        </ul>
-                                                    </div>
-                                                    }
-                                                    
-                                                </div>
-                                            </div>
+                                            <button className={`flex gap-3 flex-col items-center justify-center text-center w-1/4 border border-neutral-200
+                                            py-3 px-2 ${activeItineraryDay === index ? 'border-t-neutral-800 border-t-2' : ''}`} 
+                                            onClick={() => setActiveItineraryDay(index)}>
+                                                <h1 className="text-neutral-900 font-semibold text-base">{`${t('day').toUpperCase()} ${index + 1}`}</h1>
+                                                <h2 className="text-neutral-700 font-normal text-[10px]">{day.title}</h2>
+                                            </button>
                                         </>
                                     ))
-                                    : tour.en.itinerary[activeItineraryDay].activities.map(activity => (
+                                    : tour.en.itinerary.map((day, index) => (
                                         <>
-                                            <div className="flex gap-2 items-start">
-                                                <Image src={locationIcon} alt="" width={20} height={24} />
-                                                <div className="">
-                                                    {activity.time && <h1 className="text-neutral-900 font-semibold text-base leading-none mb-1">{activity.time}</h1>}
-                                                    {typeof activity.description === 'string' 
-                                                    ? <p className={`text-neutral-700 font-normal ${activity.time ? 'text-base' : 'text-lg font-medium'} `}>
-                                                    {activity.description}
-                                                    </p>
-                                                    : <div className="flex gap-2 flex-col">
-                                                        <h1 className="text-neutral-700 font-normal text-base">{activity.description.heading}</h1>
-                                                        <ul className="flex gap-1 flex-col list-inside list-disc">
-                                                            {activity.description.bulletPoints.map((point, index) => 
-                                                                <li className="text-neutral-700 font-normal text-sm" key={index}>{point}</li>
-                                                            )}
-                                                        </ul>
-                                                    </div>
-                                                    }
-                                                </div>
-                                            </div>
+                                            <button className={`flex gap-3 flex-col items-center justify-center text-center w-1/4 border border-neutral-200
+                                            py-3 px-2 ${activeItineraryDay === index ? 'border-t-neutral-800 border-t-2' : ''}`} 
+                                            onClick={() => setActiveItineraryDay(index)}>
+                                                <h1 className="text-neutral-900 font-semibold text-base">{`Day ${index + 1}`}</h1>
+                                                <h2 className="text-neutral-700 font-normal text-[10px]">{day.title}</h2>
+                                            </button>
                                         </>
                                     ))
                                 }
                             </div>
+                            <div className="p-6 flex gap-6 flex-col">
+                                <h1 className="text-neutral-900 font-semibold text-xl">
+                                    {i18n?.language === "vi" ? tour.vi.itinerary[activeItineraryDay].title : tour.en.itinerary[activeItineraryDay].title}
+                                </h1>
+                                <div className="flex gap-3 flex-col">
+                                    {i18n?.language === "vi" 
+                                        ? tour.vi.itinerary[activeItineraryDay].activities.map(activity => (
+                                            <>
+                                                <div className="flex gap-2 items-start">
+                                                    <Image src={locationIcon} alt="" width={20} height={24} />
+                                                    <div className="">
+                                                        {activity.time && <h1 className="text-neutral-900 font-semibold text-base leading-none mb-1">{activity.time}</h1>}
+                                                        {typeof activity.description === 'string' 
+                                                        ? <p className={`text-neutral-700 font-normal ${activity.time ? 'text-base' : 'text-lg font-medium'} `}>
+                                                        {activity.description}
+                                                        </p>
+                                                        : <div className="flex gap-2 flex-col">
+                                                            <h1 className="text-neutral-700 font-normal text-base">{activity.description.heading}</h1>
+                                                            <ul className="flex gap-1 flex-col list-inside list-disc">
+                                                                {activity.description.bulletPoints.map((point, index) => 
+                                                                    <li className="text-neutral-700 font-normal text-sm" key={index}>{point}</li>
+                                                                )}
+                                                            </ul>
+                                                        </div>
+                                                        }
+                                                        
+                                                    </div>
+                                                </div>
+                                            </>
+                                        ))
+                                        : tour.en.itinerary[activeItineraryDay].activities.map(activity => (
+                                            <>
+                                                <div className="flex gap-2 items-start">
+                                                    <Image src={locationIcon} alt="" width={20} height={24} />
+                                                    <div className="">
+                                                        {activity.time && <h1 className="text-neutral-900 font-semibold text-base leading-none mb-1">{activity.time}</h1>}
+                                                        {typeof activity.description === 'string' 
+                                                        ? <p className={`text-neutral-700 font-normal ${activity.time ? 'text-base' : 'text-lg font-medium'} `}>
+                                                        {activity.description}
+                                                        </p>
+                                                        : <div className="flex gap-2 flex-col">
+                                                            <h1 className="text-neutral-700 font-normal text-base">{activity.description.heading}</h1>
+                                                            <ul className="flex gap-1 flex-col list-inside list-disc">
+                                                                {activity.description.bulletPoints.map((point, index) => 
+                                                                    <li className="text-neutral-700 font-normal text-sm" key={index}>{point}</li>
+                                                                )}
+                                                            </ul>
+                                                        </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </>
+                                        ))
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
+                
                 <Grandtours t={t}/>
                 <DayTours t={t}/>
                 <div className={`z-40 bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 bg-white rounded-[30px] p-4 md:p-12 shadow-card-bold

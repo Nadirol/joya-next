@@ -33,7 +33,7 @@ export interface tourContent {
         title: string
         activities: activity[]
     }[]
-    priceIncludes: string[] | null
+    priceIncludes: (string | { heading: string, bulletPoints: string[] })[] |  null
     priceExcludes: string[] | null
     notes: string[] | null
     forChildren: string[] | null
