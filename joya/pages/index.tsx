@@ -21,6 +21,7 @@ import ContactBanner from '@/components/main/ContactBanner';
 import Head from 'next/head';
 import PartnerTours from '@/components/main/PartnerTours';
 import Values from '@/components/main/Values';
+import Script from 'next/script';
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -31,6 +32,7 @@ export default function Home() {
       <title>Joya Traveling</title>
     </Head>
     <div className={plusJakartaSans.className}>
+
       <Header t={t}/>
       <main className="w-container mx-auto flex gap-8 md:gap-12 xl:gap-16 flex-col mb-8 relative md:mt-12">
         <Banner t={t}/>
