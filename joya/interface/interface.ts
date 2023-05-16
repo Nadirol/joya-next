@@ -28,16 +28,19 @@ export interface tourContent {
 
     description: string[] | null
     destinations: string[]
+    transports: string[] | null
     highlights: string[] | null
     itinerary: {
         title: string
         activities: activity[]
     }[]
+
     priceIncludes: (string | { heading: string, bulletPoints: string[] })[] |  null
     priceExcludes: string[] | null
     notes: string[] | null
     forChildren: string[] | null
     extras: { title: string, bulletPoints: string[] } | null
+    discountConditions: string[] | null
 }
 
 interface activity {

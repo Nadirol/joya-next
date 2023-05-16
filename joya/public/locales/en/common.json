@@ -79,8 +79,10 @@
     "highlights": "Highlights",
     "priceIncludes": "Price Includes",
     "priceExcludes": "Price Excludes",
-    "notes": "Notes",
+    "notes": "Note",
     "forChildren": "Children",
-    "extras": "Extras",
-    "itinerary": "Itinerary"
+    "extras": "Additional Information",
+    "itinerary": "Itinerary",
+    "discountConditions": "Discount Conditions",
+    "transports": "Transportation"
 }

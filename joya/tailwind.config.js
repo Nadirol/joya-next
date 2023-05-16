@@ -46,6 +46,7 @@ module.exports = {
         'button-semibold': '1px 1px 4px rgba(0, 0, 0, 0.25)',
         'card': '1px 1px 1px rgba(0, 0, 0, 0.25)',
         'card-semibold': '1px 2px 2px rgba(0, 0, 0, 0.25)',
+        'card-extrasemibold': '1px 2px 6px rgba(0, 0, 0, 0.25)',
         'card-bold': '0px 1px 6px rgba(0, 0, 0, 0.25)'
       },
       gridTemplateColumns: {

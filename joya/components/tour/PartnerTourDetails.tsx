@@ -8,7 +8,7 @@ import Image from "next/image"
 import Link from "next/link"
 import Grandtours from "../main/Grandtours"
 import DayTours from "../main/DayTours"
-import { Dispatch, MutableRefObject, SetStateAction, useState } from "react"
+import { Dispatch, MutableRefObject, SetStateAction, useRef, useState } from "react"
 import { arrowDown, locationIcon } from "@/public/assets"
 
 const contactEmails = 'quynhnt88@gmail.com,floris.panico@yahoo.co.uk,Nguyenthuy1095@gmail.com';
@@ -38,13 +38,47 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
     emailValid: boolean,
     emailWarning: string
 }) => {
+
     const [priceIncludesVisible, setPriceIncludesVisible] = useState(false);
     const [priceExcludesVisible, setPriceExcludesVisible] = useState(false);
     const [notesVisible, setNotesVisible] = useState(false);
     const [forChildrenVisible, setForChildrenVisible] = useState(false);
     const [extrasVisible, setExtrasVisible] = useState(false);
+    const [discountConditionsVisible, setDiscountConditionsVisible] = useState(false);
 
     const [activeItineraryDay, setActiveItineraryDay] = useState(0)
+
+    const sliderRef = useRef<any>(null);
+    const [sliderScrollPos, setSliderScrollPos] = useState(0);
+    const [atSliderEnd, setAtSliderEnd] = useState(false);
+
+    const handleSliderScroll = () => {
+        setSliderScrollPos(sliderRef.current?.scrollLeft);
+        if (sliderRef.current.scrollWidth - sliderRef.current.scrollLeft - 2 <= sliderRef.current.clientWidth) {
+            setAtSliderEnd(true)
+        } else setAtSliderEnd(false);
+    }
+
+    const scrollSliderLeft = () =>
+    {
+        sliderRef.current.scrollBy({
+            top: 0,
+            left: -1,
+            behavior: "smooth",
+          });
+        console.log(sliderRef.current.scrollLeft)
+    }
+
+
+    const scrollSliderRight = () => {
+            sliderRef.current.scrollBy({
+                top: 0,
+                left: 250,
+                behavior: "smooth",
+              });
+            console.log(sliderRef.current.scrollLeft)
+    }
+
     return (
         <>
             <Head>
@@ -53,37 +87,49 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
             <div className={plusJakartaSans.className}>
             <Header t={t}/>
             <main className="w-container mx-auto mb-8 flex gap-12 flex-col relative">
-                <div className="grid gap-8 xl:gap-[4rem] md:grid-cols-details pt-1 md:min-h-[500px] xl:min-h-[400px]">
-                    <div className="mx-auto my-auto ">
-                        <Image src={tour.image} width={600} height={400} alt="tour image" className="shadow-card-bold"/>
-                    </div>
+
+                <div className="grid gap-8 xl:gap-[4rem] md:grid-cols-details pt-1 xl:min-h-[400px]">
+                    <Image src={tour.image} width={600} height={400} alt="tour image" className="shadow-card-bold object-cover mx-auto rounded-[18px]"/>
                     <div className="shadow-card-bold rounded-[18px] p-6 flex -md:gap-6 gap-8 flex-col justify-between">
                         <div className="flex gap-4 flex-col">
                             <ul className="list-disc list-inside flex gap-3 flex-col">
                                 <li>
-                                    <span className="relative left--6 text-neutral-700 font-semibold text-xs xl:text-base">{t('fullPackage')}: 
-                                        <span className={`ml-1 text-neutral-900 ${tour.price ? "" : "text-sm text-neutral-600"}`}>
+                                    <span className="relative left--6 text-neutral-900 font-semibold text-xs xl:text-lg">{t('fullPackage')}: 
+                                        <span className={`ml-1 text-sm ${tour.price ? "" : "text-neutral-600"}`}>
                                             {tour.price ? numberWithCommas(tour.price) + " vnđ" : t('flexible')}
                                         </span>
                                     </span>
                                 </li>
                                 <li>
-                                    <span className="relative left--6 text-neutral-700 font-semibold text-xs xl:text-base">{t('destinations')}: 
-                                        <span className={`ml-1 text-neutral-900 ${tour.vi.destinations ? "" : "text-sm text-neutral-600"}`}>
+                                    <span className="relative left--6 text-neutral-900 font-semibold text-xs xl:text-lg">{t('destinations')}: 
+                                        <span className={`ml-1 text-sm ${tour.vi.destinations ? "" : "text-neutral-600"}`}>
                                             {i18n?.language === "vi" ? tour.vi.destinations.join(" - ") : tour.en.destinations.join(" - ")}
                                         </span>
                                     </span>
                                     
                                 </li>
                                 <li>
-                                    <span className="relative left--6 text-neutral-700 font-semibold text-xs xl:text-base">{t('duration')}: 
-                                        <span className={`ml-1 text-neutral-900 ${tour.duration.days ? "" : "text-sm text-neutral-600"}`}>
+                                    <span className="relative left--6 text-neutral-900 font-semibold text-xs xl:text-lg">{t('duration')}: 
+                                        <span className={`ml-1 text-sm ${tour.duration.days ? "" : "text-neutral-600"}`}>
                                             {tour.duration.days 
                                             ? `${durationFormatDay(tour.duration.days)} ${durationFormatNight(tour.duration.nights)}` 
                                             : t('flexible')}
                                         </span>
                                     </span>
                                 </li>
+                                {(tour.vi.transports && tour.en.transports) &&
+                                    <li>
+                                        <span className="relative left--6 text-neutral-900 font-semibold text-xs xl:text-lg">{t('transports')}: 
+                                            <span className={`ml-1 text-sm ${tour.duration.days ? "" : "text-neutral-600"}`}>
+                                                {i18n?.language === "vi" 
+                                                ? tour.vi.transports.join(", ")
+                                                : tour.en.transports.join(", ")
+                                                }
+                                            </span>
+                                        </span>
+                                    </li>
+                                }
+
                             </ul>
                         </div>
                         <div className="flex gap-3 flex-col items-center">
@@ -96,10 +142,11 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                         </div>
                     </div>
                 </div>
+
                 <div className="grid gap-8 xl:gap-[4rem] md:grid-cols-details">
                     <div className="flex gap-5 flex-col">
                         <div className="flex gap-2 flex-col">
-                            <h1 className="text-neutral-900 font-semibold text-xl xl:text-3xl">
+                            <h1 className="text-neutral-900 font-semibold text-xl md:text-2xl xl:text-3xl">
                                 {i18n?.language === "vi" ? tour.vi.title : tour.en.title}
                             </h1>
                             {(tour.vi.description && tour.en.description) &&
@@ -107,12 +154,12 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                             {i18n?.language === "vi" 
                                 ? tour.vi.description.map(desc => (
                                     <>
-                                        <p className="text-neutral-800 font-normal text-base">{desc}</p>
+                                        <p className="text-neutral-800 font-normal text-xs md:text-base">{desc}</p>
                                     </>
                                 ))
                                 : tour.en.description.map(desc => (
                                     <>
-                                        <p className="text-neutral-800 font-normal text-base">{desc}</p>
+                                        <p className="text-neutral-800 font-normal text-xs md:text-base">{desc}</p>
                                     </>
                                 ))
                             }
@@ -120,18 +167,18 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
 
                         </div>
                         {(tour.vi.highlights && tour.en.highlights) &&
-                        <div className="flex gap-2 flex-col">
-                            <h1 className="text-neutral-900 font-semibold text-lg xl:text-2xl">{t('highlights')}</h1>
+                        <div className="flex gap-2 md:gap-6 flex-col">
+                            <h1 className="text-neutral-900 font-semibold text-xl md:text-2xl xl:text-3xl">{t('highlights')}</h1>
                             <ul className="flex gap-4 flex-col list-disc list-inside">
                                 {i18n?.language === "vi"
                                     ? tour.vi.highlights.map(highlight => (
                                         <>
-                                            <li className="text-neutral-800 font-normal text-base">{highlight}</li>
+                                            <li className="text-neutral-800 font-normal text-xs md:text-base">{highlight}</li>
                                         </>
                                     ))
                                     : tour.en.highlights.map(highlight => (
                                         <>
-                                            <li className="text-neutral-800 font-normal text-base">{highlight}</li>
+                                            <li className="text-neutral-800 font-normal text-xs md:text-base">{highlight}</li>
                                         </>
                                     ))
                                 }
@@ -154,28 +201,28 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                             typeof item === "string" 
                                             ? (<li key={index} className="text-neutral-800 font-normal text-sm">{item}</li>)
                                             : (
-                                                <div key={index} className="flex gap-2 flex-col">
-                                                    <h1 className="text-neutral-800 font-normal text-base">{item.heading}</h1>
-                                                    <ul className="flex gap-1 flex-col list-inside list-disc">
+                                                <li key={index} className=" text-neutral-800 font-normal text-sm">
+                                                    {item.heading}
+                                                    <ul className="flex gap-1 flex-col list-inside list-disc ml-4">
                                                         {item.bulletPoints.map((point, index) => 
-                                                            <li className="text-neutral-700 font-normal text-sm" key={index}>{point}</li>
+                                                            <li className="text-neutral-700 font-normal text-xs" key={index}>{point}</li>
                                                         )}
                                                     </ul>
-                                                </div>
+                                                </li>
                                             )
                                         )
                                         : tour.en.priceIncludes.map((item, index) =>
                                             typeof item === "string" 
                                             ? (<li key={index} className="text-neutral-800 font-normal text-sm">{item}</li>)
                                             : (
-                                                <div key={index} className="flex gap-2 flex-col">
-                                                    <h1 className="text-neutral-800 font-normal text-base">{item.heading}</h1>
-                                                    <ul className="flex gap-1 flex-col list-inside list-disc">
+                                                <li key={index} className=" text-neutral-800 font-normal text-sm">
+                                                    {item.heading}
+                                                    <ul className="flex gap-1 flex-col list-inside list-disc ml-4">
                                                         {item.bulletPoints.map((point, index) => 
-                                                            <li className="text-neutral-700 font-normal text-sm" key={index}>{point}</li>
+                                                            <li className="text-neutral-700 font-normal text-xs" key={index}>{point}</li>
                                                         )}
                                                     </ul>
-                                                </div>
+                                                </li>
                                             )
                                         )
                                     }
@@ -297,38 +344,72 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                             
                         </div>
                         }
+
+                        {(tour.vi.discountConditions && tour.en.discountConditions) && 
+                        <div className="w-full flex gap-2 flex-col">
+                            <button className="flex justify-between items-center w-full" onClick={() => setDiscountConditionsVisible(prevState => !prevState)}>
+                                <h1 className="text-neutral-900 font-medium text-xl">{t('discountConditions')}</h1>
+                                <Image src={arrowDown} alt="arrow down" className={`${discountConditionsVisible ? 'rotate-180' : ''} transition-all`}/>
+                            </button>
+                            <div className={`grid ${discountConditionsVisible ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} transition-[grid-template-rows] duration-500`}>
+                                <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden mb-2`}>
+                                    {i18n?.language === "vi"
+                                        ? tour.vi.discountConditions.map(item => (
+                                            <>
+                                                <li className="text-neutral-800 font-normal text-sm">{item}</li>
+                                            </>
+                                        ))
+                                        : tour.en.discountConditions.map(item => (
+                                            <>
+                                                <li className="text-neutral-800 font-normal text-sm">{item}</li>
+                                            </>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        }
                     </div>
                 </div>
                 {(tour.vi.itinerary && tour.en.itinerary) && 
                     <div className="flex gap-8 flex-col">
-                        <h1 className="text-neutral-900 font-semibold text-lg xl:text-2xl">{t('itinerary')}</h1>
+                        <h1 className="text-neutral-900 font-semibold text-2xl xl:text-3xl">{t('itinerary')}</h1>
                         <div className="">
-                            <div className="flex overflow-x-scroll scrollbar-hide snap-x snap-mandatory overscroll-x-contain">
-                                {i18n?.language === "vi" 
-                                    ? tour.vi.itinerary.map((day, index) => (
-                                        <>
-                                            <button className={`flex gap-3 flex-col items-center justify-center text-center w-1/4 border border-neutral-200
-                                            py-3 px-2 ${activeItineraryDay === index ? 'border-t-neutral-800 border-t-2' : ''}`} 
-                                            onClick={() => setActiveItineraryDay(index)}>
-                                                <h1 className="text-neutral-900 font-semibold text-base">{`${t('day').toUpperCase()} ${index + 1}`}</h1>
-                                                <h2 className="text-neutral-700 font-normal text-[10px]">{day.title}</h2>
-                                            </button>
-                                        </>
-                                    ))
-                                    : tour.en.itinerary.map((day, index) => (
-                                        <>
-                                            <button className={`flex gap-3 flex-col items-center justify-center text-center w-1/4 border border-neutral-200
-                                            py-3 px-2 ${activeItineraryDay === index ? 'border-t-neutral-800 border-t-2' : ''}`} 
+                            <div className="relative z-10">
+                                <div className="flex overflow-x-scroll scrollbar-hide snap-x snap-mandatory overscroll-x-contain relative z-10 w-full"
+                                ref={sliderRef} onScroll={handleSliderScroll}>
+                                    {i18n?.language === "vi" 
+                                        ? tour.vi.itinerary.map((day, index) => (
+                                                <div key={index} className={`flex gap-3 flex-col items-center justify-center text-center snap-center cursor-pointer
+                                                border border-neutral-200 py-3 px-2 min-w-[150px] md:min-w-[250px] ${activeItineraryDay === index ? 'border-t-neutral-800 border-t-2' : ''}`} 
+                                                onClick={() => setActiveItineraryDay(index)}>
+                                                    <h1 className="text-neutral-900 font-semibold text-base">{`${t('day').toUpperCase()} ${index + 1}`}</h1>
+                                                    <h2 className="text-neutral-700 font-normal text-[10px]">{day.title}</h2>
+                                                </div>
+                                        ))
+                                        : tour.en.itinerary.map((day, index) => (
+                                            <div key={index} className={`flex gap-3 flex-col items-center justify-center text-center snap-center cursor-pointer
+                                            border border-neutral-200 py-3 px-2 min-w-[150px] md:min-w-[250px] ${activeItineraryDay === index ? 'border-t-neutral-800 border-t-2' : ''}`} 
                                             onClick={() => setActiveItineraryDay(index)}>
                                                 <h1 className="text-neutral-900 font-semibold text-base">{`Day ${index + 1}`}</h1>
                                                 <h2 className="text-neutral-700 font-normal text-[10px]">{day.title}</h2>
-                                            </button>
-                                        </>
-                                    ))
-                                }
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                                <button className={`absolute left-0 top-0 z-20 w-[6%] h-full bg-white flex items-center justify-center
+                                border border-neutral-200 hover:border-neutral-600 transition-all duration-200 -md:hidden
+                                ${sliderScrollPos === 0 ? "hidden" : ""}`} onClick={scrollSliderLeft}>
+                                        <Image src={arrowDown} alt="arrow icon" className="rotate-90"/>
+                                </button>
+                                <button className={`absolute inset-0 ml-auto z-20 w-[6%] h-full bg-white flex items-center justify-center
+                                border border-neutral-200 hover:border-neutral-600 transition-all duration-200 -md:hidden
+                                ${atSliderEnd ? "hidden" : ""}`} onClick={scrollSliderRight}>
+                                        <Image src={arrowDown} alt="arrow icon" className="rotate-[270deg]"/>
+                                </button>
                             </div>
                             <div className="p-6 flex gap-6 flex-col">
-                                <h1 className="text-neutral-900 font-semibold text-xl">
+                                <h1 className="text-neutral-900 font-semibold text-base md:text-xl">
                                     {i18n?.language === "vi" ? tour.vi.itinerary[activeItineraryDay].title : tour.en.itinerary[activeItineraryDay].title}
                                 </h1>
                                 <div className="flex gap-3 flex-col">

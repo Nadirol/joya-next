@@ -13,13 +13,12 @@ const PartnerTourCard = ({ id, image, vi, en, duration, price, t }:
     price: number, vi: tourContent, en: tourContent , t: TFunction }) => {
 
     return (
-        <Link href={`/tours/${id}`} className="rounded-2xl shadow-card hover:shadow-card-semibold 
-        min-w-[181px] -md:max-w-[181px] md:w-[282px] snap-start overflow-hidden">
+        <Link href={`/tours/${id}`} className="rounded-2xl shadow-card-semibold hover:shadow-card-extrasemibold min-w-[181px] md:min-w-[282px] snap-start overflow-hidden">
             <div className="w-[181px] md:w-[282px] h-[98px] md:h-[192px] overflow-hidden flex items-center justify-center">
                 <Image src={image} alt="tour preview image" width={282} height={192} 
-                className="hover:scale-[1.1] transition-all duration-300 min-h-[192px]"/>
+                className="hover:scale-[1.1] transition-all duration-300 object-cover h-[192px]"/>
             </div>
-            <div className="flex flex-col justify-between min-h-[11rem] px-2 py-4">
+            <div className="flex flex-col justify-between min-h-[15rem] px-2 py-4">
                 <div className="flex gap-2.5 flex-col">
                     <h1 className="text-neutral-900 font-medium text-sm md:text-base">{i18n?.language === "vi" ? vi.title : en.title}</h1>
                     {vi.destinations && 

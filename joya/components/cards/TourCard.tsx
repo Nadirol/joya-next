@@ -15,7 +15,7 @@ const TourCard = ({ id, image, title, destinations, duration, price, t }:
         <Link href={ { pathname:`/tours/[id]`, query: { id: id } } } 
         className="rounded-2xl shadow-card hover:shadow-card-semibold min-w-[181px] md:min-w-[282px] snap-start overflow-hidden">
             <div className="w-[181px] md:w-[282px] h-[98px] md:h-[192px] overflow-hidden flex items-center justify-center">
-                <Image src={image} alt="tour preview image" width={282} height={192} className="hover:scale-[1.1] transition-all duration-300 min-h-[192px]"/>
+                <Image src={image} alt="tour preview image" width={282} height={192} className="hover:scale-[1.1] transition-all duration-300 object-cover"/>
             </div>
             <div className="flex flex-col justify-between min-h-[11rem] px-2 py-4">
                 <div className="flex gap-2.5 flex-col">
