@@ -9,7 +9,7 @@ import { partnerTour } from "@/interface/interface"
 import PartnerTourCard from "../cards/PartnerTourCard";
 
 
-const PartnerTours = ({ t }: { t: TFunction }) => {
+const AbroadTours = ({ t }: { t: TFunction }) => {
     const [tours, setTours] = useState<partnerTour[] | []>([]);
 
     const getTours = async () => {
@@ -40,7 +40,7 @@ const PartnerTours = ({ t }: { t: TFunction }) => {
     const nextTour = () => {
         toursSliderRef.current.scrollBy({
         top: 0,
-        left: 100,
+        left: 200,
         behavior: "smooth",
         });
     };
@@ -73,4 +73,4 @@ const PartnerTours = ({ t }: { t: TFunction }) => {
     )
 }
 
-export default PartnerTours;
+export default AbroadTours;

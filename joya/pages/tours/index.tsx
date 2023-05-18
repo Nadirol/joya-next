@@ -13,7 +13,7 @@ import Footer from '@/components/Footer'
 import Grandtours from '@/components/main/Grandtours';
 import Head from 'next/head';
 import DayTours from '@/components/main/DayTours';
-import PartnerTours from '@/components/main/PartnerTours';
+import AbroadTours from '@/components/main/AbroadTours';
 
 export default function Tours() {
   const { t } = useTranslation('common');
@@ -28,7 +28,7 @@ export default function Tours() {
       <main className="w-container mx-auto flex gap-8 md:gap-12 xl:gap-16 flex-col mb-8 relative mt-12">
         <Grandtours t={t}/>
         <DayTours t={t}/>
-        <PartnerTours t={t}/>
+        <AbroadTours t={t}/>
         <Contact t={t}/>
 
       </main>

@@ -8,19 +8,22 @@ import Image from "next/image"
 import Link from "next/link"
 import Grandtours from "../main/Grandtours"
 import DayTours from "../main/DayTours"
-import { Dispatch, MutableRefObject, SetStateAction, useRef, useState } from "react"
-import { arrowDown, locationIcon } from "@/public/assets"
+import { Dispatch, MutableRefObject, SetStateAction, useRef, useState, useMemo, useEffect } from "react"
+import { arrowDown, infoIcon, locationIcon } from "@/public/assets"
+import { Column, useTable } from "react-table"
 
 const contactEmails = 'quynhnt88@gmail.com,floris.panico@yahoo.co.uk,Nguyenthuy1095@gmail.com';
 
 function numberWithCommas(x: number) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
+};
+
+type Cols = { dates: string, adultPrice: string, childrenPrice: string | null, surcharge: string | null }
 
 const PartnerTourDetails = 
 ({ t, tour, plusJakartaSans, popUpVisible, durationFormatDay, durationFormatNight, setBookFormVisible, bookFormRef, showPopUp, bookFormVisible,
 firstNameValue, handleFirstNameChange, lastNameValue, handleLastNameChange, phoneNumberValue, handlePhoneNumberChange, emailValue, 
-handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, emailValid, emailWarning }: 
+handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, emailValid, emailWarning, useClickDetector }: 
 { t: TFunction, tour: partnerTour, plusJakartaSans: NextFont, popUpVisible: boolean, 
     durationFormatDay: (num: number) => string,
     durationFormatNight: (num: number) => string,
@@ -36,7 +39,8 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
     validate: () => boolean,
     emailInputRef: MutableRefObject<any>,
     emailValid: boolean,
-    emailWarning: string
+    emailWarning: string,
+    useClickDetector: (ref: React.MutableRefObject<HTMLDivElement | null>, func: () => void) => void
 }) => {
 
     const [priceIncludesVisible, setPriceIncludesVisible] = useState(false);
@@ -79,6 +83,51 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
             console.log(sliderRef.current.scrollLeft)
     }
 
+    const [priceChartVisible, setPriceChartVisible] = useState(false);
+    const priceChartRef = useRef(null);
+
+    const hidePriceChart = () => {
+        setPriceChartVisible(false)
+    }
+
+    useClickDetector(priceChartRef, hidePriceChart); 
+
+    const columns: Column<Cols>[] = useMemo(
+        () => [
+            {
+                Header: t('date'),
+                accessor: "dates"
+            },
+            {
+                Header: t('adultPrice'),
+                accessor: "adultPrice"
+            },
+            {
+                Header: t('childrenPrice'),
+                accessor: "childrenPrice"
+            },
+            {
+                Header: t('surcharge'),
+                accessor: "surcharge"
+            },
+        ] as Column<Cols>[], [])
+
+    const data = useMemo((): Cols[] => tour.prices ? tour.prices : [], [])
+
+    let tableInstance = useTable({
+        columns,
+        data
+    });
+
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        rows,
+        prepareRow
+    } = tableInstance
+
+
     return (
         <>
             <Head>
@@ -89,28 +138,45 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
             <main className="w-container mx-auto mb-8 flex gap-12 flex-col relative">
 
                 <div className="grid gap-8 xl:gap-[4rem] md:grid-cols-details pt-1 xl:min-h-[400px]">
-                    <Image src={tour.image} width={600} height={400} alt="tour image" className="shadow-card-bold object-cover mx-auto rounded-[18px]"/>
-                    <div className="shadow-card-bold rounded-[18px] p-6 flex -md:gap-6 gap-8 flex-col justify-between">
+                    <div className="rounded-[18px] overflow-hidden w-full h-[400px] relative 
+                    before:absolute before:inset-0 before:bg-filter-light before:w-full before:h-full before:z-20
+                    [&:hover>img]:scale-[1.02] [&:hover]:before:block before:hidden before:transition-all before:duration-300">
+                        <Image src={tour.image} width={600} height={400} alt="tour image" 
+                        className="shadow-card-bold object-cover rounded-[18px] 
+                        hover:scale-[1.02] transition-all duration-300 w-full relative"/>
+                    </div>
+                    <div className="shadow-even rounded-[18px] p-6 flex -md:gap-6 gap-8 flex-col justify-between">
                         <div className="flex gap-4 flex-col">
                             <ul className="list-disc list-inside flex gap-3 flex-col">
-                                <li>
-                                    <span className="relative left--6 text-neutral-900 font-semibold text-xs xl:text-lg">{t('fullPackage')}: 
-                                        <span className={`ml-1 text-sm ${tour.price ? "" : "text-neutral-600"}`}>
-                                            {tour.price ? numberWithCommas(tour.price) + " vnđ" : t('flexible')}
+                                <div className="flex gap-4 -xl:flex-col items-center w-full">
+                                    <li>
+                                        <span className="relative left--6 text-neutral-900 font-semibold text-xs xl:text-lg">{t('fullPackage')}: 
+                                            <span className={`ml-1 text-xs xl:text-base font-medium ${tour.price ? "" : "text-neutral-600"}`}>
+                                                {tour.price ? numberWithCommas(tour.price) + " vnđ" : t('flexible')}
+                                            </span>
                                         </span>
-                                    </span>
-                                </li>
+                                    </li>
+                                    {tour.prices && (
+                                        <button className="text-neutral-900 font-normal text-xs underline w-fit mr-auto"
+                                        onClick={() => setPriceChartVisible(true)}>
+                                            <div className="flex gap-1 items-center">
+                                                {t('viewPriceDetails')}
+                                                <Image src={infoIcon} alt="info icon" className="w-3 mt-[3px]"/>
+                                            </div>
+                                        </button>
+                                    )}
+                                </div>
+
                                 <li>
                                     <span className="relative left--6 text-neutral-900 font-semibold text-xs xl:text-lg">{t('destinations')}: 
-                                        <span className={`ml-1 text-sm ${tour.vi.destinations ? "" : "text-neutral-600"}`}>
+                                        <span className={`ml-1 text-base font-medium ${tour.vi.destinations ? "" : "text-neutral-600"}`}>
                                             {i18n?.language === "vi" ? tour.vi.destinations.join(" - ") : tour.en.destinations.join(" - ")}
                                         </span>
-                                    </span>
-                                    
+                                    </span>                                    
                                 </li>
                                 <li>
                                     <span className="relative left--6 text-neutral-900 font-semibold text-xs xl:text-lg">{t('duration')}: 
-                                        <span className={`ml-1 text-sm ${tour.duration.days ? "" : "text-neutral-600"}`}>
+                                        <span className={`ml-1 text-base font-medium ${tour.duration.days ? "" : "text-neutral-600"}`}>
                                             {tour.duration.days 
                                             ? `${durationFormatDay(tour.duration.days)} ${durationFormatNight(tour.duration.nights)}` 
                                             : t('flexible')}
@@ -120,7 +186,7 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                 {(tour.vi.transports && tour.en.transports) &&
                                     <li>
                                         <span className="relative left--6 text-neutral-900 font-semibold text-xs xl:text-lg">{t('transports')}: 
-                                            <span className={`ml-1 text-sm ${tour.duration.days ? "" : "text-neutral-600"}`}>
+                                            <span className={`ml-1 text-base font-medium ${tour.duration.days ? "" : "text-neutral-600"}`}>
                                                 {i18n?.language === "vi" 
                                                 ? tour.vi.transports.join(", ")
                                                 : tour.en.transports.join(", ")
@@ -146,20 +212,20 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                 <div className="grid gap-8 xl:gap-[4rem] md:grid-cols-details">
                     <div className="flex gap-5 flex-col">
                         <div className="flex gap-2 flex-col">
-                            <h1 className="text-neutral-900 font-semibold text-xl md:text-2xl xl:text-3xl">
+                            <h1 className="text-neutral-900 font-semibold text-xl md:text-3xl w-3/4">
                                 {i18n?.language === "vi" ? tour.vi.title : tour.en.title}
                             </h1>
                             {(tour.vi.description && tour.en.description) &&
-                            <div className="flex gap-4 flex-col">
+                            <div className="flex gap-2 flex-col">
                             {i18n?.language === "vi" 
                                 ? tour.vi.description.map(desc => (
                                     <>
-                                        <p className="text-neutral-800 font-normal text-xs md:text-base">{desc}</p>
+                                        <p className="text-neutral-900 font-normal text-xs md:text-base">{desc}</p>
                                     </>
                                 ))
                                 : tour.en.description.map(desc => (
                                     <>
-                                        <p className="text-neutral-800 font-normal text-xs md:text-base">{desc}</p>
+                                        <p className="text-neutral-900 font-normal text-xs md:text-base">{desc}</p>
                                     </>
                                 ))
                             }
@@ -167,18 +233,18 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
 
                         </div>
                         {(tour.vi.highlights && tour.en.highlights) &&
-                        <div className="flex gap-2 md:gap-6 flex-col">
-                            <h1 className="text-neutral-900 font-semibold text-xl md:text-2xl xl:text-3xl">{t('highlights')}</h1>
+                        <div className="flex gap-2 flex-col">
+                            <h1 className="text-neutral-900 font-semibold text-xl md:text-2xl">{t('highlights')}</h1>
                             <ul className="flex gap-4 flex-col list-disc list-inside">
                                 {i18n?.language === "vi"
                                     ? tour.vi.highlights.map(highlight => (
                                         <>
-                                            <li className="text-neutral-800 font-normal text-xs md:text-base">{highlight}</li>
+                                            <li className="text-neutral-900 font-normal text-xs md:text-base">{highlight}</li>
                                         </>
                                     ))
                                     : tour.en.highlights.map(highlight => (
                                         <>
-                                            <li className="text-neutral-800 font-normal text-xs md:text-base">{highlight}</li>
+                                            <li className="text-neutral-900 font-normal text-xs md:text-base">{highlight}</li>
                                         </>
                                     ))
                                 }
@@ -190,22 +256,24 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                     <div className="">
                         {(tour.vi.priceIncludes && tour.en.priceIncludes) && 
                         <div className="w-full flex gap-2 flex-col">
-                            <button className="flex justify-between items-center w-full" onClick={() => setPriceIncludesVisible(prevState => !prevState)}>
+                            <button className="flex justify-between items-center w-full" 
+                            onClick={() => setPriceIncludesVisible(prevState => !prevState)}>
                                 <h1 className="text-neutral-900 font-medium text-xl">{t('priceIncludes')}</h1>
                                 <Image src={arrowDown} alt="arrow down" className={`${priceIncludesVisible ? 'rotate-180' : ''} transition-all`}/>
                             </button>
-                            <div className={`grid ${priceIncludesVisible ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} transition-[grid-template-rows] duration-500`}>
+                            <div className={`grid ${priceIncludesVisible ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} 
+                            transition-[grid-template-rows] duration-500`}>
                                 <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden mb-2`}>
                                     {i18n?.language === "vi"
                                         ? tour.vi.priceIncludes.map((item, index) =>
                                             typeof item === "string" 
-                                            ? (<li key={index} className="text-neutral-800 font-normal text-sm">{item}</li>)
+                                            ? (<li key={index} className="text-neutral-900 font-normal text-sm">{item}</li>)
                                             : (
-                                                <li key={index} className=" text-neutral-800 font-normal text-sm">
+                                                <li key={index} className=" text-neutral-900 font-normal text-sm">
                                                     {item.heading}
                                                     <ul className="flex gap-1 flex-col list-inside list-disc ml-4">
                                                         {item.bulletPoints.map((point, index) => 
-                                                            <li className="text-neutral-700 font-normal text-xs" key={index}>{point}</li>
+                                                            <li className="text-neutral-900 font-normal text-xs" key={index}>{point}</li>
                                                         )}
                                                     </ul>
                                                 </li>
@@ -243,12 +311,12 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                     {i18n?.language === "vi"
                                         ? tour.vi.priceExcludes.map(item => (
                                             <>
-                                                <li className="text-neutral-800 font-normal text-sm">{item}</li>
+                                                <li className="text-neutral-900 font-normal text-sm">{item}</li>
                                             </>
                                         ))
                                         : tour.en.priceExcludes.map(item => (
                                             <>
-                                                <li className="text-neutral-800 font-normal text-sm">{item}</li>
+                                                <li className="text-neutral-900 font-normal text-sm">{item}</li>
                                             </>
                                         ))
                                     }
@@ -270,12 +338,12 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                     {i18n?.language === "vi"
                                         ? tour.vi.notes.map(item => (
                                             <>
-                                                <li className="text-neutral-800 font-normal text-sm">{item}</li>
+                                                <li className="text-neutral-900 font-normal text-sm">{item}</li>
                                             </>
                                         ))
                                         : tour.en.notes.map(item => (
                                             <>
-                                                <li className="text-neutral-800 font-normal text-sm">{item}</li>
+                                                <li className="text-neutral-900 font-normal text-sm">{item}</li>
                                             </>
                                         ))
                                     }
@@ -296,12 +364,12 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                     {i18n?.language === "vi"
                                         ? tour.vi.forChildren.map(item => (
                                             <>
-                                                <li className="text-neutral-800 font-normal text-sm">{item}</li>
+                                                <li className="text-neutral-900 font-normal text-sm">{item}</li>
                                             </>
                                         ))
                                         : tour.en.forChildren.map(item => (
                                             <>
-                                                <li className="text-neutral-800 font-normal text-sm">{item}</li>
+                                                <li className="text-neutral-900 font-normal text-sm">{item}</li>
                                             </>
                                         ))
                                     }
@@ -321,20 +389,20 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                     {i18n?.language === "vi"
                                         ? 
                                         <>
-                                            <h1 className="text-neutral-800 font-normal text-base">{tour.vi.extras.title}</h1>
+                                            <h1 className="text-neutral-900 font-normal text-base">{tour.vi.extras.title}</h1>
                                             {tour.vi.extras.bulletPoints.map(point => (
                                                 <>
-                                                    <li className="text-neutral-800 font-normal text-sm">{point}</li>
+                                                    <li className="text-neutral-900 font-normal text-sm">{point}</li>
                                                 </>
                                             ))}
                                         </>
                                         
                                         : 
                                         <>
-                                            <h1 className="text-neutral-800 font-normal text-base">{tour.en.extras.title}</h1>
+                                            <h1 className="text-neutral-900 font-normal text-base">{tour.en.extras.title}</h1>
                                             {tour.en.extras.bulletPoints.map(point => (
                                                 <>
-                                                    <li className="text-neutral-800 font-normal text-sm">{point}</li>
+                                                    <li className="text-neutral-900 font-normal text-sm">{point}</li>
                                                 </>
                                             ))}
                                         </>
@@ -356,12 +424,12 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                     {i18n?.language === "vi"
                                         ? tour.vi.discountConditions.map(item => (
                                             <>
-                                                <li className="text-neutral-800 font-normal text-sm">{item}</li>
+                                                <li className="text-neutral-900 font-normal text-sm">{item}</li>
                                             </>
                                         ))
                                         : tour.en.discountConditions.map(item => (
                                             <>
-                                                <li className="text-neutral-800 font-normal text-sm">{item}</li>
+                                                <li className="text-neutral-900 font-normal text-sm">{item}</li>
                                             </>
                                         ))
                                     }
@@ -380,19 +448,19 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                 ref={sliderRef} onScroll={handleSliderScroll}>
                                     {i18n?.language === "vi" 
                                         ? tour.vi.itinerary.map((day, index) => (
-                                                <div key={index} className={`flex gap-3 flex-col items-center justify-center text-center snap-center cursor-pointer
-                                                border border-neutral-200 py-3 px-2 min-w-[150px] md:min-w-[250px] ${activeItineraryDay === index ? 'border-t-neutral-800 border-t-2' : ''}`} 
+                                                <div key={index} className={`flex gap-2 flex-col items-center justify-center text-center snap-center cursor-pointer
+                                                border border-neutral-200 py-8 px-2 min-w-[150px] md:min-w-[250px] ${activeItineraryDay === index ? 'border-t-neutral-800 border-t-2' : ''}`} 
                                                 onClick={() => setActiveItineraryDay(index)}>
                                                     <h1 className="text-neutral-900 font-semibold text-base">{`${t('day').toUpperCase()} ${index + 1}`}</h1>
-                                                    <h2 className="text-neutral-700 font-normal text-[10px]">{day.title}</h2>
+                                                    <h2 className="text-neutral-800 font-normal text-[10px]">{day.title}</h2>
                                                 </div>
                                         ))
                                         : tour.en.itinerary.map((day, index) => (
-                                            <div key={index} className={`flex gap-3 flex-col items-center justify-center text-center snap-center cursor-pointer
-                                            border border-neutral-200 py-3 px-2 min-w-[150px] md:min-w-[250px] ${activeItineraryDay === index ? 'border-t-neutral-800 border-t-2' : ''}`} 
+                                            <div key={index} className={`flex gap-2 flex-col items-center justify-center text-center snap-center cursor-pointer
+                                            border border-neutral-200 py-8 px-2 min-w-[150px] md:min-w-[250px] ${activeItineraryDay === index ? 'border-t-neutral-800 border-t-2' : ''}`} 
                                             onClick={() => setActiveItineraryDay(index)}>
                                                 <h1 className="text-neutral-900 font-semibold text-base">{`Day ${index + 1}`}</h1>
-                                                <h2 className="text-neutral-700 font-normal text-[10px]">{day.title}</h2>
+                                                <h2 className="text-neutral-800 font-normal text-[10px]">{day.title}</h2>
                                             </div>
                                         ))
                                     }
@@ -421,14 +489,14 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                                                     <div className="">
                                                         {activity.time && <h1 className="text-neutral-900 font-semibold text-base leading-none mb-1">{activity.time}</h1>}
                                                         {typeof activity.description === 'string' 
-                                                        ? <p className={`text-neutral-700 font-normal ${activity.time ? 'text-base' : 'text-lg font-medium'} `}>
+                                                        ? <p className={`text-neutral-900 font-normal ${activity.time ? 'text-base' : 'text-lg font-medium'} `}>
                                                         {activity.description}
                                                         </p>
                                                         : <div className="flex gap-2 flex-col">
-                                                            <h1 className="text-neutral-700 font-normal text-base">{activity.description.heading}</h1>
+                                                            <h1 className="text-neutral-900 font-normal text-base">{activity.description.heading}</h1>
                                                             <ul className="flex gap-1 flex-col list-inside list-disc">
                                                                 {activity.description.bulletPoints.map((point, index) => 
-                                                                    <li className="text-neutral-700 font-normal text-sm" key={index}>{point}</li>
+                                                                    <li className="text-neutral-900 font-normal text-sm" key={index}>{point}</li>
                                                                 )}
                                                             </ul>
                                                         </div>
@@ -543,6 +611,54 @@ handleEmailChange, messageValue, handleMessageChange, validate, emailInputRef, e
                 </form>
                 </div>
             </main>
+            
+            {/* price chart */}
+            <div className={`z-40 bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 bg-white rounded-[30px] p-4 md:p-12 shadow-card-bold
+                ${priceChartVisible ? "fixed" : "hidden"} min-w-price-chart`} ref={priceChartRef}>
+                <table {...getTableProps()} className="w-full text-center rounded-xl overflow-hidden shadow-even">
+                    <thead className="bg-primary-dark border-b text-neutral-100">
+                        {
+                            headerGroups.map((headerGroup) => (
+                                <>
+                                    <tr {...headerGroup.getHeaderGroupProps()}>
+                                        {
+                                            headerGroup.headers.map(column => (
+                                                <>
+                                                    <th {...column.getHeaderProps()} className="py-4 px-10">
+                                                        {column.render('Header')}
+                                                    </th>
+                                                </>
+                                            ))
+                                        }
+                                    </tr>
+                                </>
+                            ))
+                        }
+                    </thead>
+                    <tbody {...getTableBodyProps()}>
+                        {rows.map(row => {
+                            prepareRow(row);
+                            return (
+                                <>
+                                    <tr {...row.getRowProps()} className='border-b bg-white'>
+                                        {
+                                            row.cells.map(cell => (
+                                                <>
+                                                    <td {...cell.getCellProps()} className="py-4 px-10">
+                                                        {cell.render('Cell')}
+                                                    </td>
+                                                </>
+                                            ))
+                                        }
+                                    </tr>
+                                </>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </div>
+
+
             {/* pop up appears when successfully submit form */}
             <div className={`fixed right-1/2 translate-x-1/2 px-8 py-4 rounded-2xl z-30
                 bg-white dark:bg-semi-black transition-all duration-300 pointer-events-none 

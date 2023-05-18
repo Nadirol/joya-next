@@ -57,7 +57,8 @@
     "days": "days",
     "night": "night",
     "nights": "nights",
-    "fullPackage": "Full Package",
+    "fullPackage": "Full package",
+    "viewPriceDetails": "View price details",
     "destinations": "Destinations",
     "duration": "Duration",
     "flexible": "Flexible",
@@ -75,7 +76,7 @@
     "formThanks": "Your message is sent. Thanks for contacting us!",
     "contactWithUs": "CONTACT US",
     "contactBannerHeading": "Our active support team is always here to help you",
-    "partnerTourHeading": "Our Upcoming Tours",
+    "partnerTourHeading": "TRAVEL ABROAD",
     "highlights": "Highlights",
     "priceIncludes": "Price Includes",
     "priceExcludes": "Price Excludes",
@@ -84,5 +85,9 @@
     "extras": "Additional Information",
     "itinerary": "Itinerary",
     "discountConditions": "Discount Conditions",
-    "transports": "Transportation"
+    "transports": "Transportation",
+    "date": "Date",
+    "adultPrice": "Adult price",
+    "childrenPrice": "Children price",
+    "surcharge": "Surcharge"
 }

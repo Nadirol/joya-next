@@ -14,7 +14,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin","vietnamese"]
 });
 
-import { i18n, useTranslation } from "next-i18next"
+import { useTranslation } from "next-i18next"
 import type { GetStaticProps, InferGetStaticPropsType, GetStaticPaths } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Header from "@/components/Header";
@@ -324,6 +324,7 @@ export default function Tour() {
                 emailInputRef={emailInputRef}
                 emailValid={emailValid}
                 emailWarning={emailWarning}
+                useClickDetector={useClickDetector}
             />
         </>
 

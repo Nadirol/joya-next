@@ -14,10 +14,19 @@ export interface partnerTour {
     image: string
     
     price: number
+    
+    prices: {
+        dates: string
+        adultPrice: string 
+        childrenPrice: string | null
+        surcharge: string | null
+    }[] | null,
+
     duration: {
         days: number,
         nights: number
     }
+
     tourType: string
     vi: tourContent
     en: tourContent
@@ -47,3 +56,4 @@ interface activity {
     time: string | null
     description: string | { heading: string, bulletPoints: string[] }
 }
+

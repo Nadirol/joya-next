@@ -19,7 +19,7 @@ import CustomTours from '@/components/main/CustomTours';
 import ThemeTour from '@/components/main/ThemeTours';
 import ContactBanner from '@/components/main/ContactBanner';
 import Head from 'next/head';
-import PartnerTours from '@/components/main/PartnerTours';
+import AbroadTours from '@/components/main/AbroadTours';
 import Values from '@/components/main/Values';
 import Script from 'next/script';
 
@@ -40,7 +40,7 @@ export default function Home() {
         <Grandtours t={t}/>
         <DayTours t={t}/>
         <Values t={t}/>
-        <PartnerTours t={t}/>
+        <AbroadTours t={t}/>
         <ThemeTour t={t}/>
         <CustomTours t={t}/>
         <ContactBanner t={t}/>

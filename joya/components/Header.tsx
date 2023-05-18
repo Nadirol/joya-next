@@ -3,7 +3,7 @@
 // @ts-nocheck
 import { logoLight, menuIcon, closeIcon, homeIcon, aboutIcon, planeIcon, phoneIcon, logoLightLarge, } from "@/public/assets"
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -58,7 +58,7 @@ const Header = ({ t }: { t: TFunction }) => {
             <Image src={logoLight} alt="" className="w-12 md:w-16 aspect-square"/>
           </Link>
 
-          <ul className="hidden xl:flex gap-[5.25rem]">
+          <ul className="hidden xl:flex gap-[4rem]">
             <li className="navlink-underline inline-block relative">
               <Link href={`/${i18n?.language}`} className="text-neutral-800 font-medium text-base leading-5 [&:last-child]:mr-0">{t('home')}</Link>
             </li>

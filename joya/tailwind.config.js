@@ -20,6 +20,7 @@ module.exports = {
         'input-field': 'min(320px, 100%)',
         'input-field-md': 'min(420px, 100%)',
         'form': 'min(570px, 100% - 4rem)',
+        'price-chart': 'min(1080px, 100% - 4rem)',
       },
       fontFamily: {
         'plus-jakarta': "'Plus Jakarta Sans', sans-serif;"
@@ -39,7 +40,7 @@ module.exports = {
         'neutral-800': 'rgba(72, 71, 71, 1)',
         
         'filter-dark': 'rgba(0, 0, 0, 0.4)',
-
+        'filter-light': 'rgba(240, 240, 240, 0.1)',
       },
       boxShadow: {  
         'button': '0px 0px 2px rgba(0, 0, 0, 0.25)',
@@ -47,7 +48,8 @@ module.exports = {
         'card': '1px 1px 1px rgba(0, 0, 0, 0.25)',
         'card-semibold': '1px 2px 2px rgba(0, 0, 0, 0.25)',
         'card-extrasemibold': '1px 2px 6px rgba(0, 0, 0, 0.25)',
-        'card-bold': '0px 1px 6px rgba(0, 0, 0, 0.25)'
+        'card-bold': '0px 1px 6px rgba(0, 0, 0, 0.25)',
+        'even': '0px 0px 3px rgba(0, 0, 0, 0.25)'
       },
       gridTemplateColumns: {
         'categories': '280px 1fr',
