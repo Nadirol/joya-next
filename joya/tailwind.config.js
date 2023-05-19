@@ -20,7 +20,7 @@ module.exports = {
         'input-field': 'min(320px, 100%)',
         'input-field-md': 'min(420px, 100%)',
         'form': 'min(570px, 100% - 4rem)',
-        'price-chart': 'min(1080px, 100% - 4rem)',
+        'price-chart': 'min(1080px, 100% - 1rem)',
       },
       fontFamily: {
         'plus-jakarta': "'Plus Jakarta Sans', sans-serif;"

@@ -51,7 +51,7 @@ const Header = ({ t }: { t: TFunction }) => {
     }
 
     return (
-      <header className="relative -xl:sticky top-0 left-0 z-30">
+      <header className="relative -xl:sticky top-0 left-0 z-20">
         <nav className="bg-white flex justify-between items-center w-header 
           mx-auto py-4 xl:py-6 -xl:px-4 relative">
           <Link href={`/${i18n?.language}`}>
@@ -109,7 +109,7 @@ const Header = ({ t }: { t: TFunction }) => {
           className={`${sidenavOpened ? 'fixed' : 'hidden'} xl:hidden top-8 md:top-12 right-4 z-30`}>
           <Image src={closeIcon} alt="close icon" className="md:w-6 aspect-square"/>
         </button>
-        <div className={`w-sidenav h-screen min-h-full shadow-card-bold fixed right-0 top-0 bg-white z-20 
+        <div className={`w-sidenav h-screen min-h-full shadow-card-bold fixed right-0 top-0 bg-white z-25
           ${sidenavOpened ? 'translate-x-0' : 'translate-x-[100%]'} transition-all duration-300
           flex gap-[1.875rem] flex-col items-center py-[3.75rem] mx-auto xl:hidden`}>
           <Link href="/">

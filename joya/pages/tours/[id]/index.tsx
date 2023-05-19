@@ -92,11 +92,14 @@ export default function Tour() {
     };
 
     const hideBookForm = () => {
-        setBookFormVisible(false)
+        setBookFormVisible(false);
+        setDarkFilterVisible(false)
     }
 
     const [bookFormVisible, setBookFormVisible] = useState(false);
     const bookFormRef = useRef(null);
+
+    const [darkFilterVisible, setDarkFilterVisible] = useState(false);
 
     useClickDetector(bookFormRef, hideBookForm);
   
@@ -325,6 +328,8 @@ export default function Tour() {
                 emailValid={emailValid}
                 emailWarning={emailWarning}
                 useClickDetector={useClickDetector}
+                darkFilterVisible={darkFilterVisible}
+                setDarkFilterVisible={setDarkFilterVisible}
             />
         </>
 

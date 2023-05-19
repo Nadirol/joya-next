@@ -89,5 +89,8 @@
     "date": "Date",
     "adultPrice": "Adult price",
     "childrenPrice": "Children price",
-    "surcharge": "Surcharge"
+    "surcharge": "Surcharge",
+    "showMore": "Show more",
+    "showLess": "Show less"
+
 }

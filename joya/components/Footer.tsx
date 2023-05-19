@@ -9,10 +9,10 @@ const Footer = () => {
     const { t } = useTranslation();
 
     return (
-        <div className="bg-primary-dark">
+        <div className="bg-primary-dark relative z-10">
             <div className="w-container mx-auto py-12 xl:py-20 text-neutral-100 grid grid-footer xl:grid-cols-footer	
-                 -xl:gap-8 -xl:flex-col -xl:items-center -xl:text-center border-b border-neutral-800">
-                <div className="flex flex-col">
+                 -xl:gap-8 -xl:flex-col border-b border-neutral-800">
+                <div className="flex flex-col -xl:items-center">
                     <Link href="/" className="mb-4 -xl:mx-auto w-fit">
                         <Image src={logoDark} alt="brand logo" className="w-[6rem] aspect-square"/>
                     </Link>
@@ -30,10 +30,10 @@ const Footer = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="grid -md:gap-8 grid-rows-1 md:grid-cols-2">
+                <div className="grid -md:gap-8 grid-rows-1 md:grid-cols-2 -md:text-center">
                     <div className="flex gap-4 flex-col md:justify-between">
                         <h1 className="font-medium text-base">{t('address')}: &nbsp; <span className="font-normal text-neutral-200"> {t('addressDetails')}</span></h1>
-                        <div className="flex gap-2 -xl:mx-auto">
+                        <div className="flex gap-2 -md:mx-auto">
                             <h1 className="font-semibold text-base">{t('phoneNumber')}: 
                             </h1>
                             <div className="">
@@ -46,7 +46,7 @@ const Footer = () => {
                             <Link href="https://www.joya.com.vn" className="font-normal text-neutral-200">www.joya.com.vn</Link>
                         </h1> */}
                     </div>
-                    <div className="flex gap-4 flex-col xl:ml-auto">
+                    <div className="flex gap-4 flex-col mx-auto -md:text-center xl:ml-auto">
                         <h1 className="font-semibold text-lg">{t('links')}</h1>
                         <ul className="flex -xl:gap-3 flex-col xl:justify-between h-full text-neutral-200">
                             <li>

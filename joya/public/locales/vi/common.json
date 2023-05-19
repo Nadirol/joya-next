@@ -89,5 +89,7 @@
     "date": "Ngày khởi hành",
     "adultPrice": "Giá cho người lớn",
     "childrenPrice": "Giá cho trẻ em",
-    "surcharge": "Phụ thu"
+    "surcharge": "Phụ thu",
+    "showMore": "Xem thêm",
+    "showLess": "Thu gọn"
 }
