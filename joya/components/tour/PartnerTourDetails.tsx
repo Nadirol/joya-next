@@ -141,8 +141,8 @@ darkFilterVisible, setDarkFilterVisible }:
             </Head>
             <div className={plusJakartaSans.className}>
                 <Header t={t}/>
-                <main className="w-container mx-auto mb-8 flex gap-12 flex-col relative z-10">
-                    <div className="grid gap-8 xl:gap-[4rem] md:grid-cols-details pt-1 xl:min-h-[400px]">
+                <main className="mb-8 flex gap-12 flex-col relative z-10 overflow-x-visible">
+                    <div className="w-container mx-auto grid gap-8 xl:gap-[4rem] md:grid-cols-details pt-1 xl:min-h-[400px]">
                         <div className="rounded-[18px] overflow-hidden w-full xl:h-[400px] relative 
                         before:absolute before:inset-0 before:bg-filter-light before:w-full before:h-full before:z-20
                         [&:hover>img]:scale-[1.02] [&:hover]:before:block before:hidden before:transition-all before:duration-300">
@@ -214,7 +214,7 @@ darkFilterVisible, setDarkFilterVisible }:
                         </div>
                     </div>
 
-                    <div className="grid gap-8 xl:gap-[4rem] md:grid-cols-details">
+                    <div className="w-container mx-auto grid gap-8 xl:gap-[4rem] md:grid-cols-details">
                         <div className="flex gap-5 flex-col">
                             <div className="flex gap-2 flex-col">
                                 <h1 className="text-neutral-900 font-semibold text-xl md:text-3xl xl:w-3/4">
@@ -458,7 +458,7 @@ darkFilterVisible, setDarkFilterVisible }:
                         </div>
                     </div>
                     {(tour.vi.itinerary && tour.en.itinerary) && 
-                        <div className="flex gap-8 flex-col">
+                        <div className="w-container mx-auto flex gap-8 flex-col">
                             <h1 className="text-neutral-900 font-semibold text-2xl xl:text-3xl">{t('itinerary')}</h1>
                             <div className="">
                                 <div className="relative z-10">
