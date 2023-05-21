@@ -21,6 +21,7 @@ module.exports = {
         'input-field-md': 'min(420px, 100%)',
         'form': 'min(570px, 100% - 4rem)',
         'price-chart': 'min(1080px, 100% - 1rem)',
+        'tour-section-header': 'min(80vw, 100% - 2rem)'
       },
       fontFamily: {
         'plus-jakarta': "'Plus Jakarta Sans', sans-serif;"

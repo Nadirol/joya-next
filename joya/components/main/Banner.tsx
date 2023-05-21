@@ -5,7 +5,7 @@ import Image from "next/image";
 const Banner = ({ t }: { t: TFunction }) => {
 
     return (
-        <div className=" relative md:mb-[6rem]">
+        <div className="w-container mx-auto relative md:mb-[6rem]">
             <Image src={banner} alt="banner" className="w-full rounded-[30px] object-contain"/>
             <div className="bg-white flex gap-2.5 -md:flex-col md:absolute md:bottom-0 md:right-1/2 md:translate-x-1/2 md:translate-y-1/2 
             px-10 py-6 rounded-3xl md:shadow-card-semibold -md:hidden">
