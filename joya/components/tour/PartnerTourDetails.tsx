@@ -146,7 +146,7 @@ darkFilterVisible, setDarkFilterVisible }:
                         <div className="rounded-[18px] overflow-hidden w-full xl:h-[400px] relative 
                         before:absolute before:inset-0 before:bg-filter-light before:w-full before:h-full before:z-20
                         [&:hover>img]:scale-[1.02] [&:hover]:before:block before:hidden before:transition-all before:duration-300">
-                            <Image src={tour.image} width={600} height={400} alt="tour image" 
+                            <Image src={typeof tour.image === 'string' ? tour.image : tour.image[0]} width={600} height={400} alt="tour image" 
                             className="shadow-card-bold object-cover rounded-[18px] 
                             hover:scale-[1.02] transition-all duration-300 w-full relative"/>
                         </div>
@@ -291,25 +291,47 @@ darkFilterVisible, setDarkFilterVisible }:
                                                         {item.heading}
                                                         <ul className="flex gap-1 flex-col list-inside list-disc ml-4">
                                                             {item.bulletPoints.map((point, index) => 
-                                                                <li className="text-neutral-900 font-normal text-xs" key={index}>{point}</li>
+                                                                typeof point === "string" 
+                                                                ? (<li className="text-neutral-900 font-normal text-xs" key={index}>{point}</li>)
+                                                                : (
+                                                                <ul key={index}>
+                                                                    <h1>{point.heading}</h1>
+                                                                    {point.bulletPoints.map((p, index) => 
+                                                                        <li key={index}>
+                                                                            {p}
+                                                                        </li>
+                                                                    )}
+                                                                </ul>
+                                                                )
                                                             )}
                                                         </ul>
                                                     </li>
                                                 )
                                             )
                                             : tour.en.priceIncludes.map((item, index) =>
-                                                typeof item === "string" 
-                                                ? (<li key={index} className="text-neutral-800 font-normal text-sm">{item}</li>)
-                                                : (
-                                                    <li key={index} className=" text-neutral-800 font-normal text-sm">
-                                                        {item.heading}
-                                                        <ul className="flex gap-1 flex-col list-inside list-disc ml-4">
-                                                            {item.bulletPoints.map((point, index) => 
-                                                                <li className="text-neutral-700 font-normal text-xs" key={index}>{point}</li>
-                                                            )}
-                                                        </ul>
-                                                    </li>
-                                                )
+                                            typeof item === "string" 
+                                            ? (<li key={index} className="text-neutral-900 font-normal text-sm">{item}</li>)
+                                            : (
+                                                <li key={index} className=" text-neutral-900 font-normal text-sm">
+                                                    {item.heading}
+                                                    <ul className="flex gap-1 flex-col list-inside list-disc ml-4">
+                                                        {item.bulletPoints.map((point, index) => 
+                                                            typeof point === "string" 
+                                                            ? (<li className="text-neutral-900 font-normal text-xs" key={index}>{point}</li>)
+                                                            : (
+                                                            <ul key={index}>
+                                                                <h1>{point.heading}</h1>
+                                                                {point.bulletPoints.map((p, index) => 
+                                                                    <li key={index}>
+                                                                        {p}
+                                                                    </li>
+                                                                )}
+                                                            </ul>
+                                                            )
+                                                        )}
+                                                    </ul>
+                                                </li>
+                                            )
                                             )
                                         }
                                     </ul>
@@ -327,20 +349,59 @@ darkFilterVisible, setDarkFilterVisible }:
                                 <div className={`grid ${priceExcludesVisible ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} transition-[grid-template-rows] duration-500`}>
                                     <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden mb-2`}>
                                         {i18n?.language === "vi"
-                                            ? tour.vi.priceExcludes.map(item => (
-                                                <>
-                                                    <li className="text-neutral-900 font-normal text-sm">{item}</li>
-                                                </>
+                                            ? tour.vi.priceExcludes.map((item, index) => (
+                                                typeof item === "string" 
+                                                ? (<li key={index} className="text-neutral-900 font-normal text-sm">{item}</li>)
+                                                : (
+                                                    <li key={index} className=" text-neutral-900 font-normal text-sm">
+                                                        {item.heading}
+                                                        <ul className="flex gap-1 flex-col list-inside list-disc ml-4">
+                                                            {item.bulletPoints.map((point, index) => 
+                                                                typeof point === "string" 
+                                                                ? (<li className="text-neutral-900 font-normal text-xs" key={index}>{point}</li>)
+                                                                : (
+                                                                <ul key={index}>
+                                                                    <h1>{point.heading}</h1>
+                                                                    {point.bulletPoints.map((p, index) => 
+                                                                        <li key={index}>
+                                                                            {p}
+                                                                        </li>
+                                                                    )}
+                                                                </ul>
+                                                                )
+                                                            )}
+                                                        </ul>
+                                                    </li>
+                                                )
                                             ))
-                                            : tour.en.priceExcludes.map(item => (
-                                                <>
-                                                    <li className="text-neutral-900 font-normal text-sm">{item}</li>
-                                                </>
+                                            : tour.en.priceExcludes.map((item, index) => (
+                                                typeof item === "string" 
+                                                ? (<li key={index} className="text-neutral-900 font-normal text-sm">{item}</li>)
+                                                : (
+                                                    <li key={index} className=" text-neutral-900 font-normal text-sm">
+                                                        {item.heading}
+                                                        <ul className="flex gap-1 flex-col list-inside list-disc ml-4">
+                                                            {item.bulletPoints.map((point, index) => 
+                                                                typeof point === "string" 
+                                                                ? (<li className="text-neutral-900 font-normal text-xs" key={index}>{point}</li>)
+                                                                : (
+                                                                <ul key={index}>
+                                                                    <h1>{point.heading}</h1>
+                                                                    {point.bulletPoints.map((p, index) => 
+                                                                        <li key={index}>
+                                                                            {p}
+                                                                        </li>
+                                                                    )}
+                                                                </ul>
+                                                                )
+                                                            )}
+                                                        </ul>
+                                                    </li>
+                                                )
                                             ))
                                         }
                                     </ul>
                                 </div>
-                                
                             </div> 
                             }
 
@@ -354,15 +415,55 @@ darkFilterVisible, setDarkFilterVisible }:
                                 <div className={`grid ${notesVisible ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} transition-[grid-template-rows] duration-500`}>
                                     <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden mb-2`}>
                                         {i18n?.language === "vi"
-                                            ? tour.vi.notes.map(item => (
-                                                <>
-                                                    <li className="text-neutral-900 font-normal text-sm">{item}</li>
-                                                </>
+                                            ? tour.vi.notes.map((item, index) => (
+                                                typeof item === "string" 
+                                                ? (<li key={index} className="text-neutral-900 font-normal text-sm">{item}</li>)
+                                                : (
+                                                    <li key={index} className=" text-neutral-900 font-normal text-sm">
+                                                        {item.heading}
+                                                        <ul className="flex gap-1 flex-col list-inside list-disc ml-4">
+                                                            {item.bulletPoints.map((point, index) => 
+                                                                typeof point === "string" 
+                                                                ? (<li className="text-neutral-900 font-normal text-xs" key={index}>{point}</li>)
+                                                                : (
+                                                                <ul key={index}>
+                                                                    <h1>{point.heading}</h1>
+                                                                    {point.bulletPoints.map((p, index) => 
+                                                                        <li key={index}>
+                                                                            {p}
+                                                                        </li>
+                                                                    )}
+                                                                </ul>
+                                                                )
+                                                            )}
+                                                        </ul>
+                                                    </li>
+                                                )
                                             ))
-                                            : tour.en.notes.map(item => (
-                                                <>
-                                                    <li className="text-neutral-900 font-normal text-sm">{item}</li>
-                                                </>
+                                            : tour.en.notes.map((item, index) => (
+                                                typeof item === "string" 
+                                                ? (<li key={index} className="text-neutral-900 font-normal text-sm">{item}</li>)
+                                                : (
+                                                    <li key={index} className=" text-neutral-900 font-normal text-sm">
+                                                        {item.heading}
+                                                        <ul className="flex gap-1 flex-col list-inside list-disc ml-4">
+                                                            {item.bulletPoints.map((point, index) => 
+                                                                typeof point === "string" 
+                                                                ? (<li className="text-neutral-900 font-normal text-xs" key={index}>{point}</li>)
+                                                                : (
+                                                                <ul key={index}>
+                                                                    <h1>{point.heading}</h1>
+                                                                    {point.bulletPoints.map((p, index) => 
+                                                                        <li key={index}>
+                                                                            {p}
+                                                                        </li>
+                                                                    )}
+                                                                </ul>
+                                                                )
+                                                            )}
+                                                        </ul>
+                                                    </li>
+                                                )
                                             ))
                                         }
                                     </ul>
@@ -380,15 +481,55 @@ darkFilterVisible, setDarkFilterVisible }:
                                 <div className={`grid ${forChildrenVisible ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} transition-[grid-template-rows] duration-500`}>
                                     <ul className={`flex gap-4 flex-col list-disc list-inside overflow-hidden mb-2`}>
                                         {i18n?.language === "vi"
-                                            ? tour.vi.forChildren.map(item => (
-                                                <>
-                                                    <li className="text-neutral-900 font-normal text-sm">{item}</li>
-                                                </>
+                                            ? tour.vi.forChildren.map((item, index) => (
+                                                typeof item === "string" 
+                                                ? (<li key={index} className="text-neutral-900 font-normal text-sm">{item}</li>)
+                                                : (
+                                                    <li key={index} className=" text-neutral-900 font-normal text-sm">
+                                                        {item.heading}
+                                                        <ul className="flex gap-1 flex-col list-inside list-disc ml-4">
+                                                            {item.bulletPoints.map((point, index) => 
+                                                                typeof point === "string" 
+                                                                ? (<li className="text-neutral-900 font-normal text-xs" key={index}>{point}</li>)
+                                                                : (
+                                                                <ul key={index}>
+                                                                    <h1>{point.heading}</h1>
+                                                                    {point.bulletPoints.map((p, index) => 
+                                                                        <li key={index}>
+                                                                            {p}
+                                                                        </li>
+                                                                    )}
+                                                                </ul>
+                                                                )
+                                                            )}
+                                                        </ul>
+                                                    </li>
+                                                )
                                             ))
-                                            : tour.en.forChildren.map(item => (
-                                                <>
-                                                    <li className="text-neutral-900 font-normal text-sm">{item}</li>
-                                                </>
+                                            : tour.en.forChildren.map((item, index) => (
+                                                typeof item === "string" 
+                                                ? (<li key={index} className="text-neutral-900 font-normal text-sm">{item}</li>)
+                                                : (
+                                                    <li key={index} className=" text-neutral-900 font-normal text-sm">
+                                                        {item.heading}
+                                                        <ul className="flex gap-1 flex-col list-inside list-disc ml-4">
+                                                            {item.bulletPoints.map((point, index) => 
+                                                                typeof point === "string" 
+                                                                ? (<li className="text-neutral-900 font-normal text-xs" key={index}>{point}</li>)
+                                                                : (
+                                                                <ul key={index}>
+                                                                    <h1>{point.heading}</h1>
+                                                                    {point.bulletPoints.map((p, index) => 
+                                                                        <li key={index}>
+                                                                            {p}
+                                                                        </li>
+                                                                    )}
+                                                                </ul>
+                                                                )
+                                                            )}
+                                                        </ul>
+                                                    </li>
+                                                )
                                             ))
                                         }
                                     </ul>
@@ -408,20 +549,60 @@ darkFilterVisible, setDarkFilterVisible }:
                                             ? 
                                             <>
                                                 <h1 className="text-neutral-900 font-normal text-base">{tour.vi.extras.title}</h1>
-                                                {tour.vi.extras.bulletPoints.map(point => (
-                                                    <>
-                                                        <li className="text-neutral-900 font-normal text-sm">{point}</li>
-                                                    </>
+                                                {tour.vi.extras.bulletPoints.map((point, index) => (
+                                                    typeof point === "string" 
+                                                    ? (<li key={index} className="text-neutral-900 font-normal text-sm">{point}</li>)
+                                                    : (
+                                                        <li key={index} className=" text-neutral-900 font-normal text-sm">
+                                                            {point.heading}
+                                                            <ul className="flex gap-1 flex-col list-inside list-disc ml-4">
+                                                                {point.bulletPoints.map((point2, index) => 
+                                                                    typeof point2 === "string" 
+                                                                    ? (<li className="text-neutral-900 font-normal text-xs" key={index}>{point2}</li>)
+                                                                    : (
+                                                                    <ul key={index}>
+                                                                        <h1>{point2.heading}</h1>
+                                                                        {point2.bulletPoints.map((p, index) => 
+                                                                            <li key={index}>
+                                                                                {p}
+                                                                            </li>
+                                                                        )}
+                                                                    </ul>
+                                                                    )
+                                                                )}
+                                                            </ul>
+                                                        </li>
+                                                    )
                                                 ))}
                                             </>
                                             
                                             : 
                                             <>
                                                 <h1 className="text-neutral-900 font-normal text-base">{tour.en.extras.title}</h1>
-                                                {tour.en.extras.bulletPoints.map(point => (
-                                                    <>
-                                                        <li className="text-neutral-900 font-normal text-sm">{point}</li>
-                                                    </>
+                                                {tour.en.extras.bulletPoints.map((point, index) => (
+                                                    typeof point === "string" 
+                                                    ? (<li key={index} className="text-neutral-900 font-normal text-sm">{point}</li>)
+                                                    : (
+                                                        <li key={index} className=" text-neutral-900 font-normal text-sm">
+                                                            {point.heading}
+                                                            <ul className="flex gap-1 flex-col list-inside list-disc ml-4">
+                                                                {point.bulletPoints.map((point2, index) => 
+                                                                    typeof point2 === "string" 
+                                                                    ? (<li className="text-neutral-900 font-normal text-xs" key={index}>{point2}</li>)
+                                                                    : (
+                                                                    <ul key={index}>
+                                                                        <h1>{point2.heading}</h1>
+                                                                        {point2.bulletPoints.map((p, index) => 
+                                                                            <li key={index}>
+                                                                                {p}
+                                                                            </li>
+                                                                        )}
+                                                                    </ul>
+                                                                    )
+                                                                )}
+                                                            </ul>
+                                                        </li>
+                                                    )
                                                 ))}
                                             </>
                                         }

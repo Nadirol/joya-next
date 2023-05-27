@@ -11,7 +11,7 @@ export interface tour {
 
 export interface partnerTour {
     id: string
-    image: string
+    image: string | string[]
     
     price: number
     
@@ -44,16 +44,21 @@ export interface tourContent {
         activities: activity[]
     }[]
 
-    priceIncludes: (string | { heading: string, bulletPoints: string[] })[] |  null
-    priceExcludes: string[] | null
-    notes: string[] | null
-    forChildren: string[] | null
-    extras: { title: string, bulletPoints: string[] } | null
+    priceIncludes: (string | ul)[] |  null
+    priceExcludes: (string | ul)[] | null
+    notes: (string | ul)[] | null
+    forChildren: (string | ul)[] | null
+    extras: { title: string, bulletPoints: (string | ul)[] } | null
     discountConditions: string[] | null
 }
 
 interface activity {
     time: string | null
     description: string | { heading: string, bulletPoints: string[] }
+}
+
+interface ul {
+    heading: string
+    bulletPoints: (string | { heading: string, bulletPoints: string[]})[]
 }
 
