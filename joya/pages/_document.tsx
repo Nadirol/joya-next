@@ -13,6 +13,7 @@ export default function Document() {
         <meta name="keywords" content="travel, traveling, vietnam, travel agency, travel agency near me, best travel agency, aaa travel agency, best travel agency near me, online travel agency, luxury travel agency, luxury travel vietnam"/>
         <meta name="robots" content="index, follow"/>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+        <meta name="google-site-verification" content="oHNRAy4WoLnVnvgtEujrt5arI7YHuYqjQc8OJfX7sGk" />
       </Head>
       <body>
         <Main />
