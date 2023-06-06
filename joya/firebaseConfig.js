@@ -18,6 +18,6 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore();
 export const colRef = collection(db, 'tours');
 getDocs(colRef)
-    .then((snapshot) => {
-        console.log(snapshot.docs)
-    })
+  .then((snapshot) => {
+      console.log(snapshot.docs)
+})

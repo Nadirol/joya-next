@@ -54,7 +54,8 @@ const AbroadTours = ({ t }: { t: TFunction }) => {
                     <MoveSliderButton direction="next" handleClick={nextTour}/>
                 </div>
             </div>
-            <div className="flex gap-8 md:gap-12 overflow-x-scroll scrollbar-hide snap-x snap-mandatory overscroll-x-contain overflow-y-visible pb-1"
+            <div className="flex gap-8 md:gap-12 overflow-x-scroll scrollbar-hide snap-x 
+            snap-mandatory overscroll-x-contain overflow-y-visible pb-1"
                 ref={toursSliderRef}>
                 {tours?.filter(tour => tour.tourType === "partner").map(tour => 
                     <PartnerTourCard

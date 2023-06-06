@@ -76,7 +76,6 @@ darkFilterVisible, setDarkFilterVisible }:
         console.log(sliderRef.current.scrollLeft)
     }
 
-
     const scrollSliderRight = () => {
             sliderRef.current.scrollBy({
                 top: 0,
