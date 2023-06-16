@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const { i18n } = require('./next-i18next.config')
+const { i18n } = require('./next-i18next.config');
 
 const nextConfig = {
   reactStrictMode: true,
@@ -21,6 +21,21 @@ const nextConfig = {
   },
   images: {
     domains: ['firebasestorage.googleapis.com'],
+  },
+  async headers() {
+    const headers = [];
+    if (process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview') {
+      headers.push({
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'index, follow',
+          },
+        ],
+        source: '/:path*',
+      });
+    }
+    return headers;
   },
 }
 
