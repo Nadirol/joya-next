@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.joyatravel.vn/
+
+# Sitemaps
+Sitemap: https://www.joyatravel.vn/sitemap.xml
