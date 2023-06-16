@@ -3,7 +3,7 @@
 // @ts-nocheck
 import { logoLight, menuIcon, closeIcon, homeIcon, aboutIcon, planeIcon, phoneIcon, logoLightLarge, } from "@/public/assets"
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";

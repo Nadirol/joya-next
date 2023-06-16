@@ -1,3 +1,5 @@
+/** @type {import('next-i18next').UserConfig} */
+
 const path = require('path')
 
 module.exports = {
@@ -11,4 +13,10 @@ module.exports = {
     'vi-VN': ['vi'],
     'en-US': ['en'],
   },
+  domains: [
+    {
+      domain: 'joyatravel.vn',
+      defaultLocale: 'vi'
+    }
+  ]
 }
