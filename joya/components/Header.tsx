@@ -49,6 +49,7 @@ const Header = ({ t }: { t: TFunction }) => {
       setLngDropdownOpened(false);
       router.replace(`${router.pathname === '/' ? `/${lng}` : `/${lng}${router.asPath}`}`,undefined, { locale: lng })
     }
+    console.log(i18n?.languages)
 
     return (
       <header className="relative -xl:sticky top-0 left-0 z-20">

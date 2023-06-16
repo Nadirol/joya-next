@@ -5,11 +5,12 @@ const path = require('path')
 module.exports = {
   i18n: {
     defaultLocale: 'vi',
-    locales: ['en', 'vi'],
-    localePath: path.resolve('./public/locales')
+    locales: ['vi', 'en'],
+    localePath: path.resolve('./public/locales'),
+    localeDetection: false
   },
   fallbackLng: {
-    default: ['vi'],
+    default: ['en'],
     'vi-VN': ['vi'],
     'en-US': ['en'],
   },
