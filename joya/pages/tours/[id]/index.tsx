@@ -24,6 +24,7 @@ import Grandtours from "@/components/main/Grandtours";
 import DayTours from "@/components/main/DayTours";
 import Head from "next/head";
 import PartnerTourDetails from "@/components/tour/PartnerTourDetails";
+import { NextSeo } from "next-seo";
 
 const contactEmails = 'quynhnt88@gmail.com,floris.panico@yahoo.co.uk,Nguyenthuy1095@gmail.com';
 
@@ -164,9 +165,11 @@ export default function Tour() {
 
     if (tour.tourType != "partner") return (
         <>
-            <Head>
-                <title>{tour.title}</title>
-            </Head>
+            <NextSeo
+                title={tour.title}
+                description={tour.description ? tour.description : 'Joya is a traveling agency that specializes in providing high-quality travel services to companies and corporates, as well as to high-end profiles.'}
+            />
+
             <div className={plusJakartaSans.className}>
                 <Header t={t}/>
                 <main className="w-container mx-auto mb-8 flex gap-12 flex-col relative">

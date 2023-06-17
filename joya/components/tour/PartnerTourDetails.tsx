@@ -8,9 +8,10 @@ import Image from "next/image"
 import Link from "next/link"
 import Grandtours from "../main/Grandtours"
 import DayTours from "../main/DayTours"
-import { Dispatch, MutableRefObject, SetStateAction, useRef, useState, useMemo, useEffect } from "react"
+import { Dispatch, MutableRefObject, SetStateAction, useRef, useState, useMemo } from "react"
 import { arrowDown, infoIcon, locationIcon } from "@/public/assets"
 import { Column, useTable } from "react-table"
+import { NextSeo } from "next-seo"
 
 const contactEmails = 'quynhnt88@gmail.com,floris.panico@yahoo.co.uk,Nguyenthuy1095@gmail.com';
 
@@ -135,9 +136,11 @@ darkFilterVisible, setDarkFilterVisible }:
 
     return (
         <div>
-            <Head>
-                <title>{tour.vi.title}</title>
-            </Head>
+            <NextSeo
+                title={tour.vi.title}
+                titleTemplate="%s - Joya Travel"
+                description={tour.vi.description ? tour.vi.description[0] : "Joya is a traveling agency that specializes in providing high-quality travel services to companies and corporates, as well as to high-end profiles."}
+            />
             <div className={plusJakartaSans.className}>
                 <Header t={t}/>
                 <main className="mb-8 flex gap-12 flex-col relative z-10 overflow-x-visible">
