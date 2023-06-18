@@ -139,6 +139,7 @@ darkFilterVisible, setDarkFilterVisible }:
             <NextSeo
                 title={tour.vi.title}
                 titleTemplate="%s - Joya Travel"
+                canonical={`https://www.joyatravel.vn/vi/${tour.id}`}
                 description={tour.vi.description ? tour.vi.description[0] : "Joya is a traveling agency that specializes in providing high-quality travel services to companies and corporates, as well as to high-end profiles."}
             />
             <div className={plusJakartaSans.className}>
