@@ -7,7 +7,7 @@ const Categories = ({ t }: { t: TFunction }) => {
     return (
         <div id="categories" className="w-container mx-auto bg-primary-extra-light rounded-[30px] p-8 xl:px-[6.375rem] py-7 flex flex-col gap-[2rem]">
             <div className="flex gap-4 flex-col text-center items-center">
-                <h1 className="text-neutral-800 font-semibold text-xl md:text-4xl">{t('categoryHeading1')}</h1>
+                <h1 className="text-neutral-800 font-semibold text-xl md:text-4xl space-x-4 tracking-wide">{t('categoryHeading1')}</h1>
                 <p className="text-neutral-800 font-normal text-xs md:text-lg w-4/5">
                     {t('categoryHeading2')}
                 </p>

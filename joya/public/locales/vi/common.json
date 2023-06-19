@@ -93,5 +93,8 @@
     "showMore": "Xem thêm",
     "showLess": "Thu gọn",
     "loading": "Đang tải trang...",
-    "followUs": "Theo dõi chúng tôi"
+    "followUs": "Theo dõi chúng tôi",
+    "pageNotFound": "Không tìm thấy trang",
+    "sorry404": "Xin lỗi, trang bạn vừa truy cập không tồn tại hoặc đã được rời đi",
+    "returnHome": "Về Trang Chủ"
 }

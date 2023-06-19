@@ -47,8 +47,8 @@ const AbroadTours = ({ t }: { t: TFunction }) => {
 
     return (
         <div className="w-container mx-auto flex gap-4 md:gap-10 flex-col" id="day-tours">
-            <div className="flex justify-between w-container xl:w-[80vw]">
-                <h1 className="text-neutral-900 font-semibold text-xl md:text-[1.75rem]">{t('partnerTourHeading')}</h1>
+            <div className="flex justify-between">
+                <h1 className="text-neutral-900 font-semibold text-xl md:text-[1.75rem] tracking-wide">{t('partnerTourHeading')}</h1>
                 <div className="flex gap-2.5 items-center -md:hidden">
                     <MoveSliderButton direction="prev" handleClick={prevTour}/>
                     <MoveSliderButton direction="next" handleClick={nextTour}/>

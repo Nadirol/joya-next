@@ -14,7 +14,6 @@ function App({ Component, pageProps }: AppProps) {
 
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  console.log("🚀 ~ file: _app.tsx:12 ~ App ~ loading:", loading)
 
   useEffect(() => {
     const handleStart = (url: string) => (url !== router.asPath) && setLoading(true);
@@ -30,8 +29,6 @@ function App({ Component, pageProps }: AppProps) {
       router.events.off('routeChangeError', handleComplete);
     }
   });
-
-  // comment
 
   return loading 
   ? (

@@ -224,22 +224,25 @@ darkFilterVisible, setDarkFilterVisible }:
                                 </h1>
                                 {(tour.vi.description && tour.en.description) &&
                                 <div className="flex gap-2 flex-col">
-                                {i18n?.language === "vi" 
-                                    ? tour.vi.description.map((desc, index) => (
-                                        <p key={index} className={`text-neutral-900 font-normal text-xs md:text-base
-                                        ${(index >= 1 && !descriptionMoreVisible) ? 'hidden' : ''}`}>
-                                            {desc}
-                                        </p>
-                                    ))
-                                    : tour.en.description.map((desc, index) => (
-                                        <p key={index} className={`text-neutral-900 font-normal text-xs md:text-base
-                                        ${(index >= 1 && !descriptionMoreVisible) ? 'hidden' : ''}`}>
-                                            {desc}
-                                        </p>
-                                    ))
-                                }
+                                    <div className=" pb-4 md:pb-8 border-b border-neutral-300">
+                                        {i18n?.language === "vi" 
+                                            ? tour.vi.description.map((desc, index) => (
+                                                <p key={index} className={`text-neutral-900 font-normal text-xs md:text-base
+                                                ${(index >= 1 && !descriptionMoreVisible) ? 'hidden' : ''}`}>
+                                                    {desc}
+                                                </p>
+                                            ))
+                                            : tour.en.description.map((desc, index) => (
+                                                <p key={index} className={`text-neutral-900 font-normal text-xs md:text-base
+                                                ${(index >= 1 && !descriptionMoreVisible) ? 'hidden' : ''}`}>
+                                                    {desc}
+                                                </p>
+                                            ))
+                                        }
+                                    </div>
+
                                 <button onClick={() => setDescriptionMoreVisible(state => !state)} 
-                                className={`text-neutral-900 font-normal text-xs md:text-base hover:underline w-fit mx-auto 
+                                className={`text-neutral-700 font-normal text-xs md:text-base hover:underline w-fit mx-auto hover:text-neutral-900
                                 ${tour.vi.description.length > 1 ? '' : 'hidden'}`}>
                                     {descriptionMoreVisible ? t('showLess') : t('showMore')}
                                 </button>
@@ -249,7 +252,7 @@ darkFilterVisible, setDarkFilterVisible }:
                             {(tour.vi.highlights && tour.en.highlights) &&
                             <div className="flex gap-2 flex-col">
                                 <h1 className="text-neutral-900 font-semibold text-xl md:text-2xl">{t('highlights')}</h1>
-                                <ul className="flex gap-4 flex-col list-disc list-inside">
+                                <ul className="flex gap-4 flex-col list-disc list-inside pb-4 md:pb-8 border-b border-neutral-300">
                                     {i18n?.language === "vi"
                                         ? tour.vi.highlights.map((highlight, index) => (
                                                 <li key={index} className={`text-neutral-900 font-normal text-xs md:text-base
@@ -266,7 +269,7 @@ darkFilterVisible, setDarkFilterVisible }:
                                     }
                                 </ul>
                                 <button onClick={() => setHighlightsMoreVisible(state => !state)} 
-                                className="text-neutral-900 font-normal text-xs md:text-base hover:underline w-fit mx-auto">
+                                className="text-neutral-700 font-normal text-xs md:text-base hover:underline hover:text-neutral-900 w-fit mx-auto">
                                     {highlightsMoreVisible ? t('showLess') : t('showMore')}
                                 </button>
                             </div>
