@@ -14,6 +14,7 @@ import Grandtours from '@/components/main/Grandtours';
 import Head from 'next/head';
 import DayTours from '@/components/main/DayTours';
 import AbroadTours from '@/components/main/AbroadTours';
+import ScrollToTopButton from '@/components/buttons/ScrollToTopButton';
 
 export default function Tours() {
   const { t } = useTranslation('common');
@@ -30,6 +31,7 @@ export default function Tours() {
         <DayTours t={t}/>
         <AbroadTours t={t}/>
         <Contact t={t}/>
+        <ScrollToTopButton/>
 
       </main>
       <Footer/>

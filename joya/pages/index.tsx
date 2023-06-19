@@ -18,10 +18,10 @@ import DayTours from '@/components/main/DayTours';
 import CustomTours from '@/components/main/CustomTours';
 import ThemeTour from '@/components/main/ThemeTours';
 import ContactBanner from '@/components/main/ContactBanner';
-import Head from 'next/head';
 import AbroadTours from '@/components/main/AbroadTours';
 import Values from '@/components/main/Values';
 import { NextSeo } from 'next-seo';
+import ScrollToTopButton from '@/components/buttons/ScrollToTopButton';
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -46,6 +46,7 @@ export default function Home() {
         <ThemeTour t={t}/>
         <CustomTours t={t}/>
         <ContactBanner t={t}/>
+        <ScrollToTopButton/>
       </main>
       <Footer/>
     </div>
