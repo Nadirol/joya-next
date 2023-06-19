@@ -21,15 +21,18 @@ import ContactBanner from '@/components/main/ContactBanner';
 import Head from 'next/head';
 import AbroadTours from '@/components/main/AbroadTours';
 import Values from '@/components/main/Values';
+import { NextSeo } from 'next-seo';
 
 export default function Home() {
   const { t } = useTranslation('common');
 
   return (
     <>
-    <Head>
-      <title>Joya Traveling</title>
-    </Head>
+    <NextSeo
+        title="Joya Traveling"
+        description='Joya is a traveling agency that specializes in providing high-quality travel services to companies and corporates, as well as to high-end profiles.'
+        canonical='https://www.joyatravel.vn/vi'
+    />
     <div className={plusJakartaSans.className}>
 
       <Header t={t}/>
