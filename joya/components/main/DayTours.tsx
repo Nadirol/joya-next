@@ -46,7 +46,7 @@ const DayTours = ({ t }: { t: TFunction }) => {
     };
 
     return (
-        <div className="ml-4 md:ml-[2rem] xl:ml-[160px] flex gap-4 md:gap-10 flex-col" id="day-tours">
+        <div className="w-container mx-auto flex gap-4 md:gap-10 flex-col" id="day-tours">
             <div className="flex justify-between w-container xl:w-[80vw]">
                 <h1 className="text-neutral-900 font-semibold text-xl md:text-[1.75rem]">{t('dayTourHeading')}</h1>
                 <div className="flex gap-2.5 items-center -md:hidden">
@@ -54,7 +54,7 @@ const DayTours = ({ t }: { t: TFunction }) => {
                     <MoveSliderButton direction="next" handleClick={nextTour}/>
                 </div>
             </div>
-            <div className="flex gap-8 md:gap-12 overflow-x-scroll scrollbar-hide snap-x snap-mandatory overscroll-x-contain overflow-y-visible pb-1"
+            <div className="flex gap-8 md:gap-12 overflow-x-scroll scrollbar-hide snap-x snap-mandatory overscroll-x-contain overflow-y-visible pb-1 pt-4"
                 ref={toursSliderRef}>
                 {tours?.filter(tour => tour.tourType === "day").map(tour => 
                     <TourCard 

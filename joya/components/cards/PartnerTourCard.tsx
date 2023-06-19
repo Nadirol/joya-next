@@ -13,7 +13,8 @@ const PartnerTourCard = ({ id, image, vi, en, duration, price, t }:
     price: number, vi: tourContent, en: tourContent , t: TFunction }) => {
 
     return (
-        <Link href={`${i18n?.language}/tours/${id}`} className="rounded-2xl shadow-card-semibold hover:shadow-card-extrasemibold min-w-[181px] md:min-w-[282px] snap-start overflow-hidden">
+        <Link href={`${i18n?.language}/tours/${id}`} className="rounded-2xl shadow-card-semibold hover:shadow-card-extrasemibold min-w-[181px] 
+        md:min-w-[282px] snap-start overflow-hidden top-0 hover:top-[-4px] relative transition-all">
             <div className="w-[181px] md:w-[282px] h-[98px] md:h-[192px] overflow-hidden flex items-center justify-center">
                 <Image src={typeof image === 'string' ? image : image[0]} alt="tour preview image" width={282} height={192} 
                 className="hover:scale-[1.1] transition-all duration-300 object-cover h-[192px]"/>
