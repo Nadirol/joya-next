@@ -14,9 +14,14 @@ function App({ Component, pageProps }: AppProps) {
 
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  console.log("🚀 ~ file: _app.tsx:17 ~ App ~ loading:", loading)
 
   useEffect(() => {
-    const handleStart = (url: string) => (url !== router.asPath) && setLoading(true);
+    const handleStart = (url: string) => { 
+      (url !== router.asPath) && setLoading(true); 
+      console.log("🚀 ~ file: _app.tsx:21 ~ useEffect ~ (url !== router.asPath):", (url !== router.asPath))
+
+    }
     const handleComplete = (url: string) => (url !== router.asPath) && setTimeout(() => setLoading(false), 2000);
 
     router.events.on('routeChangeStart', handleStart);

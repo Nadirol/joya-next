@@ -12,7 +12,7 @@ const TourCard = ({ id, image, title, destinations, duration, price, t }:
     price: number  | null, t: TFunction }) => {
 
     return (
-        <Link href={ { pathname:`/tours/[id]`, query: { id: id } } } 
+        <Link href={`/${i18n?.language}/tours/${id}`}
         className="rounded-2xl shadow-card hover:shadow-card-semibold min-w-[181px] md:min-w-[282px] md:w-[282px] snap-start overflow-hidden
         top-0 hover:top-[-4px] relative transition-all">
             <div className="w-[181px] md:w-[282px] h-[98px] md:h-[192px] overflow-hidden flex items-center justify-center">
