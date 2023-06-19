@@ -1,4 +1,3 @@
-import Head from "next/head"
 import Header from "../Header"
 import { TFunction, i18n } from "next-i18next"
 import Footer from "../Footer"
@@ -150,8 +149,8 @@ darkFilterVisible, setDarkFilterVisible }:
                         before:absolute before:inset-0 before:bg-filter-light before:w-full before:h-full before:z-20
                         [&:hover>img]:scale-[1.02] [&:hover]:before:block before:hidden before:transition-all before:duration-300">
                             <Image src={typeof tour.image === 'string' ? tour.image : tour.image[0]} width={600} height={400} alt="tour image" 
-                            className="shadow-card-bold object-cover rounded-[18px] 
-                            hover:scale-[1.02] transition-all duration-300 w-full relative"/>
+                            className="shadow-card-bold object-cover h-full w-full rounded-[18px] 
+                            hover:scale-[1.02] transition-all duration-300 relative"/>
                         </div>
                         <div className="shadow-even rounded-[18px] p-6 flex -md:gap-6 gap-8 flex-col justify-between">
                             <div className="flex gap-4 flex-col">
@@ -818,7 +817,7 @@ darkFilterVisible, setDarkFilterVisible }:
 
                 {/* price chart */}
                 <div className={`z-40 bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 bg-white rounded-xl md:rounded-[30px] p-4 md:p-12 shadow-card-bold
-                    ${priceChartVisible ? "fixed" : "hidden"} w-price-chart overflow-scroll scrollbar-hide p-12`} ref={priceChartRef}>
+                    ${priceChartVisible ? "fixed" : "hidden"} w-price-chart h-[80vh] overflow-auto overscroll-y-contain scrollbar-hide p-12`} ref={priceChartRef}>
                     <table {...getTableProps()} className="w-full text-center rounded-xl overflow-hidden shadow-even">
                         <thead className="bg-primary-dark border-b text-neutral-100">
                             {
