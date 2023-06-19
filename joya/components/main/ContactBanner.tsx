@@ -15,23 +15,27 @@ const ContactBanner = ({ t }: { t: TFunction }) => {
                     <div className="flex gap-4 items-center">
                         <Image src={phoneIcon} alt="phone icon" />
                         <div className="flex  flex-col">
-                            <h1 className="text-neutral-800 font-xs text-base">ENG: 0379748073</h1>
-                            <h1 className="text-neutral-800 font-normal text-base">VN: 0985080324</h1>
+                            <h1 className="text-neutral-800 font-normal text-xl"><span className="font-medium">Tiếng Việt</span>: 0985080324</h1>
+                            <h1 className="text-neutral-800 font-xs text-xl"> <span className="font-medium">English</span>: 0379748073</h1>
                         </div>
                     </div>
                     <div className="flex gap-4 items-center">
                         <Image src={mailIcon} alt="phone icon" />
-                        <h1 className="text-neutral-800 font-normal text-base">sales@joyatravel.vn</h1>
+                        <h1 className="text-neutral-800 font-medium text-xl">sales@joyatravel.vn</h1>
                     </div>
                 </div>
-                <div className="flex gap-6 items-center">
-                    <Link href="https://www.facebook.com/JOYA.TravelAgency" target="_blank">
-                        <Image src={facebookIcon} alt="facebook logo" />
-                    </Link>
-                    <Link href="https://www.instagram.com/joya.travelagency/" target="_blank">
-                    <Image src={instagramIcon} alt="instagram logo" />
-                    </Link>
+                <div className="flex gap-4 flex-col items-center">
+                    <h1 className="text-neutral-800 font-medium text-xl md:text-3xl">{t('followUs')}</h1>
+                    <div className="flex gap-6 items-center">
+                        <Link href="https://www.facebook.com/JOYA.TravelAgency" target="_blank">
+                            <Image src={facebookIcon} alt="facebook logo" />
+                        </Link>
+                        <Link href="https://www.instagram.com/joya.travelagency/" target="_blank">
+                        <Image src={instagramIcon} alt="instagram logo" />
+                        </Link>
+                    </div>
                 </div>
+
             </div>
             <Image src={heroPrivate} alt="" />
         </div>

@@ -117,13 +117,13 @@ const CustomTours = ({ t }: { t: TFunction }) => {
                   <div className="flex gap-2 flex-col">
                       <label className="text-neutral-800 font-medium text-base">{t('firstName')}</label>
                       <input type="text" name="First Name" placeholder={`${t('firstNamePlaceholder')}`} required value={firstNameValue} onChange={(e) => handleFirstNameChange(e)}
-                      className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
+                      className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base outline-1 outline-neutral-700"/>
                   </div>
                   <div className="flex gap-2 flex-col">
                       <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('lastName')}</label>
                       <input type="text" name="Last Name" placeholder={`${t('lastNamePlaceholder')}`} 
                       value={lastNameValue} onChange={(e) => handleLastNameChange(e)}
-                      className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
+                      className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base outline-1 outline-neutral-700"/>
                   </div>
                 </div>
                 <div className="flex gap-7 -md:flex-col">
@@ -131,13 +131,13 @@ const CustomTours = ({ t }: { t: TFunction }) => {
                         <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('phoneNumber')}</label>
                         <input type="number" name="Phone Number" placeholder={`${t('phoneNumberPlaceholder')}`} 
                         value={phoneNumberValue} onChange={(e) => handlePhoneNumberChange(e)}
-                        className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
+                        className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base outline-1 outline-neutral-700"/>
                     </div>
                     <div className="flex gap-2 flex-col">
                         <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('email')}</label>
                         <input type="email" name="Email" placeholder={`${t('emailPlaceholder')}`} required 
                         value={emailValue} onChange={(e) => handleEmailChange(e)}
-                        className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"
+                        className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base outline-1 outline-neutral-700"
                         ref={emailInputRef} onInput={validate}/>
                         <p className={`${emailValid ? 'text-green-600' : 'text-red-500'} font-normal text-[8px] md:text-xs`}>
                             {emailWarning}
@@ -149,7 +149,7 @@ const CustomTours = ({ t }: { t: TFunction }) => {
                     <label htmlFor="message" className="text-neutral-800 font-medium text-base">{t('message')}</label>
                     <textarea id="message" name="Message" placeholder={`${t('messagePlaceholder')}`} 
                         rows={4} value={messageValue} onChange={(e) => handleMessageChange(e)}
-                        className="w-full px-6 py-3 border border-neutral-500 rounded-2xl placeholder:text-xs text-base">
+                        className="w-full px-6 py-3 border border-neutral-500 rounded-2xl placeholder:text-xs text-base outline-1 outline-neutral-700">
                     </textarea>
                 </div>
                 <div className="flex gap-7 -md:flex-col">
@@ -157,13 +157,13 @@ const CustomTours = ({ t }: { t: TFunction }) => {
                         <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('idealTourDuration')}</label>
                         <input type="number" name="ideal tour duration" placeholder={`${t('idealTourDurationPlaceholder')}`} 
                         value={idealTourDurationValue} onChange={(e) => handleIdealTourDurationChange(e)}
-                        className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
+                        className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base outline-1 outline-neutral-700"/>
                     </div>
                     <div className="flex gap-2 flex-col">
                         <label htmlFor="" className="text-neutral-800 font-medium text-base">{t('yourBudget')}</label>
                         <input type="text" name="budget" placeholder={`${t('yourBudgetPlaceholder')}`} 
                         value={yourBudgetValue} onChange={(e) => handleYourBudgetChange(e)}
-                        className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base"/>
+                        className="w-input-field px-6 py-2 border border-neutral-500 rounded-2xl placeholder:text-xs text-base outline-1 outline-neutral-700"/>
                     </div>
                 </div>
                 <input type="submit" value={`${t('send')}`}
