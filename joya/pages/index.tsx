@@ -29,10 +29,11 @@ export default function Home() {
   return (
     <>
     <NextSeo
-        title="Joya Traveling"
-        description='Joya is a traveling agency that specializes in providing high-quality travel services to companies and corporates, as well as to high-end profiles.'
-        canonical='https://www.joyatravel.vn/vi'
+      title='Joya Traveling'
+      description='Joya is a traveling agency that specializes in providing high-quality travel services to companies and corporates, as well as to high-end profiles.'
+      canonical="https://www.joyatravel.vn/vi"
     />
+
     <div className={plusJakartaSans.className}>
 
       <Header t={t}/>
@@ -47,6 +48,7 @@ export default function Home() {
         <CustomTours t={t}/>
         <ContactBanner t={t}/>
         <ScrollToTopButton/>
+
       </main>
       <Footer/>
     </div>

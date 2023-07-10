@@ -92,8 +92,9 @@
     "surcharge": "Surcharge",
     "showMore": "Show more",
     "showLess": "Show less",
-    "loading": "Loading...",
     "followUs": "Follow Us",
+
+    "loading": "Loading...",
     "pageNotFound": "OOPS! PAGE NOT FOUND",
     "sorry404": "Sorry, the page you're looking for doesn't exist.",
     "returnHome": "RETURN HOME"

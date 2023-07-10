@@ -4,7 +4,6 @@ import Link from "next/link";
 
 const ErrorPage = () => {
     const { t } = useTranslation('common');
-    console.log("🚀 ~ file: 404.tsx:11 ~ ErrorPage ~ t('pageNotFound'):", t('pageNotFound'))
 
     return (
         <>
