@@ -6,7 +6,6 @@ const ScrollToTopButton = () => {
     const isBrowser = () => typeof window !== 'undefined'; //The approach recommended by Next.js
 
     const [scrollPosition, setScrollPosition] = useState(0);
-    console.log("🚀 ~ file: ScrollToTopButton.tsx:9 ~ ScrollToTopButton ~ scrollPosition:", scrollPosition)
 
     useEffect(() => {
       window.addEventListener('scroll', handleScroll);
