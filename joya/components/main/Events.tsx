@@ -75,14 +75,14 @@ const Events = ({ t }: { t: TFunction }) => {
                         </video>
                 ))}
 
-                <div className="absolute left-0 translate-x-[-55%] bottom-1/2 z-20 rounded-[100%] bg-white">
+                <div className="absolute left-0 translate-x-[-55%] translate-y-1/2 bottom-1/2 z-20 rounded-[100%] bg-white">
                     <MoveSliderButton
                         direction="prev"
                         handleClick={() => handleVideoChange("prev")}
                     />
                 </div>
 
-                <div className="absolute right-0 translate-x-1/2 bottom-1/2 z-20 rounded-[100%] bg-white">
+                <div className="absolute right-0 translate-x-1/2 translate-y-1/2 bottom-1/2 z-20 rounded-[100%] bg-white">
                     <MoveSliderButton
                         direction="next"
                         handleClick={() => handleVideoChange("next")}
@@ -90,7 +90,7 @@ const Events = ({ t }: { t: TFunction }) => {
                 </div>
 
                 <Image src={playIcon} alt="play icon" 
-                className={`absolute z-20 translate-x--1/2 translate-y--1/2 left-1/2 bottom-1/2 w-[4rem] 
+                className={`absolute z-20 translate-x-1/2 translate-y-1/2 right-1/2 bottom-1/2 w-6 md:w-[4rem] 
                 ${isVideoPlaying ? " scale-0" : "scale-100"} transition-all duration-100`}/>
 
             </div>
