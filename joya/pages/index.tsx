@@ -22,6 +22,7 @@ import AbroadTours from '@/components/main/AbroadTours';
 import Values from '@/components/main/Values';
 import { NextSeo } from 'next-seo';
 import ScrollToTopButton from '@/components/buttons/ScrollToTopButton';
+import Events from '@/components/main/Events';
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -47,6 +48,7 @@ export default function Home() {
         <ThemeTour t={t}/>
         <CustomTours t={t}/>
         <ContactBanner t={t}/>
+        <Events t={t}/>
         <ScrollToTopButton/>
 
       </main>
