@@ -89,7 +89,7 @@ const Events = ({ t }: { t: TFunction }) => {
                     />
                 </div>
 
-                <Image src={playIcon} alt="play icon" 
+                <Image src={playIcon} alt="play icon" onClick={() => handleMouseClick(activeVideo)}
                 className={`absolute z-20 translate-x-1/2 translate-y-1/2 right-1/2 bottom-1/2 w-6 md:w-[4rem] 
                 ${isVideoPlaying ? " scale-0" : "scale-100"} transition-all duration-100`}/>
 

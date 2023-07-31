@@ -44,12 +44,20 @@
     "explore": "Explore",
     "grandTour": "Company Trip",
     "grandTourDescription": "With a team of young, enthusiastic and professional staff, JOYA brings fresh, creative, but equally professional, cost-optimized travel programs to customers.",
+    "grandTourDescription2": "On the basis of promoting corporate culture and team cohesion, JOYA tailors and designs Teambuilding activities and Gala dinner to suit the characteristics of each customer.",
+    
     "dayTour": "Luxury Private Tour",
     "dayTourDescription": "100% tailor-made tours, constantly innovating to suit your preferences, schedule and budget such as resort tours, discovery, shopping, medical care, golf...",
+    "dayTourDescription2": "Experience luxury with an experienced and attentive private guide, JOYA focuses on your experience, each trip is a new journey, each tour guide is an emotional storyteller.",
+    
     "themeTour": "Event package, teambuilding",
     "themeTourDescription": "Professional team, rich organization experience from annual events such as teambuilding, anniversaries to events such as wine dinner, opening ceremony, exhibitions, culture, seminars...",
+    "themeTourDescription2": "The media team is equipped with modern and methodical machines and tools, and teambuilding tools are constantly updated to ensure a new and professional experience for customers.",
+
     "privateTour": "Family holiday, picnic",
     "privateTourDescription": "JOYA aims at a series of activities to show gratitude, honor the family home, jointly build and develop good cultural values, deepen friendship and team cohesion.",
+    "privateTourDescription2": "Bring new and exciting experiences, create a space for family and friends to share meaningful and impressive moments together.",
+    
     "grandTourHeading": "EXPERIENCE COMPANY TRIP",
     "dayTourHeading": "EXPERIENCE LUXURY PRIVATE TOUR",
     "themeTourHeading": "CHOOSE THE THEME FOR YOUR TOUR",
