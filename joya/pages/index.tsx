@@ -23,6 +23,9 @@ import Values from '@/components/main/Values';
 import { NextSeo } from 'next-seo';
 import ScrollToTopButton from '@/components/buttons/ScrollToTopButton';
 import Events from '@/components/main/Events';
+import CallWidget from '@/components/buttons/CallWidget';
+import Head from 'next/head';
+import DriftChatWidget from '@/components/buttons/DriftChatWidget';
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -34,6 +37,9 @@ export default function Home() {
       description='Joya is a traveling agency that specializes in providing high-quality travel services to companies and corporates, as well as to high-end profiles.'
       canonical="https://www.joyatravel.vn/vi"
     />
+    <Head>
+
+    </Head>
 
     <div className={plusJakartaSans.className}>
 
@@ -50,6 +56,8 @@ export default function Home() {
         <ContactBanner t={t}/>
         <Events t={t}/>
         <ScrollToTopButton/>
+        <CallWidget t={t}/>
+        <DriftChatWidget />
 
       </main>
       <Footer/>

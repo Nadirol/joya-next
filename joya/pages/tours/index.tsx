@@ -15,6 +15,7 @@ import Head from 'next/head';
 import DayTours from '@/components/main/DayTours';
 import AbroadTours from '@/components/main/AbroadTours';
 import ScrollToTopButton from '@/components/buttons/ScrollToTopButton';
+import CallWidget from '@/components/buttons/CallWidget';
 
 export default function Tours() {
   const { t } = useTranslation('common');
@@ -32,6 +33,7 @@ export default function Tours() {
         <AbroadTours t={t}/>
         <Contact t={t}/>
         <ScrollToTopButton/>
+        <CallWidget t={t}/>
 
       </main>
       <Footer/>

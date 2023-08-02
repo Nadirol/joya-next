@@ -72,6 +72,15 @@ module.exports = {
       transitionProperty: {
         'navlink': 'width',
       },
+      animation: {
+        'move-in-bottom': 'move-in-bottom 5s ease-out',
+      },
+      keyframes: {
+        'move-in-bottom': {
+          '0%': { 'opacity': 1, 'transform': 'translateY(0px)'},
+          '100%': { 'opacity': 0, 'transform': 'translateY(10px)'}
+        }
+      }
     },
   },
   plugins: [
