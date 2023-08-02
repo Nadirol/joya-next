@@ -22,9 +22,12 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import Grandtours from "@/components/main/Grandtours";
 import DayTours from "@/components/main/DayTours";
-import Head from "next/head";
 import PartnerTourDetails from "@/components/tour/PartnerTourDetails";
 import { NextSeo } from "next-seo";
+import ScrollToTopButton from "@/components/buttons/ScrollToTopButton";
+import CallWidget from "@/components/buttons/CallWidget";
+import ZaloWidget from "@/components/buttons/ZaloWidget";
+import Script from 'next/script';
 
 const contactEmails = 'quynhnt88@gmail.com,floris.panico@yahoo.co.uk,Nguyenthuy1095@gmail.com';
 
@@ -169,7 +172,10 @@ export default function Tour() {
                 title={tour.title}
                 description={tour.description ? tour.description : 'Joya is a traveling agency that specializes in providing high-quality travel services to companies and corporates, as well as to high-end profiles.'}
             />
-
+            <Script
+            strategy="lazyOnload"
+            src="https://embed.tawk.to/64c9d2bf94cf5d49dc67e2ea/1h6q5ufsc"
+            />
             <div className={plusJakartaSans.className}>
                 <Header t={t}/>
                 <main className="w-container mx-auto mb-8 flex gap-12 flex-col relative">
@@ -288,6 +294,9 @@ export default function Tour() {
                         </form>
                     </div>
                 </main>
+                <ScrollToTopButton/>
+                <CallWidget t={t}/>
+                <ZaloWidget t={t}/>
                 {/* pop up appears when successfully submit form */}
                 <div className={`fixed right-1/2 translate-x-1/2 px-8 py-4 rounded-2xl z-30
                     bg-white dark:bg-semi-black transition-all duration-300 pointer-events-none 

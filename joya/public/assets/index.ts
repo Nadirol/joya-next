@@ -39,9 +39,10 @@ import arrowDown from "./arrow-down.svg"
 import infoIcon from "./info.svg"
 import rollingAnimation from "./Rolling-0.9s-197px.svg"
 import playIcon from "./play.svg"
+import zaloLogo from "./zalo-logo.webp"
 
 export { holdingHandsIcon, victoryFingersIcon, checkIcon, phoneIcon, mailIcon, locationIcon, facebookIcon, instagramIcon, logoLightLarge,
 banner, galleryImage1, galleryImage2, galleryImage3, galleryImage4, galleryImage5, galleryImage6, logoDark, logoLight, menuIcon,
 closeIcon, homeIcon, aboutIcon, planeIcon, categoriesImage1, categoriesImage2, categoriesImage3, categoriesImage4, clockIcon, tourPreview1, 
 arrowRightIcon, heroPrivate, themeImage1, themeImage2, themeImage3, themeImage4, themeImage5, themeImage6, arrowDown, infoIcon, rollingAnimation,
-playIcon }
+playIcon, zaloLogo }

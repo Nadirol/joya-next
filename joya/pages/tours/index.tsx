@@ -16,6 +16,8 @@ import DayTours from '@/components/main/DayTours';
 import AbroadTours from '@/components/main/AbroadTours';
 import ScrollToTopButton from '@/components/buttons/ScrollToTopButton';
 import CallWidget from '@/components/buttons/CallWidget';
+import ZaloWidget from '@/components/buttons/ZaloWidget';
+import Script from 'next/script';
 
 export default function Tours() {
   const { t } = useTranslation('common');
@@ -25,6 +27,10 @@ export default function Tours() {
     <Head>
       <title>{t('tours')}</title>
     </Head>
+    <Script
+      strategy="lazyOnload"
+      src="https://embed.tawk.to/64c9d2bf94cf5d49dc67e2ea/1h6q5ufsc"
+    />
     <div className={plusJakartaSans.className}>
       <Header t={t}/>
       <main className="w-container mx-auto flex gap-8 md:gap-12 xl:gap-16 flex-col mb-8 relative mt-12">
@@ -34,6 +40,7 @@ export default function Tours() {
         <Contact t={t}/>
         <ScrollToTopButton/>
         <CallWidget t={t}/>
+        <ZaloWidget t={t}/>
 
       </main>
       <Footer/>

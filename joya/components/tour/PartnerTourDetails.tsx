@@ -13,6 +13,7 @@ import { Column, useTable } from "react-table"
 import { NextSeo } from "next-seo"
 import ScrollToTopButton from "../buttons/ScrollToTopButton"
 import CallWidget from "../buttons/CallWidget"
+import ZaloWidget from "../buttons/ZaloWidget"
 
 const contactEmails = 'quynhnt88@gmail.com,floris.panico@yahoo.co.uk,Nguyenthuy1095@gmail.com';
 
@@ -876,6 +877,7 @@ darkFilterVisible, setDarkFilterVisible }:
                 </div>
                 <ScrollToTopButton/>
                 <CallWidget t={t}/>
+                <ZaloWidget t={t}/>
                 
                 <div className={`fixed inset-0 bg-filter-dark w-screen h-screen z-30 ${darkFilterVisible ? '' : 'hidden'}`}></div>
                 <Footer/>

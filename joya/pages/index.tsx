@@ -25,7 +25,8 @@ import ScrollToTopButton from '@/components/buttons/ScrollToTopButton';
 import Events from '@/components/main/Events';
 import CallWidget from '@/components/buttons/CallWidget';
 import Head from 'next/head';
-import DriftChatWidget from '@/components/buttons/DriftChatWidget';
+import ZaloWidget from '@/components/buttons/ZaloWidget';
+import Script from 'next/script';
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -37,9 +38,10 @@ export default function Home() {
       description='Joya is a traveling agency that specializes in providing high-quality travel services to companies and corporates, as well as to high-end profiles.'
       canonical="https://www.joyatravel.vn/vi"
     />
-    <Head>
-
-    </Head>
+    <Script
+      strategy="lazyOnload"
+      src="https://embed.tawk.to/64c9d2bf94cf5d49dc67e2ea/1h6q5ufsc"
+    />
 
     <div className={plusJakartaSans.className}>
 
@@ -57,7 +59,7 @@ export default function Home() {
         <Events t={t}/>
         <ScrollToTopButton/>
         <CallWidget t={t}/>
-        <DriftChatWidget />
+        <ZaloWidget t={t}/>
 
       </main>
       <Footer/>
