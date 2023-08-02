@@ -9,7 +9,7 @@ const Footer = () => {
     const { t } = useTranslation();
 
     return (
-        <div className="bg-primary-dark relative z-10">
+        <div className="bg-primary-dark relative z-[1]">
             <div className="w-container mx-auto py-12 xl:py-20 text-neutral-100 grid grid-footer xl:grid-cols-footer	
                  -xl:gap-8 -xl:flex-col border-b border-neutral-800">
                 <div className="flex flex-col -xl:items-center">
@@ -36,10 +36,8 @@ const Footer = () => {
                         <div className="flex gap-2 -md:mx-auto">
                             <h1 className="font-semibold text-base">{t('phoneNumber')}: 
                             </h1>
-                            <div className="">
-                                <h3 className="font-normal text-base text-neutral-200">ENG: 0379748073</h3>
-                                <h3 className="font-normal text-base text-neutral-200">VN: 0985080324</h3>
-                            </div>
+
+                            <h3 className="font-normal text-base text-neutral-200">0985041369</h3>
                         </div>
                         <h1 className="font-semibold text-base">Email: <span className="font-normal text-neutral-200">sales@joyatravel.vn</span></h1>
                         {/* <h1 className="font-semibold text-base">Website: &nbsp;

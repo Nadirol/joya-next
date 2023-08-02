@@ -63,7 +63,7 @@ const Events = ({ t }: { t: TFunction }) => {
                 {videos.map((vid, index) => (
                         <video 
                             key={index}
-                            preload="auto" 
+                            preload="metadata" 
                             width="100%" 
                             height="100%"       
                             onClick={() => handleMouseClick(index)}
@@ -71,7 +71,7 @@ const Events = ({ t }: { t: TFunction }) => {
                             className={`rounded-xl shadow-card-semibold ${index === activeVideo ? '' : 'hidden'} 
                             ${isVideoPlaying ? "" : "brightness-50	"} transition-[filter]`}
                         >
-                            <source src={`/assets/${vid}`} type={`video/${vid.substring(vid.length - 3)}`}/>
+                            <source src={`/assets/${vid}#t=0.1`} type={`video/${vid.substring(vid.length - 3)}`}/>
                         </video>
                 ))}
 

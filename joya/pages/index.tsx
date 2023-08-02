@@ -46,7 +46,7 @@ export default function Home() {
     <div className={plusJakartaSans.className}>
 
       <Header t={t}/>
-      <main className="flex gap-8 md:gap-12 xl:gap-16 flex-col mb-8 relative md:mt-12">
+      <main className="flex gap-8 md:gap-12 xl:gap-16 flex-col mb-8 relative md:mt-12 z-10">
         <Banner t={t}/>
         <Categories t={t}/>
         <Grandtours t={t}/>

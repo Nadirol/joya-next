@@ -30,7 +30,7 @@ const CallWidget = ({ t }: { t: TFunction }) => {
     useClickDetector(buttonRef, hidePopup, numbersRef);
 
     return (
-        <div className="fixed right-4 md:right-6 bottom-16 md:bottom-28">
+        <div className="fixed right-6 bottom-24 md:bottom-28">
             <div className="relative">
                 <button className="p-5 bg-red-400 rounded-[100%] after:inline-block after:w-full after:h-full after:absolute 
                 after:duration-[400] after:transition-all after:inset-0 after:z-[-1] transition-all duration-[400] 
@@ -45,15 +45,10 @@ const CallWidget = ({ t }: { t: TFunction }) => {
                     {callNumberVisible && (
                         <div className="absolute top-0 right-0 px-6 py-4 rounded-2xl translate-y-[-110%] bg-white shadow-card-extrasemibold
                         flex gap-4 flex-col cursor-default z-20" ref={numbersRef}>
-                            <h4 className="text-neutral-800 font-medium text-xl">{t('callUsNow')}</h4>
-                            <div className="flex gap-2.5 flex-col">
-                                <a href="tel:+84985080324" className="text-neutral-800 font-semibold text-base">
-                                    <span className="font-normal text-xs">Tiếng Việt</span>: 0985080324
-                                </a>
-                                <a href="tel:+84379748073" className="text-neutral-800 font-semibold text-base"> 
-                                    <span className="font-normal text-xs">English</span>: 0379748073
-                                </a>
-                            </div>
+                            <h4 className="text-neutral-800 font-medium">{t('callUsNow')}</h4>
+                            <a href="tel:+84985041369" className="text-neutral-800 font-semibold text-2xl whitespace-nowrap	">
+                                0985 041 369
+                            </a>
                         </div>
                     )}
 

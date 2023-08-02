@@ -14,10 +14,7 @@ const ContactBanner = ({ t }: { t: TFunction }) => {
                 <div className="flex gap-8 -md:flex-col items-center mb-6">
                     <div className="flex gap-4 items-center">
                         <Image src={phoneIcon} alt="phone icon" />
-                        <div className="flex  flex-col">
-                            <h1 className="text-neutral-800 font-normal text-xl"><span className="font-medium">Tiếng Việt</span>: 0985080324</h1>
-                            <h1 className="text-neutral-800 font-xs text-xl"> <span className="font-medium">English</span>: 0379748073</h1>
-                        </div>
+                        <h1 className="text-neutral-800 font-normal text-xl">0985041369</h1>
                     </div>
                     <div className="flex gap-4 items-center">
                         <Image src={mailIcon} alt="phone icon" />
