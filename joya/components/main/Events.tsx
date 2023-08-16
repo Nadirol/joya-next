@@ -56,16 +56,15 @@ const Events = ({ t }: { t: TFunction }) => {
       }
 
     return (
-        <div className="flex gap-4 md:gap-12 flex-col text-center" id="events">
+        <div className="w-container mx-auto flex gap-4 md:gap-12 flex-col text-center" id="events">
             <h1 className="text-neutral-800 font-semibold text-xl md:text-[3rem] tracking-wide">{t("events")}</h1>
-            <div className="w-3/4 mx-auto flex gap-10 relative z-10">
+            <div className=" mx-auto flex gap-10 relative z-10">
 
                 {videos.map((vid, index) => (
                         <video 
                             key={index}
                             preload="metadata" 
-                            width="100%" 
-                            height="100%"       
+    
                             onClick={() => handleMouseClick(index)}
                             ref={(el) => (videoRefs.current[index] = el)}
                             className={`rounded-xl shadow-card-semibold ${index === activeVideo ? '' : 'hidden'} 
