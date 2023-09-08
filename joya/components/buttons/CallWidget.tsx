@@ -30,7 +30,7 @@ const CallWidget = ({ t }: { t: TFunction }) => {
     useClickDetector(buttonRef, hidePopup, numbersRef);
 
     return (
-        <div className="fixed right-6 bottom-24 md:bottom-28">
+        <div className="fixed right-6 bottom-24 md:bottom-28 z-[50]">
             <div className="relative">
                 <button className="p-5 bg-red-400 rounded-[100%] after:inline-block after:w-full after:h-full after:absolute 
                 after:duration-[400] after:transition-all after:inset-0 after:z-[-1] transition-all duration-[400] 

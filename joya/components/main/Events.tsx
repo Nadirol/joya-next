@@ -19,15 +19,20 @@ const Events = ({ t }: { t: TFunction }) => {
     const [activeVideo, setActiveVideo] = useState(0);
     const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
+    const [controllerVisible, setControllerVisible] = useState(false);
+
     const videoRefs = useRef([]);
 
       useEffect(() => {
         videoRefs.current = videoRefs.current.slice(0, videos.length);
       }, [videos.length]);
 
-      const handleMouseEnter = (index: number) => {
-        videoRefs.current[index].play();
-        setIsVideoPlaying(true)
+      const handleMouseEnter = () => {
+        setControllerVisible(true)
+      };
+
+      const handleMouseLeave = () => {
+        setControllerVisible(false)
       };
 
       const handleMouseClick = (index: number) => {
@@ -56,7 +61,12 @@ const Events = ({ t }: { t: TFunction }) => {
       }
 
     return (
-        <div className="w-container mx-auto flex gap-4 md:gap-12 flex-col text-center" id="events">
+        <div 
+            className="w-container mx-auto flex gap-4 md:gap-12 flex-col text-center" 
+            id="events"                             
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+        >
             <h1 className="text-neutral-800 font-semibold text-xl md:text-[3rem] tracking-wide">{t("events")}</h1>
             <div className=" mx-auto flex gap-10 relative z-10">
 
@@ -64,24 +74,26 @@ const Events = ({ t }: { t: TFunction }) => {
                         <video 
                             key={index}
                             preload="metadata" 
-    
+
                             onClick={() => handleMouseClick(index)}
                             ref={(el) => (videoRefs.current[index] = el)}
                             className={`rounded-xl shadow-card-semibold ${index === activeVideo ? '' : 'hidden'} 
                             ${isVideoPlaying ? "" : "brightness-50	"} transition-[filter]`}
                         >
-                            <source src={`/assets/${vid}#t=0.1`} type={`video/${vid.substring(vid.length - 3)}`}/>
+                            <source src={`/assets/${vid}#t=0.5`} type={`video/${vid.substring(vid.length - 3)}`}/>
                         </video>
                 ))}
 
-                <div className="absolute left-0 translate-x-[-55%] translate-y-1/2 bottom-1/2 z-20 rounded-[100%] bg-white">
+                <div className={`${controllerVisible && "opacity-100"} opacity-0 duration-300 transition-opacity 
+                absolute left-0 translate-x-[-55%] translate-y-1/2 bottom-1/2 z-20 rounded-[100%] bg-white`}>
                     <MoveSliderButton
                         direction="prev"
                         handleClick={() => handleVideoChange("prev")}
                     />
                 </div>
 
-                <div className="absolute right-0 translate-x-1/2 translate-y-1/2 bottom-1/2 z-20 rounded-[100%] bg-white">
+                <div className={`${controllerVisible && "opacity-100"} opacity-0 duration-300 transition-opacity absolute 
+                right-0 translate-x-1/2 translate-y-1/2 bottom-1/2 z-20 rounded-[100%] bg-white`}>
                     <MoveSliderButton
                         direction="next"
                         handleClick={() => handleVideoChange("next")}
@@ -90,7 +102,8 @@ const Events = ({ t }: { t: TFunction }) => {
 
                 <Image src={playIcon} alt="play icon" onClick={() => handleMouseClick(activeVideo)}
                 className={`absolute z-20 translate-x-1/2 translate-y-1/2 right-1/2 bottom-1/2 w-6 md:w-[4rem] 
-                ${isVideoPlaying ? " scale-0" : "scale-100"} transition-all duration-100`}/>
+                ${isVideoPlaying ? " scale-0" : "scale-100"} transition-all duration-100 
+                ${controllerVisible && "opacity-100"} opacity-0 duration-300 transition-opacity`}/>
 
             </div>
         </div>
