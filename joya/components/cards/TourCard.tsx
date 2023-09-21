@@ -1,6 +1,6 @@
 import { clockIcon, locationIcon } from "@/public/assets"
 import { TFunction, i18n } from "next-i18next";
-import Image, { StaticImageData } from "next/image"
+import Image from "next/image"
 import Link from "next/link";
 
 function numberWithCommas(x: number) {

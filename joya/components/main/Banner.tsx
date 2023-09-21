@@ -1,35 +1,31 @@
-import { holdingHandsIcon, victoryFingersIcon, checkIcon, banner } from "@/public/assets";
+import { banner } from "@/public/assets";
 import { TFunction } from "i18next";
 import Image from "next/image";
+import { Just_Me_Again_Down_Here } from "next/font/google"
+
+const justMe = Just_Me_Again_Down_Here({
+    weight: "400",
+    subsets: ["latin","latin-ext"]
+});
 
 const Banner = ({ t }: { t: TFunction }) => {
 
     return (
-        <div className="w-container mx-auto relative md:mb-[6rem]">
-            <Image src={banner} alt="banner" className="w-full rounded-[30px] object-contain"/>
-            <div className="bg-white flex gap-6 -md:flex-col md:absolute md:bottom-0 md:right-1/2 md:translate-x-1/2 md:translate-y-1/2 
-            px-10 py-6 rounded-3xl md:shadow-card-semibold -md:hidden">
-            <div className="flex gap-2.5 flex-col items-center text-center">
-                <Image src={holdingHandsIcon} alt="holding hands icon" className="w-[2.25rem] xl:w-[3.125rem] aspect-square" />
-                <h1 className="text-neutral-900 font-medium text-sm xl:text-xl xl:leading-[25px] tracking-wide">{t('valueTitle1')}</h1>
-                <p className="text-neutral-900 font-regular text-[0.625rem] w-[210px] xl:text-xs xl:w-[315px]">
-                {t('valueParagraph1')}
+        <div className="w-full relative before:absolute before:top-0 before:left-0 before:z-10 
+        before:bg-filter-dark before:w-full before:h-full">
+            <Image src={banner} alt="banner" className="w-full object-cover"/>
+            <div className="text-neutral-50 absolute right-1/2 bottom-1/2 translate-x-1/2 
+            translate-y-1/2 z-10 flex gap-8 flex-col items-center text-center w-full md:w-3/4 
+            xl:w-3/5 max-w-[900px]">
+                <h4 className={justMe.className + "text-[2rem] leading-tight"}>
+                    {t('bannerHeading1')}
+                </h4>
+                <h2 className="font-bold text-[4rem] leading-tight">
+                    {t('bannerHeading2')}
+                </h2>
+                <p className="text-xl">
+                    {t('bannerParagraph')}
                 </p>
-            </div>
-            <div className="flex gap-2.5 flex-col items-center text-center">
-                <Image src={victoryFingersIcon} alt="holding hands icon" className="w-[2.25rem] xl:w-[3.125rem] aspect-square" />
-                <h1 className="text-neutral-900 font-medium text-sm xl:text-xl xl:leading-[25px] tracking-wide">{t('valueTitle2')}</h1>
-                <p className="text-neutral-900 font-regular text-[0.625rem] w-[210px] xl:text-xs xl:w-[315px]">
-                {t('valueParagraph2')}
-                </p>
-            </div>
-            <div className="flex gap-2.5 flex-col items-center text-center">
-                <Image src={checkIcon} alt="holding hands icon" className="w-[2.25rem] xl:w-[3.125rem] aspect-square" />
-                <h1 className="text-neutral-900 font-medium text-sm xl:text-xl xl:leading-[25px] tracking-wide">{t('valueTitle3')}</h1>
-                <p className="text-neutral-900 font-regular text-[0.625rem] w-[210px] xl:text-xs xl:w-[315px]">
-                {t('valueParagraph3')}
-                </p>
-            </div>
             </div>
         </div>
     )

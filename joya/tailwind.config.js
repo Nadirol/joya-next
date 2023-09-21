@@ -13,7 +13,7 @@ module.exports = {
   theme: {
     extend: {
       width: {
-        'container': 'min(1200px, 100% - 2rem)',
+        'container': 'min(1320px, 100% - 4rem)',
         'header': 'min(1200px, 100%)',
         'paragraph': 'min(50rem, 100% - 4rem)',
         'sidenav': 'min(30rem, 100% - 4rem)',
@@ -28,10 +28,14 @@ module.exports = {
       },
       colors: {
         ...colors,
-        'primary-extra-light': 'rgba(208, 235, 242, 1)',
-        'primary-light': 'rgba(149, 197, 209, 1)',
-        'primary-regular': 'rgba(84, 132, 144, 1)',
+        'primary-extra-light': 'rgba(218, 241, 249, 1)',
+        'primary-light': 'rgba(56, 209, 209, 1)',
+        'primary-regular': 'rgba(0,119,139,1)',
         'primary-dark': 'rgba(60, 96, 105, 1)',
+
+        'secondary-light': 'rgba(156, 240, 48, 1)',
+
+        'accent-light': 'rgba(209, 56, 84, 1)',
 
         'neutral-100': 'rgba(250, 250, 250, 1)',
         'neutral-300': 'rgba(240, 241, 242, 1)',
@@ -46,7 +50,7 @@ module.exports = {
       boxShadow: {  
         'button': '0px 0px 2px rgba(0, 0, 0, 0.25)',
         'button-semibold': '1px 1px 4px rgba(0, 0, 0, 0.25)',
-        'card': '1px 1px 1px rgba(0, 0, 0, 0.25)',
+        'card': '0px 0px 20px rgba(0, 0, 0, 0.1)',
         'card-semibold': '1px 2px 2px rgba(0, 0, 0, 0.25)',
         'card-extrasemibold': '1px 2px 6px rgba(0, 0, 0, 0.25)',
         'card-bold': '0px 1px 6px rgba(0, 0, 0, 0.25)',
