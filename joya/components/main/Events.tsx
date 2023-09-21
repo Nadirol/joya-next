@@ -62,49 +62,18 @@ const Events = ({ t }: { t: TFunction }) => {
 
     return (
         <div 
-            className="w-container mx-auto flex gap-4 md:gap-12 flex-col text-center" 
+            className="w-container h-[600px] mx-auto flex gap-4 md:gap-12 flex-col text-center my-16" 
             id="events"                             
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
         >
             <h1 className="text-neutral-800 font-semibold text-xl md:text-[3rem] tracking-wide">{t("events")}</h1>
-            <div className=" mx-auto flex gap-10 relative z-10">
-
-                {videos.map((vid, index) => (
-                        <video 
-                            key={index}
-                            preload="metadata" 
-
-                            onClick={() => handleMouseClick(index)}
-                            ref={(el) => (videoRefs.current[index] = el)}
-                            className={`rounded-xl shadow-card-semibold ${index === activeVideo ? '' : 'hidden'} 
-                            ${isVideoPlaying ? "" : "brightness-50	"} transition-[filter]`}
-                        >
-                            <source src={`/assets/${vid}#t=0.5`} type={`video/${vid.substring(vid.length - 3)}`}/>
-                        </video>
-                ))}
-
-                <div className={`${controllerVisible && "opacity-100"} opacity-0 duration-300 transition-opacity 
-                absolute left-0 translate-x-[-55%] translate-y-1/2 bottom-1/2 z-20 rounded-[100%] bg-white`}>
-                    <MoveSliderButton
-                        direction="prev"
-                        handleClick={() => handleVideoChange("prev")}
-                    />
-                </div>
-
-                <div className={`${controllerVisible && "opacity-100"} opacity-0 duration-300 transition-opacity absolute 
-                right-0 translate-x-1/2 translate-y-1/2 bottom-1/2 z-20 rounded-[100%] bg-white`}>
-                    <MoveSliderButton
-                        direction="next"
-                        handleClick={() => handleVideoChange("next")}
-                    />
-                </div>
-
-                <Image src={playIcon} alt="play icon" onClick={() => handleMouseClick(activeVideo)}
-                className={`absolute z-20 translate-x-1/2 translate-y-1/2 right-1/2 bottom-1/2 w-6 md:w-[4rem] 
-                ${isVideoPlaying ? " scale-0" : "scale-100"} transition-all duration-100 
-                ${controllerVisible && "opacity-100"} opacity-0 duration-300 transition-opacity`}/>
-
+            <div className="h-full w-2/3 mx-auto relative z-10">
+                <iframe className="w-full h-full mx-auto"
+                    src="https://www.youtube.com/embed/videoseries?si=ZRlPxSvlrWpX1dew&amp;list=PLiLifK5yi21Khn9ADtHOvTkynerq-zCOQ" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>                
+                </iframe>
             </div>
         </div>
     )
