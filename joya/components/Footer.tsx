@@ -1,14 +1,67 @@
 'use client';
 
-import { logoDark } from "@/public/assets";
+import { logoLight, planeIcon } from "@/public/assets";
 import Image from "next/image";
 import Link from "next/link";
-import { i18n, useTranslation } from 'next-i18next';
+import { useTranslation } from 'next-i18next';
+import { useRef, useState } from "react";
 
 const Footer = () => {
     const { t } = useTranslation();
 
+    const [emailValue, setEmailValue] = useState('');
+
+    const handleEmailChange = (e: any) => {
+        setEmailValue(e.target.value);
+    };
+
+    const [popUpVisible, setPopUpVisible] = useState(false);
+    const showPopUp = (e: any) => {
+  
+        if (emailValid) {
+          setPopUpVisible(prevState => !prevState)
+          setTimeout(() => {
+              setPopUpVisible(prevState => !prevState)
+          }, 2000)
+    
+          setTimeout(() => {
+
+            setEmailValue('');
+          }, 200)
+        }
+
+        return emailValid;
+    };
+
+    const emailInputRef = useRef(null);
+
+    const [emailWarning, setEmailWarning] = useState('');
+    const [emailValid, setEmailValid] = useState(true);
+    
+    const validateEmail = (email: string) => {
+      return String(email)
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    };
+
+    const validate = (e: React.FormEvent<HTMLInputElement>) => {
+        const email = e?.currentTarget.value
+      if (email && validateEmail(email)) {
+        setEmailValid(true);
+        setEmailWarning(`${email} is valid`)
+      } else if (email) {
+        setEmailValid(false);
+        setEmailWarning(`${email} is not valid`)
+      } else {
+        setEmailWarning('')
+      }
+
+      return false
+    };
     return (
+<<<<<<< Updated upstream
         <div className="bg-primary-dark relative z-10">
             <div className="w-container mx-auto py-12 xl:py-20 text-neutral-100 grid grid-footer xl:grid-cols-footer	
                  -xl:gap-8 -xl:flex-col border-b border-neutral-800">
@@ -18,6 +71,37 @@ const Footer = () => {
                     </Link>
                     <h1 className="font-semibold text-xs mb-8">JOYA JOINT STOCK COMPANY</h1>
                     <div className="flex gap-6 [&>a>svg>path]:fill-neutral-100 -xl:mx-auto">
+=======
+        <div className="relative z-[1] text-neutral-900">
+            <div className="w-container mx-auto py-12 xl:py-20 flex	items-start justify-between
+                 -xl:gap-8 -xl:flex-col border-b border-neutral-300">
+                <div className="flex gap-5 flex-col -xl:items-center">
+                    <div className="flex gap-3 flex-col items-start">
+                        <Link href="/" className="-xl:mx-auto w-fit">
+                            <Image src={logoLight} alt="brand logo" className="w-[6rem]"/>
+                        </Link>
+                        <h1 className="font-bold text-xs text-primary-regular">JOYA JOINT STOCK COMPANY</h1>
+                    </div>
+
+                    <div className="flex gap-4 flex-col items-start">
+                        <h4 className="text-xl">
+                            {t('needHelp')}
+                        </h4>
+
+                        <a target="_blank" href="https://zalo.me/0985041369" 
+                        className="text-primary-light font-bold text-3xl">
+                            + (84) 985 041 369
+                        </a>
+
+                        <h3 className="text-xl w-[250px]">
+                            {t('addressDetails')}
+                        </h3>
+
+                        <h3 className="text-xl">sales@joyatravel.vn</h3>
+                    </div>
+
+                    <div className="flex gap-6 [&>a>svg>path]:fill-primary-light -xl:mx-auto">
+>>>>>>> Stashed changes
                         <Link href="https://www.facebook.com/JOYA.TravelAgency" target="_blank">
                             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M36 18.0451C36 8.08421 27.936 0 18 0C8.064 0 0 8.08421 0 18.0451C0 26.7789 6.192 34.0511 14.4 35.7293V23.4586H10.8V18.0451H14.4V13.5338C14.4 10.0511 17.226 7.21804 20.7 7.21804H25.2V12.6316H21.6C20.61 12.6316 19.8 13.4436 19.8 14.4361V18.0451H25.2V23.4586H19.8V36C28.89 35.0977 36 27.4105 36 18.0451Z" fill="#484747"/>
@@ -30,6 +114,7 @@ const Footer = () => {
                         </Link>
                     </div>
                 </div>
+<<<<<<< Updated upstream
                 <div className="grid -md:gap-8 grid-rows-1 md:grid-cols-2 -md:text-center">
                     <div className="flex gap-4 flex-col md:justify-between">
                         <h1 className="font-medium text-base">{t('address')}: &nbsp; <span className="font-normal text-neutral-200"> {t('addressDetails')}</span></h1>
@@ -68,11 +153,98 @@ const Footer = () => {
                             </li>
                         </ul>
                     </div>
+=======
 
-                </div>     
+                <div className="flex gap-5 flex-col">
+                    <h3 className="text-2xl tracking-[0.05rem]">
+                        {t('tours').toUpperCase()}
+                    </h3>
+>>>>>>> Stashed changes
+
+                    <div className="text-neutral-700 flex gap-3 flex-col text-xl">
+                        <h4>
+                            {t('companyTours')}
+                        </h4>
+                        <h4>
+                            {t('eventPackages')}
+                        </h4>
+                        <h4>
+                            {t('privateTours')}
+                        </h4>
+                        <h4>
+                            {t('familyTours')}
+                        </h4>
+                    </div>
+                </div>
+
+                <div className="flex gap-5 flex-col">
+                    <h3 className="text-2xl tracking-[0.05rem]">
+                        {t('ourAgency').toUpperCase()}
+                    </h3>
+
+                    <div className="text-neutral-700 flex gap-3 flex-col text-xl">
+                        <h4>
+                            {t('aboutUs')}
+                        </h4>
+                        <h4>
+                            {t('visaService')}
+                        </h4>
+                        <h4>
+                            {t('Policies')}
+                        </h4>
+                        <h4>
+                            {t('Payment')}
+                        </h4>
+                    </div>
+                </div>
+
+                <div className="flex gap-5 flex-col">
+                    <h3 className="text-2xl tracking-[0.05rem]">
+                        {t('ourNewsletters').toUpperCase()}
+                    </h3>
+
+                    <p className="text-neutral-700 text-xl">
+                        {t('newsletterParagraph')}
+                    </p>
+
+                    {/* iframe to prevent reloading */}
+                    <iframe name="frame" className="hidden"></iframe>
+                    {/* send message to email using formsubmit.co */}
+                    <form className="w-full" action="https://formsubmit.co/f014aa1b902d62b9fceb94b24be012c5" 
+                        method="POST" target="frame" onSubmit={e => showPopUp(e)}>
+                            <div className="flex gap-2 flex-col">
+                                <div className={`flex border-2 border-neutral-900 items-center pr-4
+                                ${emailValue.length && (emailValid ? 'focus-within:border-green-600' : 'focus-within:border-red-500')}`}>
+                                    <input type="email" name="Email" placeholder={t('emailPlaceholder') || "youremail@domain.com"} 
+                                    required value={emailValue} 
+                                    onChange={handleEmailChange} onInput={validate} ref={emailInputRef}
+                                    className="w-full px-6 py-4 placeholder:text-xs text-base bg-transparent
+                                    placeholder:text-neutral-700 text-neutral-900 outline-0" />
+                                    <button type="submit">
+                                        <Image src={planeIcon} alt="" />
+                                    </button>
+                                </div>
+                            </div>
+
+                            {/* prevent capcha */}
+                            <input type="hidden" name="_captcha" value="false"/>
+                            {/* add multiple email address that the form can send to */}
+                            {/* <input type="hidden" name="_cc" value={contactEmails}/> */}
+                    </form>
+
+                    {/* pop up appears when successfully submit form */}
+                    <div className={`fixed right-1/2 translate-x-1/2 px-8 py-4 z-30
+                        bg-white dark:bg-semi-black transition-all duration-300 pointer-events-none 
+                            ${ popUpVisible ? 'bottom-12 opacity-100' : 'opacity-0 bottom-0'} shadow-card-bold`}>
+                        <h1 className="text-neutral-800 font-semibold text-base leading-none z-30">
+                        {t('popUpText')} 
+                        </h1>
+                    </div>
+                </div>
+    
             </div>
             <div className="w-container mx-auto text-center py-4">
-                <h1 className="text-neutral-300">JOYA © 2023 All Rights Reserved.</h1>
+                <h1>JOYA © 2023 All Rights Reserved.</h1>
             </div>
         </div>
     )

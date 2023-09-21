@@ -56,6 +56,7 @@ const Events = ({ t }: { t: TFunction }) => {
       }
 
     return (
+<<<<<<< Updated upstream
         <div className="flex gap-4 md:gap-12 flex-col text-center" id="events">
             <h1 className="text-neutral-800 font-semibold text-xl md:text-[3rem] tracking-wide">{t("events")}</h1>
             <div className="w-3/4 mx-auto flex gap-10 relative z-10">
@@ -92,7 +93,22 @@ const Events = ({ t }: { t: TFunction }) => {
                 <Image src={playIcon} alt="play icon" 
                 className={`absolute z-20 translate-x--1/2 translate-y--1/2 left-1/2 bottom-1/2 w-[4rem] 
                 ${isVideoPlaying ? " scale-0" : "scale-100"} transition-all duration-100`}/>
+=======
+        <div 
+            className="w-container h-[600px] mx-auto flex gap-4 md:gap-12 flex-col text-center my-16" 
+            id="events"                             
+        >
+            <h1 className="text-neutral-800 font-semibold text-xl md:text-[3rem] tracking-wide">{t("events")}</h1>
+>>>>>>> Stashed changes
 
+            <div className="h-full w-2/3 mx-auto relative z-10">
+                <iframe className="w-full h-full mx-auto"
+                    src="https://www.youtube.com/embed/videoseries?si=ZRlPxSvlrWpX1dew&amp;list=PLiLifK5yi21Khn9ADtHOvTkynerq-zCOQ" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>                
+                </iframe>
             </div>
         </div>
     )
