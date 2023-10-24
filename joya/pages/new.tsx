@@ -12,22 +12,18 @@ import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Header from '@/components/New/Header'
 import Footer from '@/components/Footer'
-import DayTours from '@/components/main/DayTours';
-import CustomTours from '@/components/main/CustomTours';
-import ThemeTour from '@/components/main/ThemeTours';
-import ContactBanner from '@/components/main/ContactBanner';
-import AbroadTours from '@/components/main/AbroadTours';
+
 import Values from '@/components/main/Values';
 import { NextSeo } from 'next-seo';
 import ScrollToTopButton from '@/components/buttons/ScrollToTopButton';
 import Events from '@/components/main/Events';
-import CallWidget from '@/components/buttons/CallWidget';
 import ZaloWidget from '@/components/buttons/ZaloWidget';
 import Script from 'next/script';
 import NavBar from '@/components/New/NavBar';
 import Specials from '@/components/New/Tours/Specials';
 import Categories from '@/components/New/Tours/Categories';
 import Service from '@/components/New/Service';
+import ContactBanner from '@/components/main/ContactBanner';
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -58,7 +54,6 @@ export default function Home() {
         <ContactBanner t={t}/>
         <Events t={t}/>
         <ScrollToTopButton/>
-        <CallWidget t={t}/>
         <ZaloWidget t={t}/>
 
       </main>

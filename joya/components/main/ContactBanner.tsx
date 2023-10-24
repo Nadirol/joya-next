@@ -1,5 +1,5 @@
-import { facebookIcon, heroPrivate, instagramIcon, worldMap } from "@/public/assets";
-import { phoneIcon, mailIcon } from "@/public/assets";
+import { facebookIcon, instagramIcon } from "@/public/assets";
+import { phoneIcon } from "@/public/assets";
 import { TFunction } from "i18next";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,36 +7,17 @@ import Link from "next/link";
 const ContactBanner = ({ t }: { t: TFunction }) => {
 
     return (
-<<<<<<< Updated upstream
-        <div id="contact-banner" className="w-container mx-auto flex -md:flex-col -md:items-center justify-between bg-primary-extra-light rounded-[30px] px-8 md:px-20 py-8">
-            <div className="flex justify-center items-center flex-col">
+        <div id="contact-banner" 
+        className="w-container mx-auto flex -md:flex-col -md:items-center justify-between bg-primary-extra-light">
+            <div className="flex justify-center items-center flex-col flex-1">
                 <h1 className="text-neutral-900 font-semibold text-4xl mb-3 -md:text-center">{t('contactWithUs')}</h1>
                 <h2 className="text-neutral-800 font-normal text-xl mb-6 -md:text-center">{t('contactBannerHeading')}</h2>
-                <div className="flex gap-8 -md:flex-col items-center mb-6">
+                <div className="flex gap-8 flex-col items-center mb-6">
                     <div className="flex gap-4 items-center">
                         <Image src={phoneIcon} alt="phone icon" />
                         <div className="flex  flex-col">
                             <h1 className="text-neutral-800 font-normal text-xl"><span className="font-medium">Tiếng Việt</span>: 0985080324</h1>
                             <h1 className="text-neutral-800 font-xs text-xl"> <span className="font-medium">English</span>: 0379748073</h1>
-=======
-        <div id="contact-banner" className="flex -md:flex-col -md:items-center">
-            <div className="flex-1 bg-primary-extra-light relative">
-                <Image src={worldMap} alt="background image" className="absolute z-[1] inset-0 h-full object-cover"/>
-                <div className="flex justify-center items-center flex-col relative z-10 h-full">
-                    <h1 className="text-neutral-900 font-semibold text-4xl mb-3 -md:text-center">{t('contactWithUs')}</h1>
-                    <h2 className="text-neutral-800 font-normal text-xl mb-6 -md:text-center">{t('contactBannerHeading')}</h2>
-                    <div className="flex gap-8 -md:flex-col items-center mb-6">
-                        <div className="flex gap-4 items-center">
-                            <Image src={phoneIcon} alt="phone icon" />
-                            <a target="_blank" href="https://zalo.me/0985041369" 
-                            className="text-primary-light font-bold text-xl">
-                                + (84) 985 041 369
-                            </a>
-                        </div>
-                        <div className="flex gap-4 items-center">
-                            <Image src={mailIcon} alt="phone icon" />
-                            <h1 className="text-primary-light font-bold text-xl">sales@joyatravel.vn</h1>
->>>>>>> Stashed changes
                         </div>
                     </div>
                     <div className="flex gap-4 flex-col items-center">
